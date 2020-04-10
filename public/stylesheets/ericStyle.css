@@ -1,0 +1,62 @@
+body{
+    font-family: 'M PLUS Rounded 1c';
+  }
+  h1{
+    font-size: 100px;
+    padding: 20px;
+    margin: 100px 0px 20px 0px;
+    color: #224455;
+  }
+  h2{
+    font-size: 40px;
+    padding: 20px 0px 5px 0px;
+    margin: 20px 0px 20px 20px;
+    color: #224455;
+  }
+  h3{
+    color: #4488DD;
+    font-size: 40px;
+    margin: 50px 0px 50px 0px;
+  }
+  h4{
+    font-size: 30px;
+    color: #224455;
+    text-align: center;
+    margin: 40px 0px 10px 10px;
+  }
+  h5{
+    color: white;
+    margin: 10px 0px 10px 0px;
+  }
+  p{
+    display: flex;
+    font-size: 25px;
+    margin: 40px 0px 0px 0px;
+    color: #224455;
+  }
+  .navbar-light .navbar-nav .nav-link{
+    color: #224455;
+    margin-left: 20px;
+  }
+  .btn.btn-warning.btn-sm{
+    justify-content: center;
+    color: white;
+    width: 7vw;
+  }
+  .btn.btn-warning.btn-lg{
+    color: white;
+    padding: 5px 10px 5px 10px;
+    margin: -10px 0px 0px 20px;
+  }
+  .card-header{
+    background-color: white;
+    color: #224455;
+  }
+  .btn.btn-link{
+    color: #224455;
+    text-decoration: none;
+  }
+  .btn.btn-link.collapsed:hover{
+    text-decoration: none;
+    color:orange;
+  }
