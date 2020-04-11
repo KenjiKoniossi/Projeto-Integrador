@@ -81,6 +81,11 @@ form .form-control {
     border-radius: 10px;
 }
 
+form .form-control:focus {
+    border: 2px solid #F79707;
+    box-shadow: 2px 2px #F79707;
+}
+
 .btn-padrao {
     width: 140px;
     height: 50px;
