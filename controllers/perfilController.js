@@ -7,6 +7,9 @@ const perfilController = {
     },
     alterarSenha: (req, res) => {
         res.render('alterarSenha')
+    },
+    excluirConta: (req, res) => {
+        res.render('excluirPerfil')
     }
     
 }
