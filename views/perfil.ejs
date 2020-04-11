@@ -1,14 +1,104 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <%- include("includes/head") %>
-        <link rel='stylesheet' href='/stylesheets/deyvisonStyle.css'>
-    <title>Perfil</title>
-  </head>
-  <body>
-      <%- include("includes/header") %>
-    <h1 class="text-center" id="nomeInicial">Perfil</h1>
 
-     
-  </body>
+<head>
+  <%- include("includes/head") %>
+
+  <title>MobMap - Perfil</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+  <link rel='stylesheet' href='/stylesheets/deyvisonStyle.css'>
+  <meta name="keywords" content="Mobilidade, Mapas, Perfil">
+  <meta name="author" content="Deyvison J Paula">
+</head>
+
+<body>
+  <!-- <%- include("includes/header") %> -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">mobmap</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#textoNavbar"
+      aria-controls="textoNavbar" aria-expanded="false" aria-label="Alterna navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="textoNavbar">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home<span class="sr-only">(Página atual)</span></a>
+        </li>
+
+      </ul>
+      <span class="navbar-text">
+        Apenas como exemplo
+      </span>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-4 text-center">
+        <img class="rounded-cicle" src="/images/profile.png" alt="imagem de perfil" width="200">
+        <h4>Karla Jhenifer</h4>
+        <span>karla@email.com</span>
+
+        <ul class="flex-column nav">
+          <a class="nav-link" href="perfil/atualizarPerfil">Atualizar perfil</a>
+          <a class="nav-link" href="#">Alterar senha</a>
+          <a class="nav-link" href="#">Excluir Conta</a>
+          </nav>
+      </div>
+
+      <div class="col-sm-12 col-md-12 col-lg-8" style="margin-top:50px">
+        <h3 class="perfil"> Perfil
+          <a class="transicao d-lg-none d-xl-none" data-toggle="collapse" href="#collapsePerfil" role="button"
+            aria-expanded="true" aria-controls="collapsePerfil">
+            <i class="material-icons">keyboard_arrow_up</i>
+          </a>
+        </h3>
+        <hr>
+        <p class="perfil" id="collapsePerfil">Lorem ipsum dolor, sit amet consectetur adipisicing
+          elit. Voluptatibus, dolore vel
+          ullam impedit enim
+          provident ut voluptatum atque aspernatur voluptates temporibus dolor ducimus quas architecto. Est
+          cumque vel impedit delectus.
+        </p>
+
+        <h3 class="perfil"> Estatísticas
+          <a class="transicao d-lg-none d-xl-none" data-toggle="collapse" href="#collapseEstatistica"
+            aria-expanded="false" aria-controls="collapseEstatistica">
+            <i class="material-icons">keyboard_arrow_up</i>
+          </a>
+        </h3>
+        <hr>
+        <ul calss="perfil" id="collapseEstatistica">
+          <li>5 ruas foram demarcadas por voce!</li>
+          <li>2 notificações enviadas para a prefeitura</li>
+        </ul>
+      </div>
+      <div class="col-lg-4 redes-sociais text-center" style="margin-top: 50px;">
+        <h4>Compartilhe essa ideia</h4>
+        <ul class="list-inline">
+          <li class="list-inline-item"><img src="/images/facebook.png" alt=""></li>
+          <li class="list-inline-item"><img src="/images/instagram.png" alt=""></li>
+          <li class="list-inline-item"><a class="social-icon text-xs-center" target="_blank" href="#"><img
+                src="/images/google.png" alt=""></a></li>
+        </ul>
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="/javascripts/bootstrap.min.js"></script>
+
+
+
+</body>
+
 </html>

@@ -1,13 +1,114 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <%- include("includes/head") %>
-        <link rel='stylesheet' href='/stylesheets/deyvisonStyle.css'>
-    <title>Atualizar Perfil</title>
-  </head>
+
+<head>
+  <%- include("includes/head") %>
+
+  <title>MobMap - Perfil</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+  <link rel='stylesheet' href='/stylesheets/deyvisonStyle.css'>
+  <meta name="keywords" content="Mobilidade, Mapas, Perfil">
+  <meta name="author" content="Deyvison J Paula">
+</head>
+
   <body>
       <%- include("includes/header") %>
-    <h1 class="text-center" id="nomeInicial">Atualizar Perfil</h1>
+      <main class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-4 text-center">
+                <img class="rounded-cicle" src="/images/profile.png" alt="imagem de perfil" width="200">
+                <h4 class="card-title">Karla Jhenifer</h4>
+                <span>karla@email.com</span>
+
+                <ul class="flex-column nav">
+                    <a class="nav-link" href="/perfil">Perfil</a>
+                    <a class="nav-link" href="#">Alterar senha</a>
+                    <a class="nav-link" href="#">Excluir Conta</a>
+                    </nav>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-8" style="margin-top: 50px;">
+                <h3 class="perfil"> Atualizar Perfil </h3>
+                <hr>
+
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-5">
+                            <label for="nome">Nome</label>
+                            <input type="nome" class="form-control" name="nome" id="nome">
+                        </div>
+                        <div class="form-group col-md-7">
+                            <label for="sobrenome">Sobrenome</label>
+                            <input type="text"  class="form-control" name="sobrenome" id="sobrenome">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <label for="sobrenome">Email</label>
+                            <input type="email" class="form-control" name="email" id="email">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" class="form-control" name="telefone" id="telefone">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <label for="endereco">Endereço</label>
+                        <input type="text" class="form-control" name="endereco" id="endereco"
+                            placeholder="">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="endereco">Nº</label>
+                        <input type="text" class="form-control" name="endereco" id="endereco"
+                            placeholder=>
+                    </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label for="cep">CEP</label>
+                            <input type="text" class="form-control" id="cep">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="cidade">Cidade</label>
+                            <input type="text" class="form-control" name="cidade" id="cidade">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="estado">Estado</label>
+                            <select id="estado" class="form-control">
+                                <option selected>Escolher...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <label for="estado">Fale um pouco sobre você</label>
+                    <textarea class="form-control" name="perfil-usuario" id="" rows="5"></textarea>
+
+                    <button type="submit" class="btn btn-padrao">Alterar</button>
+                    <button class="btn btn-padrao">Voltar</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+
+</body>
+
+</html>
 
      
   </body>
