@@ -19,6 +19,10 @@ hr {
     margin-left: initial;
 }
 
+.linha_verm {
+    border-bottom: 2px solid rgb(221, 99, 68);
+}
+
 h4 {
     font-style: normal;
     font-weight: bold;
@@ -99,5 +103,4 @@ form .form-control:focus {
 .btn-padrao:hover {
     color: #224455;
     background-color: #4488DD;
-
 }
