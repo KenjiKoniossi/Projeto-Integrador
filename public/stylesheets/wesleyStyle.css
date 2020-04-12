@@ -1,0 +1,143 @@
+body {
+    color: #224455;
+    background-color: #fff;
+  }
+  
+.content-desktop {
+    display: none;
+}
+
+h1, h2, h3 {
+    font-family: "M PLUS Rounded 1c", Roboto;
+    font-weight: 1000;
+}
+
+#main-home {
+    padding: 0;
+  }
+
+#main-home hr {
+    border: 2px solid black;
+    width: 50px;
+}
+
+
+/* Home - tela inicio */
+#home-inicio {
+    height: 100vh;
+    margin: 0;
+    background-color: #FFF;
+    position: relative;
+}
+
+.bg-inicio {
+    background-image: url("../images/wesley_fundo_inicio_novo_mobile_50.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0;
+}
+
+/* #home-inicio::after {
+    content: "";
+    background-image: url("./img/fundo_inicio_novo_mobile.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+} */
+
+#home-inicio p {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#home-inicio div {
+    margin-top: 10vh;
+}
+
+#home-inicio .content-mobile {
+    text-align: center;
+}
+
+#home-inicio div img {
+    width: 200px;
+    margin-bottom: 50px;
+}
+
+#home-inicio div p {
+    margin: 30px 0 70px 0;
+}
+
+
+.btn-inicio {
+    width: 170px;
+    height: 60px;
+}
+
+.btn-default {
+    background-color: #F79707;
+    font-family: "M PLUS Rounded 1c", Roboto;
+    font-size: 1rem;
+    color: #fff;
+    border-color: #F79707;
+    border-radius: 10px;
+}
+
+.btn-default:hover {
+    background-color: #d88405;
+    font-family: "M PLUS Rounded 1c", Roboto;
+    font-size: 1rem;
+    color: #fff;
+    border-color: #d88405;
+    border-radius: 10px;
+}
+
+
+@media (min-width: 768px) {
+    .content-mobile {
+        display: none!important;
+    }
+
+    .content-desktop {
+        display: block;
+    }
+
+    #home-inicio div h1 {
+        width: 70%;
+    }
+
+    #home-inicio div p {
+        width: 50%;
+        margin: 60px 0 100px 0;
+    }
+
+    .bg-inicio {
+        background-image: url("../images/wesley_fundo_inicio_novo_bw.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: 300px;
+    }
+}
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 1440px) {
+    .bg-inicio {
+        background-image: url("../images/wesley_fundo_inicio_novo_bw.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: right;
+    }
+}
