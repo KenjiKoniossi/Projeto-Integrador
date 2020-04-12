@@ -6,9 +6,125 @@
     <title>Enviar Problema</title>
   </head>
   <body>
-      <%- include("includes/header") %>
-    <h1 class="text-center" id="nomeInicial">Enviar Problema</h1>
+    <%- include("includes/header") %>
+    <div class="container">
+  <h2 class="text-center">1 - Sobre o problema</h2>
+  <p>Selecione o problema encontrado</p>
+  <div class="card p-2" >
+      <div class="form-check" style="color: #224455;">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+          Calçada esburacada
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+          Inclinação íngrime
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+          Piso escorregadio
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+          Árvore obstruindo caminho 
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+          Poste obstruindo caminho 
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+          Ocupação irregular (ex:comércio, vendedor ambulante, caçamba)
+        </label>
+      </div>
+  </div>
+  <p>Escreva uma breve descrição sobre o problema</p>
+    <div class="form-group mt-0">
+      <label for="exampleFormControlTextarea1"></label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Exemplo: A calçada possui diversos buracos e tem uma inclinação muito íngrime, dificultando a mobilidade de quem passa por ali"></textarea>
+    </div>
+  <h2 class="text-center">2 - Localização do problema</h2>
+<form>
+  <div class="row">
+    <div class="form-group col-md-4">
+      <label for="inputCEP">CEP</label>
+      <input type="text" class="form-control" id="inputCEP" placeholder="Ex: 12345-000">
+   </div> 
+  </div>
+    <div class="row">
+      <div class="form-group col-md-8">
+        <label for="inputAddress">Endereço</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Ex: Av. Do Estado">
+      </div>
+    <div class="form-group col-md-2">
+        <label for="inputNumero">Número</label>
+        <input type="text" class="form-control" id="inputNumero" placeholder="Ex: 1234">
+    </div>
+    </div> 
 
+  <div class="form-group">
+        <label for="inputBairoo">Bairro</label>
+        <input type="text" class="form-control" id="inputBairro" placeholder="Ex: Bairro da Liberdade">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-7">
+        <label for="inputCity">Cidade</label>
+        <input type="text" class="form-control" id="inputCidade" placeholder="Ex: São Paulo">
+    </div>
+    <div class="form-group col-md-5">
+        <label for="inputCity">Estado</label>
+        <input type="text" class="form-control" id="inputEstado" placeholder="Ex: São Paulo">
+    </div>
+    </div>
+    <div class="form-group">
+        <label for="inputAddress2">Ponto de Referência</label>
+        <input type="text" class="form-control" id="inputReferencia" placeholder="Ex: Em frente ao posto de gasolina">
+    </div>
+</form>
+<h2 class="text-center">3 - Imagem do problema</h2>
+<p class="mb-3" style="justify-content: center;">Adicionar Imagem</p>
+<div class="row">
+<div class="col-5"></div>
+<button type="submit" class="btn btn-warning btn-sm col-2">Buscar</button>
+</div>
+<h2 class="text-center">4 - Enviar problema</h2>
+<p class="mb-3" style="justify-content: center;">Para finalizar clique no botão abaixo</p>
+<div class="row">
+<div class="col-5"></div>
+<button type="button" class="btn btn-warning btn-sm col-2 mb-3" data-toggle="modal" data-target="#exampleModal">
+  Enviar
+</button>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <p class="modal-title" id="exampleModalLabel">Problema enviado com sucesso!</p>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      Obrigado por contribuir com o mapeamento de locais! <br>
+      Seu problema será analisado por nossa equipe e iremos atualizar as informações
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Fechar</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
      
   </body>
 </html>
