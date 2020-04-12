@@ -137,7 +137,33 @@
           </div>
       </section>
 
+      <section id="home-contato" class="row justify-content-center bg-contato">
+        <div class="col-12 col-md-10">
+            <div class="col-12 col-md-6">
+                <h2>Entre em Contato</h2>
+                <hr>
+            </div>
+            <form class="col-12 col-md-6" action="" id="form-contato">
+                <div class="col-12">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" id="contato-nome">
+                </div>
+                <div class="col-12">
+                    <label for="nome">Email</label>
+                    <input type="text" name="email" id="contato-email">
+                </div>
+                <div class="col-12">
+                    <label for="nome">Mensagem</label>
+                    <textarea name="mensagem" id="" cols="30" rows="10"></textarea>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-default d-flex align-items-center justify-content-center" type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </section>
     </main>
-     
+
+    <%- include("includes/footer") %>
   </body>
 </html>
