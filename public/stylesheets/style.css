@@ -31,3 +31,24 @@
         color: #fff;
     }
 }
+
+
+/* Header - header para todas as páginas*/
+header{
+    font-family: gotham-rounded;
+    font-size: 20px;
+}
+header .logo *{
+    margin: 1px;
+}
+header .navbar {
+    padding-left: 6vw;
+    padding-right: 6vw;
+}
+header .navbar-collapse *{
+    margin-left: 2vw;
+    margin-right: 1vw;
+}
+header #question, header #hashtag, header #envelope {
+    display: none;
+}
