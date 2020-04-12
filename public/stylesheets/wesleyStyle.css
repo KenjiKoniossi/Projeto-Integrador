@@ -22,7 +22,7 @@ h1, h2, h3 {
 }
 
 
-/* Home - tela inicio */
+/* CSS Página inicial - tela inicio */
 #home-inicio {
     height: 100vh;
     margin: 0;
@@ -36,21 +36,6 @@ h1, h2, h3 {
     background-size: cover;
     background-position: 0;
 }
-
-/* #home-inicio::after {
-    content: "";
-    background-image: url("./img/fundo_inicio_novo_mobile.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: left;
-    opacity: 0.5;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-} */
 
 #home-inicio p {
     font-size: 20px;
@@ -80,6 +65,54 @@ h1, h2, h3 {
     height: 60px;
 }
 
+/* CSS Página inicial - tela como funciona */
+#home-como {
+    height: 100vh;
+    margin: 0;
+    background-color: #F8F8F8;
+}
+
+.bg-como {
+    background-image: url("../images/wesley_fundo_como.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 110px;
+}
+
+#home-como div h2, #home-sobre div h2, #home-contato div h2 {
+    color: #4488DD;
+    margin-top: 50px;
+    text-align: center;
+}
+
+#home-como div hr, #home-sobre div hr, #home-contato div hr {
+    width: 30px;
+    border: 2px solid #4488DD;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+#home-como p {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+#home-como div div {
+    height: 100px;
+}
+
+#home-como img {
+    width: 100%;
+    max-width: 50px;
+}
+
+#home-como a {
+    margin-top: 40px;
+}
+
+/* CSS botão geral */
 .btn-default {
     background-color: #F79707;
     font-family: "M PLUS Rounded 1c", Roboto;
@@ -98,8 +131,17 @@ h1, h2, h3 {
     border-radius: 10px;
 }
 
+@media (min-width: 576px) {
+    .bg-como {
+        background-image: url("../images/wesley_fundo_como.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 190px;
+    }
+}
 
 @media (min-width: 768px) {
+    /* CSS geral da página inicial */
     .content-mobile {
         display: none!important;
     }
@@ -108,6 +150,7 @@ h1, h2, h3 {
         display: block;
     }
 
+    /* CSS Página inicial - tela inicio */
     #home-inicio div h1 {
         width: 70%;
     }
@@ -123,21 +166,53 @@ h1, h2, h3 {
         background-size: contain;
         background-position: 300px;
     }
+    
+    /* CSS Página inicial - tela como funciona */
+    .bg-como {
+        background-image: url("../images/wesley_fundo_como.png");
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: 400px;
+    }
+
+
 }
 
 @media (min-width: 992px) {
-
+    .bg-como {
+        background-image: url("../images/wesley_fundo_como.png");
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: 500px;
+    }
 }
 
 @media (min-width: 1200px) {
+    .bg-como {
+        background-image: url("../images/wesley_fundo_como.png");
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: 550px;
+    }
 
+    #home-como p {
+        font-size: 23px;
+    }
 }
 
 @media (min-width: 1440px) {
+    /* CSS Página inicial - tela inicio */
     .bg-inicio {
         background-image: url("../images/wesley_fundo_inicio_novo_bw.png");
         background-repeat: no-repeat;
         background-size: contain;
         background-position: right;
+    }
+
+    .bg-como {
+        background-image: url("../images/wesley_fundo_como.png");
+        background-repeat: no-repeat;
+        background-size: 40%;
+        background-position: 900px;
     }
 }
