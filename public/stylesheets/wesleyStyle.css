@@ -65,6 +65,7 @@ h1, h2, h3 {
     height: 60px;
 }
 
+
 /* CSS Página inicial - tela como funciona */
 #home-como {
     height: 100vh;
@@ -111,6 +112,32 @@ h1, h2, h3 {
 #home-como a {
     margin-top: 40px;
 }
+
+
+/* CSS Página inicial - tela sobre nós */
+#home-sobre {
+    height: 120vh;
+    margin: 0;
+    background-color: #FFF;
+}
+
+#home-sobre p {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+#sobre-fulanos img {
+    width: 100%;
+    max-width: 110px;
+}
+
+
+
+#sobre-fulanos-desktop img {
+    width: 100%;
+}
+
 
 /* CSS botão geral */
 .btn-default {
@@ -175,6 +202,24 @@ h1, h2, h3 {
         background-position: 400px;
     }
 
+    /* CSS Página inicial - tela sobre nós */
+    #home-sobre {
+        height: 120vh;
+    }
+
+    #home-sobre p {
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+
+    #home-sobre p {
+        width: 90%;
+    }
+    
+    #sobre-fulanos-desktop p {
+        font-size: 15px;
+    }
 
 }
 
@@ -184,6 +229,14 @@ h1, h2, h3 {
         background-repeat: no-repeat;
         background-size: 50%;
         background-position: 500px;
+    }
+
+    #home-sobre p {
+        width: 80%;
+    }
+
+    #sobre-fulanos-desktop p {
+        font-size: 15px;
     }
 }
 
@@ -197,6 +250,14 @@ h1, h2, h3 {
 
     #home-como p {
         font-size: 23px;
+    }
+
+    #home-sobre p {
+        width: 60%;
+    }
+
+    #sobre-fulanos-desktop p {
+        font-size: 15px;
     }
 }
 
