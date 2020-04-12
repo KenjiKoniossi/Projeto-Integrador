@@ -1,0 +1,33 @@
+
+/* Footer - footer para todas as páginas */
+#footer-geral div{
+    height: 90px;
+    background-color: #4488DD;
+}
+
+#footer-geral img {
+    height: 50px;
+}
+
+#footer-geral p {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    /* Footer - footer para todas as páginas */
+    #footer-geral div{
+        height: 100px;
+    }
+    
+    #footer-geral img {
+        height: 70px;
+    }
+    
+    #footer-geral p {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #fff;
+    }
+}
