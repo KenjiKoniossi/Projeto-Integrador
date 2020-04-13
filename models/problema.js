@@ -1,19 +1,16 @@
-// const fs = require('fs')
-// const path = require('path')
+const fs = require('fs')
+const path = require('path')
 
-// const db = path.join('problemas.json')
+const db = path.join('problema.json')
 
-// function listarProblema(){
-//     let listaProblema = fs.readFileSync(db, {encoding:'utf-8'})
-//     listaProblema = JSON.parse(listaProblema) 
-//     return listaProblema
-// }
 
-// function aberturaProblema(problema, descricao, CEP, endereco, numero, bairro, cidade, estado, referencia, foto){
-//     let listaUsuario = fs.readFileSync(db, {encoding:'utf-8'})
-//     listaUsuario = JSON.parse(listaCardapio)  
-//     listaUsuario.push({problema, descricao, CEP, endereco, numero, bairro, cidade, estado, referencia, foto})
-//     return fs.writeFileSync(db, JSON.stringify(listaProblema))
-//  }
+function envioProblema(problema, descricao, CEP, endereco, numero, bairro, cidade, estado, referencia, foto){
+   let listaProblema = fs.readFileSync(db, {encoding:'utf-8'})
+   listaProblema = JSON.parse(listaProblema)  
+   listaProblema.push({problema, descricao, CEP, endereco, numero, bairro, cidade, estado, referencia, foto})
+   return fs.writeFileSync(db, JSON.stringify(listaProblema))
+}
 
-// module.exports = {listarProblema, aberturaProblema}
+
+
+module.exports = {envioProblema}

@@ -1,32 +1,114 @@
-<header>
-    <link rel='stylesheet' href='/stylesheets/style.css'>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onclick="hideLogIn()">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class ="logo">
-            <a class="navbar-brand active" href="#"><img src="img/logo.png" alt=""></a>
-            <a class="navbar-brand active" href="#"><img src="img/mob_map.png" alt=""></a>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onclick="hideLogIn()">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class ="logo">
+                <a class="navbar-brand active" href="http://localhost:3000"><img src="/public/images/logo.png" alt=""></a>
+                <a class="navbar-brand active" href="http://localhost:3000"><img src="/public/images/mobmap.png" alt=""></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:3000/saibamais"><i class="fa fa-question" id="question" aria-hidden="true"></i>
+                            Saiba Mais</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:3000/mapa"><i class="fa fa-hashtag" id="hashtag" aria-hidden="true"></i>
+                            Mapa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:3000/enviarproblema"><i class="fa fa-envelope-open" id="envelope" aria-hidden="true"></i>
+                            Enviar Problema</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:3000/ajuda"><i class="fa fa-envelope-open" id="envelope" aria-hidden="true"></i>
+                            Ajuda</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <button type="button" class="btn btn-primary" data-toggle="modal"  data-target="#entradaModal" id="logIn" style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i>  Entrar</button>
+        </nav>
+        <div class="row">
+            <div class="col-5"></div>
         </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html"><i class="fa fa-question" id="question" aria-hidden="true"></i>
-                        Como funciona</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html"><i class="fa fa-hashtag" id="hashtag" aria-hidden="true"></i>
-                        Sobre nós</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html"><i class="fa fa-envelope-open" id="envelope" aria-hidden="true"></i>
-                        Contato</a>
-                </li>
-            </ul>
+        <div class="modal fade" id="entradaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body" style="background-color: rgb(68, 137, 221);">
+                        <form action="post" >
+                            <img src="img/logoWhite.png" alt="">
+                            <img src="img/mob_mapWhite.png" alt="">
+                            <div class="user"></div>
+                            <button type="button" data-toggle="modal" data-target="#registerModal" style= "background-color: white; color: rgb(68, 137, 221); margin-top: 20px;">Criar Conta</button>
+                            <button type="button" data-toggle="modal" data-target="#loginModal" style= "border: 1px solid white;">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button type="button" class="btn btn-primary" id="logIn" style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i>  Entrar</button>
-    </nav>
-</header>
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form action="post" id="login">
+                            <img src="img/logo.png" alt="">
+                            <img src="img/mob_map.png" alt="">
+                            <div class="user"></div>
+                                <input type="email" name="email" id="email" placeholder="E-mail" required="">
+                                <input type="password" name="password" id="password" placeholder="Senha" required=""> 
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1">Manter-me conectado</label> <p><button type="button" data-toggle="modal" data-target="#esqueceuSenhaModal">Esqueceu a senha?</button></p>
+                                </div>
+                            <button type="submit" data-toggle="modal" data-target="#registerModal">Entrar</button>
+                            <h5>Não tem conta? <button type="button" data-toggle="modal" data-target="#registerModal">Registre-se</button></h5>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form action="post">
+                            <img src="img/logo.png" alt="">
+                            <img src="img/mob_map.png" alt="">
+                            <div class="user">
+                                <input type="text" name="name" id="name" placeholder="Nome" required="">
+                                <input type="email" name="email" id="emailRegistro" placeholder="E-mail" required="">
+                                <input type="password" name="password" id="passwordRegistro" placeholder="Senha" required="">
+                            </div>
+                            <button type="submit" >Criar Conta</button>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck2" required="">
+                                <label class="custom-control-label" for="customCheck2"> Concordo com a <a href="privacyPolitics.html">Politica de Privacidade</a> e <a href="termService.html">Termos de Serviço</a></label>
+                            </div>
+                            <h5>Já tem conta? <button type="button" data-toggle="modal" data-target="#loginModal"> Entrar</button></h5>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="esqueceuSenhaModal" tabindex="-1" role="dialog" aria-labelledby="esqueceuSenhaModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form action="post">
+                            <img src="img/logo.png" alt="">
+                            <img src="img/mob_map.png" alt="">
+                            <div class="user"></div>
+                            <input type="email" name="email" id="emailEsqueceuSenha" placeholder="E-mail" required="">
+                            <button type="submit">Recuperar Senha</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 <!-- 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
