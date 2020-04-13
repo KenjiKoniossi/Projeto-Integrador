@@ -1,0 +1,103 @@
+/* Importações de fontes */
+
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap');
+body {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    ;
+}
+
+h3.perfil {
+    color: #4488DD;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+hr.perfil {
+    width: 100px;
+    border-bottom: 2px solid #4488DD;
+    border-radius: 50px;
+    margin-left: initial;
+}
+
+.linha_verm {
+    border-bottom: 2px solid rgb(221, 99, 68);
+}
+
+h4 {
+    font-style: normal;
+    font-weight: bold;
+    color: #224455
+}
+
+span {
+    font-style: normal;
+    font-weight: bold;
+    color: #224455;
+}
+
+p.perfil {
+    padding: 5px;
+    color: #474766;
+    margin-bottom: 50px;
+    text-align: justify;
+    font-size: 16px;
+}
+
+ul {
+    font-weight: bold;
+    color: #4488DD;
+}
+
+a:hover {
+    color: #F79707;
+}
+
+a.negativas:focus {
+    background-color: #F79707;
+    border:1px #F79707;;
+}
+
+.redes-sociais {
+    margin-top: 15px;
+}
+
+div.redes-sociais img {
+    width: 50px;
+    transition: transform .3s ease;
+}
+
+div.redes-sociais img:hover {
+    transform: scale(1.08);
+}
+
+form label {
+    font-weight: bold;
+    color: #224455;
+    font-size: 14px;
+}
+
+form .form-control {
+    border: 2px solid #224455;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+form .form-control:focus {
+    border: 2px solid #F79707;
+    box-shadow: 2px 2px #F79707;
+}
+
+.btn-padrao {
+    width: 140px;
+    height: 50px;
+    background-color: #F79707;
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-weight: bold;
+    margin: 15px 10px 15px 0;
+}
+
+.btn-padrao:hover {
+    color: #224455;
+    background-color: #4488DD;
+}
