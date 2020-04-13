@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%- include("includes/head") %>
-        <link rel='stylesheet' href='/stylesheets/marcosStyle.css'>
     <title>Login</title>
+    <%- include("includes/head") %>
+    <link rel='stylesheet' href='/stylesheets/marcosStyle.css'>
   </head>
   <body>
-      <%- include("includes/header") %>
-    <h1 class="text-center" id="nomeInicial">Login</h1>
-
-     
+    <%- include("includes/header") %>
+    <main>
+      <form action="post">
+          <img src="img/logo.png" alt="">
+          <img src="img/mob_map.png" alt="">
+          <div class="user"></div>
+              <input type="email" name="email" id="email" placeholder="E-mail" required="">
+              <input type="password" name="password" id="password" placeholder="Senha" required=""> 
+              <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                  <label class="custom-control-label" for="customCheck1">Manter-me conectado</label> <p><a href="esqueceuSenha.html">Esqueceu a senha?</a></p>
+              </div>
+          <button type="submit">Entrar</button>
+          <h5>Não tem conta? <a href="cadastro.html">Registre-se</a></h5>
+      </form>
+    </main>
   </body>
 </html>

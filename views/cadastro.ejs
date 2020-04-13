@@ -1,14 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
   <head>
-    <%- include("includes/head") %>
-        <link rel='stylesheet' href='/stylesheets/marcosStyle.css'>
     <title>Cadastro</title>
+    <%- include("includes/head") %>
+    <link rel='stylesheet' href='/stylesheets/marcosStyle.css'>
   </head>
   <body>
-      <%- include("includes/header") %>
-    <h1 class="text-center" id="nomeInicial">Cadastro</h1>
-
-     
+    <%- include("includes/header") %>
+    <main>
+      <form action="post">
+          <img src="img/logo.png" alt="">
+          <img src="img/mob_map.png" alt="">
+          <div class="user">
+              <input type="text" name="name" id="name" placeholder="Nome" required="">
+              <input type="email" name="email" id="email" placeholder="E-mail" required="">
+              <input type="password" name="password" id="password" placeholder="Senha" required="">
+          </div>
+          <button type="submit">Criar Conta</button>
+          <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="customCheck2" required="">
+              <label class="custom-control-label" for="customCheck2"> Concordo com a <a href="privacyPolitics.html">Politica de Privacidade</a> e <a href="termService.html">Termos de Serviço</a></label>
+          </div>
+          <h5>Já tem conta? <a href="login.html">Entrar</a></h5>
+      </form>
+    </main>
   </body>
 </html>

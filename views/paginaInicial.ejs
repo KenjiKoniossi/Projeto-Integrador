@@ -2,13 +2,168 @@
 <html>
   <head>
     <%- include("includes/head") %>
-        <link rel='stylesheet' href='/stylesheets/wesleyStyle.css'>
-    <title>Pagina Inicial</title>
+    <link rel='stylesheet' href='/stylesheets/wesleyStyle.css'>
+    <title>MobMap - Página Inicial</title>
   </head>
   <body>
-      <%- include("includes/header") %>
-    <h1 class="text-center" id="nomeInicial">Pagina Inicial</h1>
+    <%- include("includes/header") %>
 
-     
+    <main id="main-home" class="container-fluid">
+      <section id="home-inicio" class="row justify-content-center bg-inicio">
+        <div class="col-12 col-md-10 col-lg-9">
+            <div class="col-12 col-md-10 col-lg-9 col-xl-7 d-flex flex-wrap flex-column align-items-center align-items-md-start">
+                <img class="content-mobile" src="../images/wesley_logo_novo_azul.png" alt="">
+                <h1 class="content-mobile">Mapeie problemas de mobilidade</h1>
+                <h1 class="content-desktop">Mapeie problemas que dificultam a mobilidade urbana</h1>
+
+                <p class="content-mobile">Ajude a mapear problemas que dificultam a mobilidade urbano</p>
+                <p class="content-desktop">Calçada irregular, buraco no passeio, poste no meio da calçada... Ajude pessoas com mobilidade reduzida mapeando problemas deste tipo.</p>
+                <a href="#" id="button-home" class="btn btn-default d-flex align-items-center justify-content-center btn-inicio">Acessar Mapa</a>
+            </div>
+        </div>
+      </section>
+
+      <section id="home-como" class="row justify-content-center bg-como">
+        <div class="col-12 col-md-10 col-lg-9">
+            <div class="col-12 col-md-8 col-lg-7 col-xl-6">
+                <h2>Como Funciona</h2>
+                <hr>
+            </div>
+            <div class="col-12 col-md-8 col-lg-7 col-xl-6 d-flex flex-wrap">
+                <div class="col-2 p-0">
+                    <img src="../images/wesley_icon_search.png" alt="">
+                </div>
+                <div class="col-10">
+                    <p>Encontre na sua cidade problemas de mobilidade</p>
+                </div>
+                <div class="col-2 p-0">
+                    <img src="../images/wesley_icon_camera.png" alt="">
+                </div>
+                <div class="col-10">
+                    <p>Relate o problema com a ajuda de fotos e descrição</p>
+                </div>
+                <div class="col-2 p-0">
+                    <img src="../images/wesley_icon_compass.png" alt="">
+                </div>
+                <div class="col-10">
+                    <p>Envie junto o endereço ou utilize sua localização</p>
+                </div>
+                <div class="col-2 p-0">
+                    <img src="../images/wesley_icon_star.png" alt="">
+                </div>
+                <div class="col-10">
+                    <p>Pronto! Sua contribuição vai direto para o mapa</p>
+                </div>
+                    <a href="#" id="button-home" class="btn btn-default d-flex align-items-center justify-content-center btn-inicio">Acessar Mapa</a>
+            </div>
+        </div>
+      </section>
+
+      <section id="home-sobre" class="row justify-content-center">
+          <div class="col-12 col-md-10">
+              <div class="col-12 d-flex flex-column justify-content-center align-items-center">
+                  <h2>Sobre Nós</h2>
+                  <hr>
+                  <p class="text-center mb-md-5">Nossa equipe surgiu através do curso de Deselvolvimento Full Stack Node Blend na Digital House, Vila Olímpia, curso oferecido pelo Santander Universidades.</p>
+              </div>
+              <div id="sobre-fulanos" class="col-12 d-flex flex-wrap content-mobile">
+                  <div class="col-3 d-flex flex-column align-items-center p-0">
+                      <img src="../images/wesley_fulano1.png" alt="">
+                  </div>
+                  <div class="col-9 d-flex flex-column justify-content-center align-items-start">
+                      <h4>Fulano da Silva</h4>
+                      <p class="text-left">Uma ideia quando é boa, é boa para todos.</p>
+                  </div>
+                  <div class="col-9 d-flex flex-column justify-content-center align-items-end">
+                      <h4>Fulano da Silva</h4>
+                      <p class="text-right">Uma ideia quando é boa, é boa para todos.</p>
+                  </div>
+                  <div class="col-3 d-flex flex-column align-items-center p-0">
+                      <img src="../images/wesley_fulano2.png" alt="">
+                  </div>
+                  <div class="col-3 d-flex flex-column align-items-center p-0">
+                      <img src="../images/wesley_fulano3.png" alt="">
+                  </div>
+                  <div class="col-9 d-flex flex-column justify-content-center align-items-start">
+                      <h4>Fulano da Silva</h4>
+                      <p class="text-left">Uma ideia quando é boa, é boa para todos.</p>
+                  </div>
+                  <div class="col-9 d-flex flex-column justify-content-center align-items-end">
+                      <h4>Fulano da Silva</h4>
+                      <p class="text-right">Uma ideia quando é boa, é boa para todos.</p>
+                  </div>
+                  <div class="col-3 d-flex flex-column align-items-center p-0">
+                      <img src="../images/wesley_fulano4.png" alt="">
+                  </div>
+                  <div class="col-3 d-flex flex-column align-items-center p-0">
+                      <img src="../images/wesley_fulano5.png" alt="">
+                  </div>
+                  <div class="col-9 d-flex flex-column justify-content-center align-items-start">
+                      <h4>Fulano da Silva</h4>
+                      <p>Uma ideia quando é boa, é boa para todos.</p>
+                  </div>
+              </div>
+              <div id="sobre-fulanos-desktop" class="col-md-12 content-desktop">
+                  <div class="col-12 d-inline-flex">
+                      <div class="col-6 d-flex flex-column justify-content-center align-items-end">
+                          <h5>Fulano da Silva</h5>
+                          <p class="text-right">Uma ideia quando é boa, é boa para todos.</p>
+                      </div>
+                      <div class="col-6 d-flex flex-column justify-content-center align-items-end">
+                          <h5>Fulano da Silva</h5>
+                          <p class="text-right">Uma ideia quando é boa, é boa para todos.</p>
+                      </div>
+                  </div>
+                  <div class="col-12">
+                      <img src="../images/wesley_fundo_sobre_setas.png" alt="">
+                  </div>
+                  <div class="col-12">
+                      <div class="col-12 d-inline-flex">
+                          <div class="col-4 d-flex flex-column justify-content-center align-items-start">
+                              <h5>Fulano da Silva</h5>
+                              <p class="text-left">Uma ideia quando é boa, é boa para todos.</p>
+                          </div>
+                          <div class="col-4 d-flex flex-column justify-content-center align-items-start">
+                              <h5>Fulano da Silva</h5>
+                              <p class="text-left">Uma ideia quando é boa, é boa para todos.</p>
+                          </div>
+                          <div class="col-4 d-flex flex-column justify-content-center align-items-start">
+                              <h5>Fulano da Silva</h5>
+                              <p class="text-left">Uma ideia quando é boa, é boa para todos.</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <section id="home-contato" class="row justify-content-center bg-contato">
+        <div class="col-12 col-md-10">
+            <div class="col-12 col-md-6">
+                <h2>Entre em Contato</h2>
+                <hr>
+            </div>
+            <form class="col-12 col-md-6" action="" id="form-contato">
+                <div class="col-12">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" id="contato-nome">
+                </div>
+                <div class="col-12">
+                    <label for="nome">Email</label>
+                    <input type="text" name="email" id="contato-email">
+                </div>
+                <div class="col-12">
+                    <label for="nome">Mensagem</label>
+                    <textarea name="mensagem" id="" cols="30" rows="10"></textarea>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-default d-flex align-items-center justify-content-center" type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    </main>
+
+    <%- include("includes/footer") %>
   </body>
 </html>
