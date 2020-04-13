@@ -1,14 +1,140 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <%- include("includes/head") %>
-        <link rel='stylesheet' href='/stylesheets/deyvisonStyle.css'>
-    <title>Atualizar Perfil</title>
-  </head>
-  <body>
-      <%- include("includes/header") %>
-    <h1 class="text-center" id="nomeInicial">Atualizar Perfil</h1>
 
-    <%- include("includes/footer") %>
-  </body>
+<head>
+  <%- include("includes/head") %>
+
+  <title>MobMap - Atualizar Perfil</title>
+  <link rel='stylesheet' href='/stylesheets/deyvisonStyle.css'>
+  <meta name="keywords" content="Mobilidade, Mapas, Perfil">
+  <meta name="author" content="Deyvison J Paula">
+</head>
+
+<body>
+  <%- include("includes/head") %>
+
+  <main class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-4 text-center">
+        <img class="rounded-cicle" src="/images/profile.png" alt="imagem de perfil" width="200">
+        <h4 class="card-title">Karla Jhenifer</h4>
+        <span>karla@email.com</span>
+
+        <ul class="flex-column nav">
+          <a class="nav-link" href="/perfil">Ver Perfil</a>
+          <a class="nav-link" href="/perfil/alterarSenha">Alterar senha</a>
+          <a class="nav-link" href="/perfil/excluirPerfil">Excluir Conta</a>
+        </ul>
+
+      <div class="col-lg-12 redes-sociais text-center d-none d-lg-block  d-xl-block" style="margin-top: 50px;">
+        <h4>Compartilhe essa ideia</h4>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a class="social-icon text-xs-center" target="_blank" href="#"><img
+                src="/images/facebook-icon.png" alt=""></a></li>
+          <li class="list-inline-item"><a class="social-icon text-xs-center" target="_blank" href="#"><img
+                src="/images/instagram-icon.png" alt=""></a></li>
+          <li class="list-inline-item"><a class="social-icon text-xs-center" target="_blank" href="#"><img
+                src="/images/google-icon.png" alt=""></a></li>
+        </ul>
+      </div>
+
+      </div>
+
+      <div class="col-sm-12 col-md-12 col-lg-8" style="margin-top: 50px;">
+        <h3 class="perfil"> Atualizar Perfil </h3>
+        <hr class="perfil">
+
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-5">
+              <label for="nome">Nome</label>
+              <input type="nome" class="form-control" name="nome" id="nome">
+            </div>
+            <div class="form-group col-md-7">
+              <label for="sobrenome">Sobrenome</label>
+              <input type="text" class="form-control" name="sobrenome" id="sobrenome">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-8">
+              <label for="sobrenome">Email</label>
+              <input type="email" class="form-control" name="email" id="email">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="telefone">Telefone</label>
+              <input type="tel" class="form-control" name="telefone" id="telefone">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-10">
+              <label for="endereco">Endereço</label>
+              <input type="text" class="form-control" name="endereco" id="endereco" placeholder="">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="endereco">Nº</label>
+              <input type="text" class="form-control" name="endereco" id="endereco" placeholder=>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-2">
+              <label for="cep">CEP</label>
+              <input type="text" class="form-control" id="cep">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="cidade">Cidade</label>
+              <input type="text" class="form-control" name="cidade" id="cidade">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="estado">Estado</label>
+              <select id="estado" class="form-control">
+                <option selected>Escolher...</option>
+                <option>...</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="estado">Fale um pouco sobre você</label>
+          <textarea class="form-control" name="perfil-usuario" id="" rows="5"></textarea>
+
+          <button type="submit" class="btn btn-padrao">Alterar</button>
+          <button class="btn btn-padrao">Voltar</button>
+
+        </form>
+
+      </div>
+
+      <div class="col-lg-12 redes-sociais text-center d-lg-none .d-xl-none" style="margin-top: 50px;">
+        <h4>Compartilhe essa ideia</h4>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a class="social-icon text-xs-center" target="_blank" href="#"><img
+                src="/images/facebook-icon.png" alt=""></a></li>
+          <li class="list-inline-item"><a class="social-icon text-xs-center" target="_blank" href="#"><img
+                src="/images/instagram-icon.png" alt=""></a></li>
+          <li class="list-inline-item"><a class="social-icon text-xs-center" target="_blank" href="#"><img
+                src="/images/google-icon.png" alt=""></a></li>
+        </ul>
+      </div>
+
+    </div>
+
+  </main>
+
+  <%- include("includes/footer") %>
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="/javascripts/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+
+</body>
+
 </html>
