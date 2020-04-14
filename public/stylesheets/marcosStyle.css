@@ -113,3 +113,30 @@ header .navbar-collapse *{
 header #question,header #hashtag,header #envelope {
     display: none;
 }
+
+/* Header - header para todas as páginas*/
+header .nav-link{
+    font-family: 'M PLUS Rounded 1c';
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0px, 12px, 0px, 25px; 
+    padding: 8px;
+}
+header .nav-item{
+    margin: 0px, 12px, 0px, 25px; 
+    padding: 8px;
+}
+header .logo *{
+    margin: 1px;
+}
+header .navbar {
+    padding-left: 6vw;
+    padding-right: 6vw;
+}
+header .navbar-collapse *{
+    margin-left: 2vw;
+    margin-right: 1vw;
+}
+header #question, header #hashtag, header #envelope {
+    display: none;
+}
