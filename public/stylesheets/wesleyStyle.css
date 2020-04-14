@@ -58,20 +58,19 @@ body {
     background-color: #F8F8F8;
 }
 
-.bg-como {
+.bg-home-como {
     background-image: url("../images/wesley_fundo_como.png");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 110px;
+    background-position: 150px;
 }
 
-#home-como div h2, #home-sobre div h2, #home-contato div h2 {
+#home-como h2, #home-sobre h2, #home-contato h2 {
     color: #4488DD;
     margin-top: 50px;
-    text-align: center;
 }
 
-#home-como div hr, #home-sobre div hr, #home-contato div hr {
+#home-como hr, #home-sobre hr, #home-contato hr {
     width: 30px;
     border: 2px solid #4488DD;
     border-radius: 5px;
@@ -80,24 +79,35 @@ body {
 }
 
 #home-como p {
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: 500;
-    margin-bottom: 0;
+    margin: 10px 0;
 }
 
-#home-como div div {
-    height: 100px;
+#texto-como-funciona-1 p {
+    width: 70%;
+}
+
+#texto-como-funciona-2 p {
+    width: 60%;
+}
+
+#texto-como-funciona-3 p {
+    width: 50%;
+}
+
+#texto-como-funciona-4 p {
+    width: 45%;
 }
 
 #home-como img {
-    width: 100%;
-    max-width: 50px;
+    height: 50px;
+    margin: 0 20px 0 10px;
 }
 
 #home-como a {
-    margin-top: 40px;
+    margin: 50px 150px 50px 30px;
 }
-
 
 /* CSS Página inicial - tela sobre nós */
 #home-sobre {
@@ -171,11 +181,12 @@ body {
 }
 
 @media (min-width: 576px) {
-    .bg-como {
+    /* CSS Página inicial - tela como funciona */
+    .bg-home-como {
         background-image: url("../images/wesley_fundo_como.png");
         background-repeat: no-repeat;
-        background-size: cover;
-        background-position: 190px;
+        background-size: contain;
+        background-position: 300px;
     }
 }
 
@@ -206,11 +217,34 @@ body {
     }
 
     /* CSS Página inicial - tela como funciona */
-    .bg-como {
+    #home-como hr, #home-sobre hr, #home-contato hr {
+        width: 60px;
+        margin-right: 200px;
+    }
+
+    #home-como h2 {
+        margin-right: 0px;
+    }
+
+    #home-como hr {
+        margin-right: 0px;
+    }
+
+    #home-como p {
+        width: 50%;
+        text-align: right;
+    }
+
+    #home-como img {
+        height: 50px;
+        margin: 0 0 0 20px;
+    }
+
+    .bg-home-como {
         background-image: url("../images/wesley_fundo_como.png");
         background-repeat: no-repeat;
-        background-size: 50%;
-        background-position: 400px;
+        background-size: 40%;
+        background-position: 50px;
     }
 
     /* CSS Página inicial - tela sobre nós */
@@ -257,11 +291,9 @@ body {
         height: 60px;
     }
 
-    .bg-como {
-        background-image: url("../images/wesley_fundo_como.png");
-        background-repeat: no-repeat;
-        background-size: 50%;
-        background-position: 500px;
+    /* CSS Página inicial - tela como funciona */
+    #home-como p {
+        font-size: 1rem;
     }
 
     #home-sobre p {
@@ -285,15 +317,17 @@ body {
         font-size: 1.4rem;
     }
 
-    .bg-como {
-        background-image: url("../images/wesley_fundo_como.png");
-        background-repeat: no-repeat;
-        background-size: 50%;
-        background-position: 550px;
+    /* CSS Página inicial - tela como funciona */
+    #home-como p {
+        font-size: 1.2rem;
+        width: 60%;
     }
 
-    #home-como p {
-        font-size: 23px;
+    .bg-home-como {
+        background-image: url("../images/wesley_fundo_como.png");
+        background-repeat: no-repeat;
+        background-size: 40%;
+        background-position: 50px;
     }
 
     #home-sobre p {
@@ -325,10 +359,15 @@ body {
         background-position: right;
     }
 
-    .bg-como {
+    /* CSS Página inicial - tela como funciona */
+    #home-como p {
+        font-size: 1.4rem;
+    }
+
+    .bg-home-como {
         background-image: url("../images/wesley_fundo_como.png");
         background-repeat: no-repeat;
         background-size: 40%;
-        background-position: 900px;
+        background-position: 100px;
     }
 }
