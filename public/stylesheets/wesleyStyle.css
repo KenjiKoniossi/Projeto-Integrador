@@ -7,64 +7,49 @@ body {
     display: none;
 }
 
-h1, h2, h3 {
+/* CSS Página inical - container */
+#main-home {
+    padding: 0;
+}
+
+#main-home h1, h2, h3 {
     font-family: "M PLUS Rounded 1c", Roboto;
     font-weight: 1000;
 }
-
-#main-home {
-    padding: 0;
-  }
-
-#main-home hr {
-    border: 2px solid black;
-    width: 50px;
-}
-
 
 /* CSS Página inicial - tela inicio */
 #home-inicio {
     height: 100vh;
     margin: 0;
     background-color: #FFF;
-    position: relative;
-}
-
-.bg-inicio {
-    background-image: url("../images/wesley_fundo_inicio_novo_mobile_50.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0;
 }
 
 #home-inicio p {
-    font-size: 20px;
+    font-size: 1.2rem;
     font-weight: 500;
-}
-
-#home-inicio div {
-    margin-top: 10vh;
+    margin: 30px 0 70px 0;
 }
 
 #home-inicio .content-mobile {
     text-align: center;
 }
 
-#home-inicio div img {
+#home-inicio img {
     width: 200px;
     margin-bottom: 50px;
 }
 
-#home-inicio div p {
-    margin: 30px 0 70px 0;
-}
-
-
 .btn-inicio {
-    width: 170px;
-    height: 60px;
+    width: 150px;
+    height: 50px;
 }
 
+.bg-home-inicio {
+    background-image: url("../images/wesley_fundo_inicio_novo_mobile_50.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0;
+}
 
 /* CSS Página inicial - tela como funciona */
 #home-como {
@@ -195,9 +180,9 @@ h1, h2, h3 {
 }
 
 @media (min-width: 768px) {
-    /* CSS geral da página inicial */
-    .content-mobile {
-        display: none!important;
+   /* CSS geral da página inicial */
+   .content-mobile {
+    display: none!important;
     }
 
     .content-desktop {
@@ -205,22 +190,21 @@ h1, h2, h3 {
     }
 
     /* CSS Página inicial - tela inicio */
-    #home-inicio div h1 {
+    #home-inicio h1 {
         width: 70%;
     }
 
-    #home-inicio div p {
-        width: 50%;
-        margin: 60px 0 100px 0;
+    #home-inicio p {
+        width: 55%;
     }
 
-    .bg-inicio {
+    .bg-home-inicio {
         background-image: url("../images/wesley_fundo_inicio_novo_bw.png");
         background-repeat: no-repeat;
         background-size: contain;
-        background-position: 300px;
+        background-position: 450px;
     }
-    
+
     /* CSS Página inicial - tela como funciona */
     .bg-como {
         background-image: url("../images/wesley_fundo_como.png");
@@ -259,6 +243,20 @@ h1, h2, h3 {
 }
 
 @media (min-width: 992px) {
+    /* CSS Página inicial - tela inicio */
+    #home-inicio h1 {
+        width: 50%;
+    }
+
+    #home-inicio p {
+        width: 35%;
+    }
+
+    .btn-inicio {
+        width: 170px;
+        height: 60px;
+    }
+
     .bg-como {
         background-image: url("../images/wesley_fundo_como.png");
         background-repeat: no-repeat;
@@ -276,6 +274,17 @@ h1, h2, h3 {
 }
 
 @media (min-width: 1200px) {
+    /* CSS Página inicial - tela inicio */
+    #home-inicio h1 {
+        width: 55%;
+        font-size: 2.9rem;
+    }
+
+    #home-inicio p {
+        width: 40%;
+        font-size: 1.4rem;
+    }
+
     .bg-como {
         background-image: url("../images/wesley_fundo_como.png");
         background-repeat: no-repeat;
@@ -298,7 +307,18 @@ h1, h2, h3 {
 
 @media (min-width: 1440px) {
     /* CSS Página inicial - tela inicio */
-    .bg-inicio {
+
+    #home-inicio h1 {
+        width: 50%;
+        font-size: 4rem;
+    }
+
+    #home-inicio p {
+        width: 35%;
+        font-size: 1.7rem;
+    }
+
+    .bg-home-inicio {
         background-image: url("../images/wesley_fundo_inicio_novo_bw.png");
         background-repeat: no-repeat;
         background-size: contain;
