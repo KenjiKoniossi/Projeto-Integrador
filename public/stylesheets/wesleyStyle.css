@@ -67,7 +67,7 @@ body {
 
 #home-como h2, #home-sobre h2, #home-contato h2 {
     color: #4488DD;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 #home-como hr, #home-sobre hr, #home-contato hr {
@@ -106,12 +106,12 @@ body {
 }
 
 #home-como a {
-    margin: 50px 150px 50px 30px;
+    margin: 30px 0 0 30px;
 }
 
 /* CSS Página inicial - tela sobre nós */
 #home-sobre {
-    height: 120vh;
+    height: 125vh;
     margin: 0;
     background-color: #FFF;
 }
@@ -138,27 +138,16 @@ body {
     background-color: #F8F8F8;
 }
 
-#home-contato div * {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-}
-
 #home-contato label {
     font-weight: 500;
 }
 
 #home-contato input, #home-contato textarea{
+    width: 100%;
     border: 2px solid #224455;
     border-radius: 5px;
     margin-bottom: 10px;
 }
-
-#home-contato button {
-    width: 150px;
-    height: 50px;
-}
-
 
 /* CSS botão geral */
 .btn-default {
@@ -216,16 +205,12 @@ body {
     }
 
     /* CSS Página inicial - tela como funciona */
-    #home-como hr, #home-contato hr {
+    #home-como hr {
         width: 60px;
-        margin-right: 200px;
-    }
-
-    #home-como h2 {
         margin-right: 0px;
     }
 
-    #home-como hr {
+    #home-como h2 {
         margin-right: 0px;
     }
 
@@ -237,6 +222,10 @@ body {
     #home-como img {
         height: 50px;
         margin: 0 0 0 20px;
+    }
+
+    #home-como a {
+        margin: 10px 10px 0 0;
     }
 
     .bg-home-como {
@@ -271,11 +260,20 @@ body {
     }
 
     /* CSS Página inicial - tela contato */
-    .bg-contato {
+    #home-contato hr {
+        width: 60px;
+        margin-left: 0px;
+    }
+    
+    #home-contato input, #home-contato textarea{
+        width: 70%;
+    }
+
+    .bg-home-contato {
         background-image: url("../images/wesley_fundo_contato.png");
         background-repeat: no-repeat;
-        background-size: 50%;
-        background-position: right;
+        background-size: contain;
+        background-position: 450px;
     }
 }
 
@@ -298,6 +296,18 @@ body {
     #home-como p {
         font-size: 1rem;
     }
+
+    /* CSS Página inicial - tela contato */
+    #home-contato input, #home-contato textarea{
+        width: 60%;
+    }
+
+    .bg-home-contato {
+        background-image: url("../images/wesley_fundo_contato.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: 600px;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -318,6 +328,10 @@ body {
         width: 60%;
     }
 
+    #home-como a {
+        margin: 30px 10px 0 0;
+    }
+
     .bg-home-como {
         background-image: url("../images/wesley_fundo_como.png");
         background-repeat: no-repeat;
@@ -328,6 +342,18 @@ body {
     /* CSS Página inicial - tela sobre nós */
     #home-sobre-fulanos-desktop img {
         width: 80%;
+    }
+
+    /* CSS Página inicial - tela contato */
+    #home-contato input, #home-contato textarea{
+        width: 50%;
+    }
+
+    .bg-home-contato {
+        background-image: url("../images/wesley_fundo_contato.png");
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: 700px;
     }
 }
 
@@ -361,5 +387,17 @@ body {
         background-repeat: no-repeat;
         background-size: 40%;
         background-position: 100px;
+    }
+
+    /* CSS Página inicial - tela contato */
+    #home-contato input, #home-contato textarea{
+        width: 50%;
+    }
+
+    .bg-home-contato {
+        background-image: url("../images/wesley_fundo_contato.png");
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: 1000px;
     }
 }

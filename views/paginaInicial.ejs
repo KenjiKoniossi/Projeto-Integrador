@@ -17,7 +17,7 @@
 
                 <p class="content-mobile">Ajude a mapear problemas que dificultam a mobilidade urbano</p>
                 <p class="content-desktop">Calçada irregular, buraco no passeio, poste no meio da calçada... Ajude pessoas com mobilidade reduzida mapeando problemas deste tipo.</p>
-                <a href="#" class="btn btn-default d-flex align-items-center justify-content-center btn-inicio">Acessar Mapa</a>
+                <a href="#" id="button-home" class="btn btn-default d-flex align-items-center justify-content-center btn-inicio">Acessar Mapa</a>
             </div>
         </section>
 
@@ -41,7 +41,7 @@
                     <img src="../images/wesley_icon_star.png" alt="">
                     <p>Pronto! Sua contribuição vai direto para o mapa</p>
                 </div>
-                <a href="#" class="btn btn-default d-flex align-items-center justify-content-center btn-inicio">Acessar Mapa</a>
+                <a href="#" id="button-home" class="btn btn-default d-flex align-items-center justify-content-center btn-inicio">Acessar Mapa</a>
             </div>
         </section>
 
@@ -50,7 +50,7 @@
                 <h2>Sobre Nós</h2>
                 <hr>
                 <p class="text-center mb-md-5">Nossa equipe surgiu através do curso de Deselvolvimento Full Stack Node Blend na Digital House, Vila Olímpia, curso oferecido pelo Santander Universidades.</p>
-                <div id="home-sobre-fulanos" class="col d-flex flex-wrap content-mobile">
+                <div id="home-sobre-fulanos" class="col d-flex flex-wrap mb-5 mb-md-0 content-mobile">
                     <div class="col-3 d-flex flex-column align-items-center p-0">
                         <img src="../images/wesley_fulano1.png" alt="">
                     </div>
@@ -121,31 +121,22 @@
             </div>
         </section>
 
-      <section id="home-contato" class="row justify-content-center bg-contato">
-        <div class="col-12 col-md-10">
-            <div class="col-12 col-md-6">
-                <h2>Entre em Contato</h2>
+        <section id="home-contato" class="row justify-content-center align-items-center bg-home-contato">
+            <div class="col-12 col-md-10 col-lg-8 d-flex flex-column justify-content-center align-items-start align-items-md-end">
+                <h2 class="align-self-center align-self-md-start">Entre em Contato</h2>
                 <hr>
-            </div>
-            <form class="col-12 col-md-6" action="" id="form-contato">
-                <div class="col-12">
+                <form class="col d-flex flex-column justify-content-center align-items-start pl-md-0" action="" id="form-contato">
                     <label for="nome">Nome</label>
                     <input type="text" name="nome" id="contato-nome">
-                </div>
-                <div class="col-12">
                     <label for="nome">Email</label>
                     <input type="text" name="email" id="contato-email">
-                </div>
-                <div class="col-12">
                     <label for="nome">Mensagem</label>
-                    <textarea name="mensagem" id="" cols="30" rows="10"></textarea>
-                </div>
-                <div class="col-12">
-                    <button class="btn btn-default d-flex align-items-center justify-content-center" type="submit">Enviar</button>
-                </div>
-            </form>
-        </div>
-    </section>
+                    <textarea name="mensagem" id="" cols="30" rows="7"></textarea>
+                    <button class="btn btn-default btn-inicio d-flex align-items-center justify-content-center" type="submit">Enviar</button>
+                </form>
+            </div> 
+
+        </section>
     </main>
 
     <%- include("includes/footer") %>
