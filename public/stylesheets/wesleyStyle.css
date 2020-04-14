@@ -1,7 +1,7 @@
 body {
     color: #224455;
     background-color: #fff;
-  }
+}
   
 .content-desktop {
     display: none;
@@ -122,15 +122,14 @@ body {
     margin-bottom: 30px;
 }
 
-#sobre-fulanos img {
+#home-sobre-fulanos img {
     width: 100%;
     max-width: 110px;
 }
 
-#sobre-fulanos-desktop img {
+#home-sobre-fulanos-desktop img {
     width: 100%;
 }
-
 
 /* CSS Página inicial - tela contato */
 #home-contato {
@@ -191,9 +190,9 @@ body {
 }
 
 @media (min-width: 768px) {
-   /* CSS geral da página inicial */
-   .content-mobile {
-    display: none!important;
+    /* CSS geral da página inicial */
+    .content-mobile {
+        display: none!important;
     }
 
     .content-desktop {
@@ -217,7 +216,7 @@ body {
     }
 
     /* CSS Página inicial - tela como funciona */
-    #home-como hr, #home-sobre hr, #home-contato hr {
+    #home-como hr, #home-contato hr {
         width: 60px;
         margin-right: 200px;
     }
@@ -249,21 +248,26 @@ body {
 
     /* CSS Página inicial - tela sobre nós */
     #home-sobre {
-        height: 120vh;
+        height: 115vh;
     }
 
-    #home-sobre p {
-        font-size: 20px;
-        font-weight: 400;
-        margin-bottom: 0;
+    #home-sobre hr {
+        width: 60px;
     }
 
     #home-sobre p {
         width: 90%;
+        font-size: 1.2rem;
+        font-weight: 400;
+        margin-bottom: 0;
     }
 
-    #sobre-fulanos-desktop p {
-        font-size: 15px;
+    #home-sobre-fulanos-desktop h5 {
+        font-size: 1.1rem;
+    } 
+
+    #home-sobre-fulanos-desktop p {
+        font-size: 0.9rem;
     }
 
     /* CSS Página inicial - tela contato */
@@ -273,7 +277,6 @@ body {
         background-size: 50%;
         background-position: right;
     }
-
 }
 
 @media (min-width: 992px) {
@@ -294,14 +297,6 @@ body {
     /* CSS Página inicial - tela como funciona */
     #home-como p {
         font-size: 1rem;
-    }
-
-    #home-sobre p {
-        width: 80%;
-    }
-
-    #sobre-fulanos-desktop p {
-        font-size: 15px;
     }
 }
 
@@ -330,12 +325,9 @@ body {
         background-position: 50px;
     }
 
-    #home-sobre p {
-        width: 60%;
-    }
-
-    #sobre-fulanos-desktop p {
-        font-size: 15px;
+    /* CSS Página inicial - tela sobre nós */
+    #home-sobre-fulanos-desktop img {
+        width: 80%;
     }
 }
 
