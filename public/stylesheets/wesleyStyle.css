@@ -1,70 +1,55 @@
 body {
     color: #224455;
     background-color: #fff;
-  }
+}
   
 .content-desktop {
     display: none;
 }
 
-h1, h2, h3 {
+/* CSS Página inical - container */
+#main-home {
+    padding: 0;
+}
+
+#main-home h1, h2, h3 {
     font-family: "M PLUS Rounded 1c", Roboto;
     font-weight: 1000;
 }
-
-#main-home {
-    padding: 0;
-  }
-
-#main-home hr {
-    border: 2px solid black;
-    width: 50px;
-}
-
 
 /* CSS Página inicial - tela inicio */
 #home-inicio {
     height: 100vh;
     margin: 0;
     background-color: #FFF;
-    position: relative;
-}
-
-.bg-inicio {
-    background-image: url("../images/wesley_fundo_inicio_novo_mobile_50.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0;
 }
 
 #home-inicio p {
-    font-size: 20px;
+    font-size: 1.2rem;
     font-weight: 500;
-}
-
-#home-inicio div {
-    margin-top: 10vh;
+    margin: 30px 0 70px 0;
 }
 
 #home-inicio .content-mobile {
     text-align: center;
 }
 
-#home-inicio div img {
+#home-inicio img {
     width: 200px;
     margin-bottom: 50px;
 }
 
-#home-inicio div p {
-    margin: 30px 0 70px 0;
-}
-
-
 .btn-inicio {
-    width: 170px;
-    height: 60px;
+    width: 150px;
+    height: 50px;
 }
 
+.bg-home-inicio {
+    background-image: url("../images/wesley_fundo_inicio_novo_mobile_50.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0;
+}
 
 /* CSS Página inicial - tela como funciona */
 #home-como {
@@ -73,20 +58,19 @@ h1, h2, h3 {
     background-color: #F8F8F8;
 }
 
-.bg-como {
+.bg-home-como {
     background-image: url("../images/wesley_fundo_como.png");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 110px;
+    background-position: 150px;
 }
 
-#home-como div h2, #home-sobre div h2, #home-contato div h2 {
+#home-como h2, #home-sobre h2, #home-contato h2 {
     color: #4488DD;
-    margin-top: 50px;
-    text-align: center;
+    margin-top: 30px;
 }
 
-#home-como div hr, #home-sobre div hr, #home-contato div hr {
+#home-como hr, #home-sobre hr, #home-contato hr {
     width: 30px;
     border: 2px solid #4488DD;
     border-radius: 5px;
@@ -95,28 +79,39 @@ h1, h2, h3 {
 }
 
 #home-como p {
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: 500;
-    margin-bottom: 0;
+    margin: 10px 0;
 }
 
-#home-como div div {
-    height: 100px;
+#texto-como-funciona-1 p {
+    width: 70%;
+}
+
+#texto-como-funciona-2 p {
+    width: 60%;
+}
+
+#texto-como-funciona-3 p {
+    width: 50%;
+}
+
+#texto-como-funciona-4 p {
+    width: 45%;
 }
 
 #home-como img {
-    width: 100%;
-    max-width: 50px;
+    height: 50px;
+    margin: 0 20px 0 10px;
 }
 
 #home-como a {
-    margin-top: 40px;
+    margin: 30px 0 0 30px;
 }
-
 
 /* CSS Página inicial - tela sobre nós */
 #home-sobre {
-    height: 120vh;
+    height: 125vh;
     margin: 0;
     background-color: #FFF;
 }
@@ -127,15 +122,14 @@ h1, h2, h3 {
     margin-bottom: 30px;
 }
 
-#sobre-fulanos img {
+#home-sobre-fulanos img {
     width: 100%;
     max-width: 110px;
 }
 
-#sobre-fulanos-desktop img {
+#home-sobre-fulanos-desktop img {
     width: 100%;
 }
-
 
 /* CSS Página inicial - tela contato */
 #home-contato {
@@ -144,27 +138,16 @@ h1, h2, h3 {
     background-color: #F8F8F8;
 }
 
-#home-contato div * {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-}
-
 #home-contato label {
     font-weight: 500;
 }
 
 #home-contato input, #home-contato textarea{
+    width: 100%;
     border: 2px solid #224455;
     border-radius: 5px;
     margin-bottom: 10px;
 }
-
-#home-contato button {
-    width: 150px;
-    height: 50px;
-}
-
 
 /* CSS botão geral */
 .btn-default {
@@ -186,11 +169,12 @@ h1, h2, h3 {
 }
 
 @media (min-width: 576px) {
-    .bg-como {
+    /* CSS Página inicial - tela como funciona */
+    .bg-home-como {
         background-image: url("../images/wesley_fundo_como.png");
         background-repeat: no-repeat;
-        background-size: cover;
-        background-position: 190px;
+        background-size: contain;
+        background-position: 300px;
     }
 }
 
@@ -205,110 +189,215 @@ h1, h2, h3 {
     }
 
     /* CSS Página inicial - tela inicio */
-    #home-inicio div h1 {
+    #home-inicio h1 {
         width: 70%;
     }
 
-    #home-inicio div p {
-        width: 50%;
-        margin: 60px 0 100px 0;
+    #home-inicio p {
+        width: 55%;
     }
 
-    .bg-inicio {
+    .bg-home-inicio {
         background-image: url("../images/wesley_fundo_inicio_novo_bw.png");
         background-repeat: no-repeat;
         background-size: contain;
-        background-position: 300px;
+        background-position: 450px;
     }
-    
+
     /* CSS Página inicial - tela como funciona */
-    .bg-como {
+    #home-como hr {
+        width: 60px;
+        margin-right: 0px;
+    }
+
+    #home-como h2 {
+        margin-right: 0px;
+    }
+
+    #home-como p {
+        width: 50%;
+        text-align: right;
+    }
+
+    #home-como img {
+        height: 50px;
+        margin: 0 0 0 20px;
+    }
+
+    #home-como a {
+        margin: 10px 10px 0 0;
+    }
+
+    .bg-home-como {
         background-image: url("../images/wesley_fundo_como.png");
         background-repeat: no-repeat;
-        background-size: 50%;
-        background-position: 400px;
+        background-size: 40%;
+        background-position: 50px;
     }
 
     /* CSS Página inicial - tela sobre nós */
     #home-sobre {
-        height: 120vh;
+        height: 115vh;
     }
 
-    #home-sobre p {
-        font-size: 20px;
-        font-weight: 400;
-        margin-bottom: 0;
+    #home-sobre hr {
+        width: 60px;
     }
 
     #home-sobre p {
         width: 90%;
+        font-size: 1.2rem;
+        font-weight: 400;
+        margin-bottom: 0;
     }
 
-    #sobre-fulanos-desktop p {
-        font-size: 15px;
+    #home-sobre-fulanos-desktop h5 {
+        font-size: 1.1rem;
+    } 
+
+    #home-sobre-fulanos-desktop p {
+        font-size: 0.9rem;
     }
 
     /* CSS Página inicial - tela contato */
-    .bg-contato {
-        background-image: url("../images/wesley_fundo_contato.png");
-        background-repeat: no-repeat;
-        background-size: 50%;
-        background-position: right;
+    #home-contato hr {
+        width: 60px;
+        margin-left: 0px;
+    }
+    
+    #home-contato input, #home-contato textarea{
+        width: 70%;
     }
 
+    .bg-home-contato {
+        background-image: url("../images/wesley_fundo_contato.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: 450px;
+    }
 }
 
 @media (min-width: 992px) {
-    .bg-como {
-        background-image: url("../images/wesley_fundo_como.png");
+    /* CSS Página inicial - tela inicio */
+    #home-inicio h1 {
+        width: 50%;
+    }
+
+    #home-inicio p {
+        width: 35%;
+    }
+
+    .btn-inicio {
+        width: 170px;
+        height: 60px;
+    }
+
+    /* CSS Página inicial - tela como funciona */
+    #home-como p {
+        font-size: 1rem;
+    }
+
+    /* CSS Página inicial - tela contato */
+    #home-contato input, #home-contato textarea{
+        width: 60%;
+    }
+
+    .bg-home-contato {
+        background-image: url("../images/wesley_fundo_contato.png");
         background-repeat: no-repeat;
-        background-size: 50%;
-        background-position: 500px;
-    }
-
-    #home-sobre p {
-        width: 80%;
-    }
-
-    #sobre-fulanos-desktop p {
-        font-size: 15px;
+        background-size: contain;
+        background-position: 600px;
     }
 }
 
 @media (min-width: 1200px) {
-    .bg-como {
-        background-image: url("../images/wesley_fundo_como.png");
-        background-repeat: no-repeat;
-        background-size: 50%;
-        background-position: 550px;
+    /* CSS Página inicial - tela inicio */
+    #home-inicio h1 {
+        width: 55%;
+        font-size: 2.9rem;
     }
 
+    #home-inicio p {
+        width: 40%;
+        font-size: 1.4rem;
+    }
+
+    /* CSS Página inicial - tela como funciona */
     #home-como p {
-        font-size: 23px;
-    }
-
-    #home-sobre p {
+        font-size: 1.2rem;
         width: 60%;
     }
 
-    #sobre-fulanos-desktop p {
-        font-size: 15px;
+    #home-como a {
+        margin: 30px 10px 0 0;
+    }
+
+    .bg-home-como {
+        background-image: url("../images/wesley_fundo_como.png");
+        background-repeat: no-repeat;
+        background-size: 40%;
+        background-position: 50px;
+    }
+
+    /* CSS Página inicial - tela sobre nós */
+    #home-sobre-fulanos-desktop img {
+        width: 80%;
+    }
+
+    /* CSS Página inicial - tela contato */
+    #home-contato input, #home-contato textarea{
+        width: 50%;
+    }
+
+    .bg-home-contato {
+        background-image: url("../images/wesley_fundo_contato.png");
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: 700px;
     }
 }
 
 @media (min-width: 1440px) {
     /* CSS Página inicial - tela inicio */
-    .bg-inicio {
+
+    #home-inicio h1 {
+        width: 50%;
+        font-size: 4rem;
+    }
+
+    #home-inicio p {
+        width: 35%;
+        font-size: 1.7rem;
+    }
+
+    .bg-home-inicio {
         background-image: url("../images/wesley_fundo_inicio_novo_bw.png");
         background-repeat: no-repeat;
         background-size: contain;
         background-position: right;
     }
 
-    .bg-como {
+    /* CSS Página inicial - tela como funciona */
+    #home-como p {
+        font-size: 1.4rem;
+    }
+
+    .bg-home-como {
         background-image: url("../images/wesley_fundo_como.png");
         background-repeat: no-repeat;
         background-size: 40%;
-        background-position: 900px;
+        background-position: 100px;
+    }
+
+    /* CSS Página inicial - tela contato */
+    #home-contato input, #home-contato textarea{
+        width: 50%;
+    }
+
+    .bg-home-contato {
+        background-image: url("../images/wesley_fundo_contato.png");
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: 1000px;
     }
 }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include("includes/head") %>
+
+  <title>MobMap - Perfil</title>
+  <link rel='stylesheet' href='/stylesheets/deyvisonStyle.css'>
+  <meta name="keywords" content="Mobilidade, Mapas, Perfil">
+  <meta name="author" content="Deyvison J Paula">
+</head>
+
+<body>
+  <%- include("includes/head") %>
+
+  <main class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-4 text-center">
+        <img class="rounded-cicle" src="/images/profile.png" alt="imagem de perfil" width="200">
+        <h4>Karla Jhenifer</h4>
+        <span>karla@email.com</span>
+
+        <ul class="flex-column nav">
+          <a class="nav-link" href="/perfil/atualizarPerfil">Atualizar perfil</a>
+          <a class="nav-link" href="/perfil/alterarSenha">Alterar senha</a>
+          <a class="nav-link" href="/perfil">Ver Perfil</a>
+        </ul>
+      </div>
+
+      <div class="col-sm-12 col-md-12 col-lg-8" style="margin-top:50px">
+        <h3 class="perfil" style="color: red;"> Excluir sua conta
+        </h3>
+        <hr style="border-bottom: 2px solid rgb(221, 99, 68);">
+        <p> Oi <strong>Karla</strong> </p>
+        <p> Sentimos muito por você estar prestes a excluir sua conta. </p>
+        <class="perfil"> Antes de excluir, caso deseje, converse com a gente:
+          <a href="">mobmap@email.com</a>
+          </p>
+          <button type="submit" class="btn btn-danger">Excluir</button>
+          <button type="button" onclick="window.location.href = '/perfil'" class="btn btn-success">Cancelar</button>
+      </div>
+
+      <div class="col-lg-4 redes-sociais text-center" style="margin-top: 50px;">
+        <h4>Compartilhe essa ideia</h4>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a class="social-icon text-xs-center" target="_blank" href="#"><img
+                src="/images/facebook-icon.png" alt=""></a></li>
+          <li class="list-inline-item"><a class="social-icon text-xs-center" target="_blank" href="#"><img
+                src="/images/instagram-icon.png" alt=""></a></li>
+          <li class="list-inline-item"><a class="social-icon text-xs-center" target="_blank" href="#"><img
+                src="/images/google-icon.png" alt=""></a></li>
+        </ul>
+      </div>
+
+    </div>
+
+  </main>
+
+  <%- include("includes/footer") %>
+
+  <%- include("includes/script") %>
+
+</body>
+
+</html>

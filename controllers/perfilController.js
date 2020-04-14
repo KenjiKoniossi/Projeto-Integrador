@@ -5,6 +5,12 @@ const perfilController = {
     atualizarPerfil: (req, res) => {
         res.render('atualizarPerfil')
     },
+    alterarSenha: (req, res) => {
+        res.render('alterarSenha')
+    },
+    excluirConta: (req, res) => {
+        res.render('excluirPerfil')
+    }
     
 }
 
