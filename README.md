@@ -6,8 +6,8 @@ Grupo 3 - sala 5 (Santander Coders)
 
 -já pensar nas funcionalidades do futuro e criar tabelas
 -adicionar uma tabela para local, para o futuro
--tag_problema, se fixa, uma tabela diferente
-    ->alguns problemas e outros
+-tag_problema, se fixa não precisa de uma tabela, caso contrario, uma tabela diferente
+    ->se fixa, colocamos alguns problemas e a opção outros
 -tabela para deficiencia, se tiver mais que uma, ter uma tabela
 -tabela admin ou campo no usuário para admin
 -tabela problema, data de criação do problema
