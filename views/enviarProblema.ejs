@@ -8,58 +8,64 @@
     <body class="font" >
 
       <%- include("includes/header") %>
-        <main class="container">
+        
+          <section>
+            <div class="container">
+              <form class="" action="/enviarproblema" method="POST" enctype="multipart/form-data">
+              <h2 class="ml-0"">1 - Sobre o problema</h2>
+              <p>Selecione o problema encontrado</p>
+              <div class="card p-2" >
+                <div class="form-group">
+                  <div class="form-check" style="color: #224455;">
+                    <input class="form-check-input" name="problema" type="checkbox" value="Calçada esburacada" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Calçada esburacada
+                      </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" name="problema" type="checkbox" value="Inclinação íngrime" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Inclinação íngrime
+                      </label>
+                  </div>     
+                  <div class="form-check">
+                    <input class="form-check-input" name="problema" type="checkbox" value="Piso escorregadio" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Piso escorregadio
+                      </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" name="problema" type="checkbox" value="Árvore obstruindo caminho" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Árvore obstruindo caminho 
+                      </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" name="problema" type="checkbox" value="Poste obstruindo caminho " id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Poste obstruindo caminho 
+                      </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" name="problema" type="checkbox" value="Ocupação irregular" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Ocupação irregular (ex:comércio, vendedor ambulante, caçamba)
+                      </label>
+                  </div>
+                </div>
+              </div>
+    
+              <p>Escreva uma breve descrição sobre o problema</p>
+                <div class="form-group mt-0">
+                  <label for="exampleFormControlTextarea1"></label>
+                  <textarea class="form-control" name="descricao" id="exampleFormControlTextarea1" rows="3" placeholder="Exemplo: A calçada possui diversos buracos e tem uma inclinação muito íngrime, dificultando a mobilidade de quem passa por ali"></textarea>
+                </div>
+              </div>
+          </section>
 
-          <form class="" action="/enviarproblema" method="POST" enctype="multipart/form-data">
-          <h2 class="text-center">1 - Sobre o problema</h2>
-          <p>Selecione o problema encontrado</p>
-          <div class="card p-2" >
-            <div class="form-group">
-              <div class="form-check" style="color: #224455;">
-                <input class="form-check-input" name="problema" type="checkbox" value="Calçada esburacada" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Calçada esburacada
-                  </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" name="problema" type="checkbox" value="Inclinação íngrime" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Inclinação íngrime
-                  </label>
-              </div>     
-              <div class="form-check">
-                <input class="form-check-input" name="problema" type="checkbox" value="Piso escorregadio" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Piso escorregadio
-                  </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" name="problema" type="checkbox" value="Árvore obstruindo caminho" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Árvore obstruindo caminho 
-                  </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" name="problema" type="checkbox" value="Poste obstruindo caminho " id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Poste obstruindo caminho 
-                  </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" name="problema" type="checkbox" value="Ocupação irregular" id="defaultCheck1">
-                  <label class="form-check-label" for="defaultCheck1">
-                    Ocupação irregular (ex:comércio, vendedor ambulante, caçamba)
-                  </label>
-              </div>
-            </div>
-          </div>
-
-          <p>Escreva uma breve descrição sobre o problema</p>
-            <div class="form-group mt-0">
-              <label for="exampleFormControlTextarea1"></label>
-              <textarea class="form-control" name="descricao" id="exampleFormControlTextarea1" rows="3" placeholder="Exemplo: A calçada possui diversos buracos e tem uma inclinação muito íngrime, dificultando a mobilidade de quem passa por ali"></textarea>
-            </div>
-          <h2 class="text-center">2 - Localização do problema</h2>
+          <section class="bg-light">
+            <div class="container pb-3">      
+            <h2 class="ml-0">2 - Localização do problema</h2>
           <div class="row">
             <div class="form-group col-md-4">
               <label for="inputCEP">CEP</label>
@@ -94,22 +100,28 @@
             <label for="inputAddress2">Ponto de Referência</label>
             <input type="text" class="form-control" name="referencia" id="inputReferencia" placeholder="Ex: Em frente ao posto de gasolina">
           </div>
+        </div>
+        </section>
 
+        <section>
+          <div class="container">          
           <div class="form-group">
-            <h2 class="text-center">3 - Imagem do problema</h2>
-            <p class="mb-3" style="justify-content: center;">Adicionar Imagem</p>
+            <h2 class="ml-0">3 - Imagem do problema</h2>
+            <p class="mb-3">Adicionar Imagem</p>
               <div class="row">
-                <div class="col-5"></div>
-                <input type="file" name="foto">
+                <input type="file" class="ml-3" name="foto">
               </div>
             </div>
+          </div>
+        </section>
 
+        <section class="bg-light">
+          <div class="container pb-3">          
           <div class="form-group">
-            <h2 class="text-center">4 - Enviar problema</h2>
-            <p class="mb-3" style="justify-content: center;">Para finalizar clique no botão abaixo</p>
+            <h2 class="ml-0">4 - Enviar problema</h2>
+            <p class="mb-3">Para finalizar clique no botão abaixo</p>
               <div class="row">
-                <div class="col-5"></div>
-                  <button type="button" class="btn btn-warning btn-sm col-2 mb-3" data-toggle="modal" data-target="#exampleModal">Enviar
+                  <button type="button" class="btn btn-warning btn-sm col-2 ml-3" data-toggle="modal" data-target="#exampleModal">Enviar
                   </button>
               </div>
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -135,8 +147,10 @@
                 </div>
               </div>
           </form>
+        </div>
+      </section>
 
-        </main>
+      
         
         <%- include("includes/footer") %>
 
