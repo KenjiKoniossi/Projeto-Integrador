@@ -1,16 +1,28 @@
-const fs = require('fs')
-const path = require('path')
-
-const db = path.join('problema.json')
-
-
-function envioProblema(problema, descricao, CEP, endereco, numero, bairro, cidade, estado, referencia, foto){
-   let listaProblema = fs.readFileSync(db, {encoding:'utf-8'})
-   listaProblema = JSON.parse(listaProblema)  
-   listaProblema.push({problema, descricao, CEP, endereco, numero, bairro, cidade, estado, referencia, foto})
-   return fs.writeFileSync(db, JSON.stringify(listaProblema))
-}
-
-
-
-module.exports = {envioProblema}
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const Problema = sequelize.define('Problema', {
+    id: DataTypes.INTEGER,
+    descricao: DataTypes.STRING,
+    imagem: DataTypes.STRING,
+    data_criacao: DataTypes.DATE,
+    resolvido: DataTypes.BOOLEAN,
+    tag_problema_id: DataTypes.INTEGER,
+    usuario_id: DataTypes.INTEGER,
+    endereco_id: DataTypes.INTEGER
+  }, {});
+  Problema.associate = function(models) {
+    Problema.belongsTo(models.Usuario, {
+      foreignKey: 'usuario_id',
+      as: 'usuario'
+    })
+    Problema.belongsTo(models.Endereco, {
+      foreignKey: 'endereco_id',
+      as: 'endereco'
+    })
+    Problema.belongsTo(models.Tag_problema, {
+      foreignKey: 'tag_problema_id',
+      as: 'tag'
+    })
+  };
+  return Problema;
+};
