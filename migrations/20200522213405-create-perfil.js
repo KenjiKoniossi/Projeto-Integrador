@@ -9,12 +9,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       sobrenome: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
       },
       telefone: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        type: Sequelize.INTEGER
       },
       sobre_usuario: {
         type: Sequelize.TEXT('LONG')
@@ -24,6 +22,14 @@ module.exports = {
         allowNull: false,
         references: {
           model: 'Usuarios',
+          key: 'id'
+        }
+      },
+      deficiencia_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Deficiencia',
           key: 'id'
         }
       },

@@ -9,20 +9,20 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       descricao: {
-        type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.STRING
       },
       imagem: {
-        type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.STRING
       },
       data_criacao: {
-        type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.DATE
       },
       resolvido: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.BOOLEAN
       },
       tag_problema_id: {
         type: Sequelize.INTEGER,

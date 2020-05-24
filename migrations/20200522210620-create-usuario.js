@@ -9,24 +9,24 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nome: {
-        type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.STRING
       },
       email: {
-        type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.STRING
       },
       senha: {
-        type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.STRING
       },
       admin: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.BOOLEAN
       },
       comercial: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

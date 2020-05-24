@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Endereco = sequelize.define('Endereco', {
     id: DataTypes.INTEGER,
-    geolocalizacao: DataTypes.STRING,
+    geolocalizacao: DataTypes.GEOMETRY('POINT'),
     cep: DataTypes.INTEGER,
     bairro: DataTypes.STRING,
     endereco: DataTypes.STRING,
@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     Endereco.hasMany(models.Problema, {
       as: 'problema'
     })
-    Endereco.belongsTo(models.Local_comercial, {
+    Endereco.hasMany(models.Local_comercial, {
       as: 'local_comercial'
     })
   };

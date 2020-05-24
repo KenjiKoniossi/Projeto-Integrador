@@ -9,38 +9,33 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       geolocalizacao: {
-        type: Sequelize.STRING,
+        type: Sequelize.GEOMETRY('POINT'),
       },
       cep: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       bairro: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       endereco: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       numero: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       cidade: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       estado: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       ponto_referencia: {
         type: Sequelize.STRING
       },
       pais: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       createdAt: {
         allowNull: false,

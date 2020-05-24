@@ -9,40 +9,36 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nome_fantasia: {
-        type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.STRING
       },
       telefone: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       cnpj: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       imagem: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
       },
       data_criacao: {
-        type: Sequelize.DATE,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.DATE
       },
       nota_acessivel: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       banheiro_acessivel: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false
+        type: Sequelize.BOOLEAN
       },
       rampa_acessivel: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false
+        type: Sequelize.BOOLEAN
       },
       descricao: {
-        type: Sequelize.TEXT,
-        allowNull: false
+        type: Sequelize.TEXT
       },
       usuario_id: {
         type: Sequelize.INTEGER,

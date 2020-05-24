@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     banheiro_acessivel: DataTypes.BOOLEAN,
     rampa_acessivel: DataTypes.BOOLEAN,
     descricao: DataTypes.TEXT,
-    usuario_id: DataTypes.INTEGER
+    usuario_id: DataTypes.INTEGER,
+    endereco_id: DataTypes.INTEGER
   }, {});
   Local_comercial.associate = function(models) {
     Local_comercial.belongsTo(models.Usuario, {
