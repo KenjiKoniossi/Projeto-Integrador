@@ -1,17 +1,36 @@
-# Projeto-Integrador
+# Projeto Integrador - MobMap
 
-Grupo 3 - sala 5 (Santander Coders)
+<img src="/public/images/wesley_logo_novo_azul.png" width="30%">
 
-# Feedback Nati - Sprint IV
+## Descrição
 
--já pensar nas funcionalidades do futuro e criar tabelas
--adicionar uma tabela para local, para o futuro
--tag_problema, se fixa não precisa de uma tabela, caso contrario, uma tabela diferente
-    ->se fixa, colocamos alguns problemas e a opção outros
--tabela para deficiencia, se tiver mais que uma, ter uma tabela
--tabela admin ou campo no usuário para admin
--tabela problema, data de criação do problema
--tabela problema, se o problema foi resolvido
--se tiver locais comerciais, tabela/dados da empresa
+MobMap é um sistema Web com o intuito de mapear pontos na cidade que dificultam a mobilidade urbana de pessoas com mobilidade reduzida, como buracos na via que dificultam a passagem para um idoso ou um poste no meio da calçada que impede um cadeirante de passar, atráves do relato de problemas pelo usuário. 
 
--vai fazer o banco com migration
+## Tecnologias utilizadas
+
+- NodeJS
+- ExpressJS
+- Sequelize
+- HTML/CSS
+- JavaScript
+
+## Sobre o projeto
+
+Projeto Integrador para conclusão do curso de Desenvolvimento Full Stack Node na Digital House, campus Vila Olímpia, curso oferecido pelo Santander Universidades com bolsa atráves do projeto Santander Coders by Digital House.
+
+## Grupo
+
+- Grupo: 3
+- Turma: 5 (Santander Coders)
+
+## Integrantes
+
+- Deyvison J. de Paula - [@deyvisonjp](https://github.com/deyvisonjp)
+- Eric Kenji - [@KenjiKoniossi](https://github.com/KenjiKoniossi)
+- Marcos P. Moura - [@MarcosPMoura](https://github.com/MarcosPMoura)
+- Matheus Sousa - [@matheussilvaesousa](https://github.com/matheussilvaesousa)
+- Wesley Soares - [@wesleybs90](https://github.com/wesleybs90)
+
+## Santander Coders - DigitalHouse
+
+<img src="/public/images/logo_dh_grande.png" width="50%">
