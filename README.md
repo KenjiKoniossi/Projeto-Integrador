@@ -33,4 +33,4 @@ Projeto Integrador para conclusão do curso de Desenvolvimento Full Stack Node n
 
 ## Santander Coders - DigitalHouse
 
-<img src="/public/images/logo_dh_grande.png" width="50%">
+<img src="/public/images/logo_dh_grande.PNG" width="30%">
