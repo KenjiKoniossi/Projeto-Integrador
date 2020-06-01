@@ -28,7 +28,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Tag_problema',
+          model: 'tag_problema',
           key: 'id'
         }
       },
@@ -36,7 +36,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Usuario',
+          model: 'usuario',
           key: 'id'
         }
       },
@@ -44,7 +44,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Endereco',
+          model: 'endereco',
           key: 'id'
         }
       },

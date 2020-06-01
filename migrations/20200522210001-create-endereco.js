@@ -18,7 +18,7 @@ module.exports = {
       bairro: {
         type: Sequelize.STRING,
       },
-      endereco: {
+      rua: {
         type: Sequelize.STRING,
       },
       numero: {

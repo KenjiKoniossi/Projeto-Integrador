@@ -32,12 +32,15 @@ module.exports = (sequelize, DataTypes) => {
   });
   Usuario.associate = function(models) {
     Usuario.hasMany(models.Local_comercial, {
+      foreignKey: 'usuario_id',
       as: 'local_comercial'
     })
     Usuario.hasMany(models.Problema, {
+      foreignKey: 'usuario_id',
       as: 'problema'
     })
     Usuario.hasOne(models.Perfil, {
+      foreignKey: 'usuario_id',
       as: 'perfil'
     })
   };

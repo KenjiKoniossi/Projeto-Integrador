@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   Tag_problema.associate = function(models) {
     Tag_problema.hasMany(models.Problema, {
+      foreignKey: 'tag_problema_id',
       as: 'problema'
     })
   };

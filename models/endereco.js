@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     bairro: DataTypes.STRING,
-    endereco: DataTypes.STRING,
+    rua: DataTypes.STRING,
     numero: {
       allowNull: false,
       type: DataTypes.INTEGER
@@ -27,12 +27,15 @@ module.exports = (sequelize, DataTypes) => {
   });
   Endereco.associate = function(models) {
     Endereco.hasMany(models.Perfil, {
+      foreignKey: 'endereco_id',
       as: 'perfil'
     })
     Endereco.hasMany(models.Problema, {
+      foreignKey: 'endereco_id',
       as: 'problema'
     })
     Endereco.hasMany(models.Local_comercial, {
+      foreignKey: 'endereco_id',
       as: 'local_comercial'
     })
   };

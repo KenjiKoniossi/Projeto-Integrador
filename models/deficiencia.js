@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   Deficiencia.associate = function(models) {
     Deficiencia.hasMany(models.Perfil, {
+      foreignKey: 'deficiencia_id',
       as: 'deficiencia'
     });
   }

@@ -4,11 +4,12 @@ const config = {
     development: {
         username: 'root',
         password: process.env.DB_PASS,
-        database: 'mobmap2',
+        database: 'mobmap',
         host: 'localhost',
         dialect: 'mysql',
         define: {
-            timestamps: true
+            timestamps: true,
+            operatorsAliases: false,
         },
     }
 }

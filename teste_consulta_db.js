@@ -1,3 +1,9 @@
-const {Usuario} = require('./models');
+const {Deficiencia, Endereco, Local_comercial, Perfil, Problema, Tag_problema, Usuario} = require('./models');
 
-Usuario.findAll().then(valor => console.log(valor));
+// Deficiencia.findAll().then(valor => console.log(valor));
+// Endereco.findAll().then(valor => console.log(valor));
+// Local_comercial.findAll().then(valor => console.log(valor));
+// Perfil.findAll().then(valor => console.log(valor));
+// Problema.findAll().then(valor => console.log(valor));
+// Tag_problema.findAll().then(valor => console.log(valor));
+// Usuario.findAll().then(valor => console.log(valor));
