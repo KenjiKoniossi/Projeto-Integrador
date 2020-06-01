@@ -1,14 +1,14 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Deficiencia', {
+    return queryInterface.createTable('deficiencia', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      deficiencia: {
+      tag_deficiencia: {
         allowNull: true,
         type: Sequelize.STRING
       },
@@ -23,6 +23,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Deficiencia');
+    return queryInterface.dropTable('deficiencia');
   }
 };

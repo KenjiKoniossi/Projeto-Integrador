@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Local_comercials', {
+    return queryInterface.createTable('local_comercial', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -38,13 +38,13 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       descricao: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT('LONG')
       },
       usuario_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Usuarios',
+          model: 'Usuario',
           key: 'id'
         }
       },
@@ -52,7 +52,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Enderecos',
+          model: 'Endereco',
           key: 'id'
         }
       },
@@ -67,6 +67,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Local_comercials');
+    return queryInterface.dropTable('local_comercial');
   }
 };

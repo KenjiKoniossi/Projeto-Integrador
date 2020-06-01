@@ -1,15 +1,16 @@
 require('dotenv/config');
 
 const config = {
-    username: 'root',
-    password: process.env.DB_PASS,
-    database: 'mobmap',
-    host: 'localhost',
-    dialect: 'mysql',
-    define: {
-        timestamps: true,
-        underscored: true
-    },
+    development: {
+        username: 'root',
+        password: process.env.DB_PASS,
+        database: 'mobmap2',
+        host: 'localhost',
+        dialect: 'mysql',
+        define: {
+            timestamps: true
+        },
+    }
 }
 
 module.exports = config;

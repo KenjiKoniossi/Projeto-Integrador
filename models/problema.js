@@ -1,15 +1,34 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Problema = sequelize.define('Problema', {
-    id: DataTypes.INTEGER,
-    descricao: DataTypes.STRING,
-    imagem: DataTypes.STRING,
-    data_criacao: DataTypes.DATE,
-    resolvido: DataTypes.BOOLEAN,
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+    descricao: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
+    imagem: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
+    data_criacao: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    resolvido: {
+      allowNull: false,
+      type: DataTypes.BOOLEAN
+    },
     tag_problema_id: DataTypes.INTEGER,
     usuario_id: DataTypes.INTEGER,
     endereco_id: DataTypes.INTEGER
-  }, {});
+  }, {
+    tableName: 'problema'
+  });
   Problema.associate = function(models) {
     Problema.belongsTo(models.Usuario, {
       foreignKey: 'usuario_id',
