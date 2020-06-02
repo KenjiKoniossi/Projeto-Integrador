@@ -1,62 +1,122 @@
-body{
-    font-family: 'M PLUS Rounded 1c';
-  }
-  h1{
-    font-size: 100px;
-    padding: 20px;
-    margin: 100px 0px 20px 0px;
-    color: #224455;
-  }
-  h2{
-    font-size: 40px;
-    padding: 20px 0px 5px 0px;
-    margin: 20px 0px 20px 20px;
-    color: #4488DD;
-  }
-  h3{
-    color: #224455;
-    font-size: 40px;
-    margin: 50px 0px 50px 0px;
-  }
-  h4{
-    font-size: 30px;
-    color: #224455;
-    text-align: center;
-    margin: 40px 0px 10px 10px;
-  }
-  h5{
-    color: white;
-    margin: 10px 0px 10px 0px;
-  }
-  p{
-    display: flex;
-    font-size: 25px;
-    margin: 40px 0px 0px 0px;
-    color: #224455;
-  }
-  .navbar-light .navbar-nav .nav-link{
-    color: #224455;
-    margin-left: 20px;
-  }
-  .btn.btn-warning.btn-sm{
-    justify-content: center;
-    color: white;
-    width: 7vw;
-  }
-  .btn.btn-warning.btn-lg{
-    color: white;
-    padding: 5px 10px 5px 10px;
-    margin: -10px 0px 0px 20px;
-  }
-  .card-header{
-    /* background-color: white; */
-    color: #224455;
-  }
-  .btn.btn-link{
-    color: #224455;
-    text-decoration: none;
-  }
-  .btn.btn-link.collapsed:hover{
-    text-decoration: none;
-    color:orange;
-  }
+body {
+  color: #224455;
+  background-color: #fff;
+}
+
+h1, h2, h3 {
+  font-family: "M PLUS Rounded 1c", Roboto;
+  font-weight: 1000;
+}
+
+h1{
+  font-size: 100px;
+  padding: 20px;
+  margin: 100px 0px 20px 0px;
+  color: #224455;
+}
+
+h2{
+  font-size: 40px;
+  padding: 20px 0px 5px 0px;
+  margin: 20px 0px 20px 20px;
+  color: #4488DD;
+}
+
+h3{
+  color: #224455;
+  font-size: 40px;
+  margin: 50px 0px 50px 0px;
+}
+
+h4{
+  font-size: 30px;
+  color: #224455;
+  text-align: center;
+  margin: 40px 0px 10px 10px;
+}
+
+h5{
+  color: white;
+  margin: 10px 0px 10px 0px;
+}
+
+p{
+  display: flex;
+  font-size: 25px;
+  margin: 40px 0px 0px 0px;
+  color: #224455;
+}
+
+.navbar-light .navbar-nav .nav-link{
+  color: #224455;
+  margin-left: 20px;
+}
+
+.btn.btn-warning.btn-sm{
+  justify-content: center;
+  color: white;
+  width: 7vw;
+}
+
+.btn.btn-warning.btn-lg{
+  color: white;
+  padding: 5px 10px 5px 10px;
+  margin: -10px 0px 0px 20px;
+}
+
+.card-header{
+  /* background-color: white; */
+  color: #224455;
+}
+
+.btn.btn-link{
+  color: #224455;
+  text-decoration: none;
+}
+
+.btn.btn-link.collapsed:hover{
+  text-decoration: none;
+  color:orange;
+}
+
+.form-control, .form-check-input {
+  border: 2px solid #224455;
+  border-radius: 5px;
+}
+
+.form-control:focus, .form-check-input:focus {
+  border: 2px solid #F79707;
+  box-shadow: none;
+}
+
+/* .alert-danger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+} */
+
+/* #defaultCheck8, #exampleFormControlTextarea1, #inputCEP, #inputAddress, #inputBairro, #inputNumero, #inputCidade, #inputEstado, #inputReferencia {
+  border: 2px solid #224455 !important;
+  border-radius: 5px !important;
+} */
+
+#defaultCheck8:focus {
+  border: 2px solid #F79707 !important;
+}
+
+
+/* Não mostrar setas nas caixas com números */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

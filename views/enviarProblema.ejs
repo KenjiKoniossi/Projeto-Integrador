@@ -2,7 +2,7 @@
 <html>
   <head>
     <%- include("includes/head") %>
-    <link rel='stylesheet' href='/stylesheets/ericStyle.css'>
+    <link rel='stylesheet' href='./stylesheets/ericStyle.css'>
     <title>Enviar Problema</title>
   </head>
     <body class="font" >
@@ -11,46 +11,62 @@
         
           <section>
             <div class="container">
-              <form class="" action="/enviarproblema" method="POST" enctype="multipart/form-data">
-              <h2 class="ml-0"">1 - Sobre o problema</h2>
+              <div class="alert alert-danger alert-dismissible mt-5 d-none">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Erro!</strong> Os seguintes dados não são válidos:
+              </div>
+              <form class="" id="formProblema" action="/enviarproblema" method="POST" enctype="multipart/form-data">
+              <h2 class="ml-0">1 - Sobre o problema</h2>
               <p>Selecione o problema encontrado</p>
-              <div class="card p-2" >
+              <div class="p-2" >
                 <div class="form-group">
-                  <div class="form-check" style="color: #224455;">
-                    <input class="form-check-input" name="problema" type="checkbox" value="Calçada esburacada" id="defaultCheck1">
-                      <label class="form-check-label" for="defaultCheck1">
+                  <div class="custom-control custom-radio">
+                    <input class="custom-control-input" name="problema" type="radio" value="Calçada esburacada" id="defaultCheck1" required>
+                      <label class="custom-control-label" for="defaultCheck1">
                         Calçada esburacada
                       </label>
                   </div>
-                  <div class="form-check">
-                    <input class="form-check-input" name="problema" type="checkbox" value="Inclinação íngrime" id="defaultCheck1">
-                      <label class="form-check-label" for="defaultCheck1">
+                  <div class="custom-control custom-radio">
+                    <input class="custom-control-input" name="problema" type="radio" value="Inclinação íngrime" id="defaultCheck2">
+                      <label class="custom-control-label" for="defaultCheck2">
                         Inclinação íngrime
                       </label>
                   </div>     
-                  <div class="form-check">
-                    <input class="form-check-input" name="problema" type="checkbox" value="Piso escorregadio" id="defaultCheck1">
-                      <label class="form-check-label" for="defaultCheck1">
+                  <div class="custom-control custom-radio">
+                    <input class="custom-control-input" name="problema" type="radio" value="Piso escorregadio" id="defaultCheck3">
+                      <label class="custom-control-label" for="defaultCheck3">
                         Piso escorregadio
                       </label>
                   </div>
-                  <div class="form-check">
-                    <input class="form-check-input" name="problema" type="checkbox" value="Árvore obstruindo caminho" id="defaultCheck1">
-                      <label class="form-check-label" for="defaultCheck1">
+                  <div class="custom-control custom-radio">
+                    <input class="custom-control-input" name="problema" type="radio" value="Árvore obstruindo caminho" id="defaultCheck4">
+                      <label class="custom-control-label" for="defaultCheck4">
                         Árvore obstruindo caminho 
                       </label>
                   </div>
-                  <div class="form-check">
-                    <input class="form-check-input" name="problema" type="checkbox" value="Poste obstruindo caminho " id="defaultCheck1">
-                      <label class="form-check-label" for="defaultCheck1">
-                        Poste obstruindo caminho 
+                  <div class="custom-control custom-radio">
+                    <input class="custom-control-input" name="problema" type="radio" value="Poste obstruindo caminho" id="defaultCheck5">
+                      <label class="custom-control-label" for="defaultCheck5">
+                        Poste obstruindo caminho
                       </label>
                   </div>
-                  <div class="form-check">
-                    <input class="form-check-input" name="problema" type="checkbox" value="Ocupação irregular" id="defaultCheck1">
-                      <label class="form-check-label" for="defaultCheck1">
+                  <div class="custom-control custom-radio">
+                    <input class="custom-control-input" name="problema" type="radio" value="Ocupação irregular" id="defaultCheck6">
+                      <label class="custom-control-label" for="defaultCheck6">
                         Ocupação irregular (ex:comércio, vendedor ambulante, caçamba)
                       </label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                    <input class="custom-control-input" name="problema" type="radio" value="Outro" id="defaultCheck7">
+                      <label class="custom-control-label" for="defaultCheck7">
+                        Outro
+                      </label>
+                  </div>
+                  <div class="custom-control">
+                    <input class="form-check-input pl-2 pr-2" name="problema_outro" type="text" id="defaultCheck8">
+                    <label class="form-check-label" for="defaultCheck8">
+                      
+                    </label>
                   </div>
                 </div>
               </div>
@@ -58,7 +74,7 @@
               <p>Escreva uma breve descrição sobre o problema</p>
                 <div class="form-group mt-0">
                   <label for="exampleFormControlTextarea1"></label>
-                  <textarea class="form-control" name="descricao" id="exampleFormControlTextarea1" rows="3" placeholder="Exemplo: A calçada possui diversos buracos e tem uma inclinação muito íngrime, dificultando a mobilidade de quem passa por ali"></textarea>
+                  <textarea class="form-control" name="descricao" id="exampleFormControlTextarea1" rows="3" placeholder="Exemplo: A calçada possui diversos buracos e tem uma inclinação muito íngrime, dificultando a mobilidade de quem passa por ali" required></textarea>
                 </div>
               </div>
           </section>
@@ -69,31 +85,32 @@
           <div class="row">
             <div class="form-group col-md-4">
               <label for="inputCEP">CEP</label>
-              <input type="text" class="form-control" name="CEP" id="inputCEP" placeholder="Ex: 12345-000">
+              <input type="number" class="form-control" name="cep" id="inputCEP" placeholder="Ex: 12345000" required>
             </div> 
             <div class="form-group col-md-8">
-              <label for="inputBairoo">Bairro</label>
-              <input type="text" class="form-control" name="bairro" id="inputBairro" placeholder="Ex: Bairro da Liberdade">
+              <label for="inputAddress">Rua</label>
+              <input type="text" class="form-control" name="endereco" id="inputAddress" placeholder="Ex: Av. Do Estado" required disabled>
             </div>
           </div>
           <div class="row">
+            
             <div class="form-group col-md-9">
-              <label for="inputAddress">Endereço</label>
-              <input type="text" class="form-control" name="endereco" id="inputAddress" placeholder="Ex: Av. Do Estado">
+              <label for="inputBairoo">Bairro</label>
+              <input type="text" class="form-control" name="bairro" id="inputBairro" placeholder="Ex: Bairro da Liberdade" required disabled>
             </div>
             <div class="form-group col-md-3">
               <label for="inputNumero">Número</label>
-              <input type="text" class="form-control" name="numero" id="inputNumero" placeholder="Ex: 1234">
+              <input type="number" class="form-control" name="numero" id="inputNumero" placeholder="Ex: 1234" required>
             </div>
           </div>
           <div class="row">
             <div class="form-group col-md-7">
               <label for="inputCity">Cidade</label>
-              <input type="text" class="form-control" name="cidade" id="inputCidade" placeholder="Ex: São Paulo">
+              <input type="text" class="form-control" name="cidade" id="inputCidade" placeholder="Ex: São Paulo" required disabled>
             </div>
             <div class="form-group col-md-5">
               <label for="inputCity">Estado</label>
-              <input type="text" class="form-control" name="estado" id="inputEstado" placeholder="Ex: São Paulo">
+              <input type="text" class="form-control" name="estado" id="inputEstado" placeholder="Ex: SP" required disabled>
             </div>
           </div>
           <div class="form-group">
@@ -121,25 +138,25 @@
             <h2 class="ml-0">4 - Enviar problema</h2>
             <p class="mb-3">Para finalizar clique no botão abaixo</p>
               <div class="row">
-                  <button type="button" class="btn btn-warning btn-sm col-2 ml-3" data-toggle="modal" data-target="#exampleModal">Enviar
+                  <button type="button" class="btn btn-warning btn-sm col-2 ml-3" data-toggle="modal" id="enviarBotao">Enviar
                   </button>
               </div>
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                       <div class="modal-header">
-                        <p class="modal-title" id="exampleModalLabel">Problema enviado com sucesso!</p>
+                        <p class="modal-title" id="exampleModalLabel">Confirmação de Envio</p>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
                         Obrigado por contribuir com o mapeamento de locais! <br>
-                        Seu problema será analisado por nossa equipe e iremos atualizar as informações
+                        Clique em "Enviar" para confirmar o envio do problema.
                       </div>
                       <div class="modal-footer">
                         <form  method="post">           
-                          <input type="submit" class="btn btn-warning btn-sm" value="Fechar">
+                          <input type="submit" class="btn btn-warning btn-sm" value="Enviar">
                         </form>
                       </div>
                     </div>
@@ -155,5 +172,6 @@
         <%- include("includes/footer") %>
 
         <%- include("includes/script") %>
+        <script src="./scripts/problemaScript.js"></script>
     </body>
 </html>

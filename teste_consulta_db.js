@@ -7,3 +7,4 @@ const {Deficiencia, Endereco, Local_comercial, Perfil, Problema, Tag_problema, U
 // Problema.findAll().then(valor => console.log(valor));
 // Tag_problema.findAll().then(valor => console.log(valor));
 // Usuario.findAll().then(valor => console.log(valor));
+
