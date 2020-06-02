@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     geolocalizacao: DataTypes.GEOMETRY('POINT'),
     cep: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.STRING
     },
     bairro: DataTypes.STRING,
     rua: DataTypes.STRING,

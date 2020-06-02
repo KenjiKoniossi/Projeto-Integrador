@@ -13,7 +13,7 @@ module.exports = {
       },
       cep: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       bairro: {
         type: Sequelize.STRING,
@@ -51,5 +51,3 @@ module.exports = {
     return queryInterface.dropTable('endereco');
   }
 };
-
-// 20200522223653-create-endereco

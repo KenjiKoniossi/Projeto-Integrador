@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     cnpj: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.STRING
     },
     imagem: DataTypes.STRING,
     data_criacao: DataTypes.DATE,

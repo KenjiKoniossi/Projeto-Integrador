@@ -18,7 +18,7 @@ module.exports = {
       },
       cnpj: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       imagem: {
         type: Sequelize.STRING
