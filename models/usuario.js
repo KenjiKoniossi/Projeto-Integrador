@@ -28,7 +28,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN
     },
   }, {
-    tableName: 'usuario'
+    tableName: 'usuario',
+    freezeTableName: true
   });
   Usuario.associate = function(models) {
     Usuario.hasMany(models.Local_comercial, {

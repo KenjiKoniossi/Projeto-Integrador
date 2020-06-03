@@ -1,10 +1,38 @@
+// const Sequelize = require("sequelize");
+// const config = require('../config/database');
+const bcrypt = require('bcrypt');
+const {Usuario} = require('../models');
+
 const cadastroController = {
-    cadastro: (req, res) => {
-        res.render('cadastro')
+    view: (req, res) => {
+        res.render('/')
     },
-    novaConta: (req, res) => {
-        res.render('novaConta')
+
+    store: async (req, res) => {
+        const { nome, email, senha } = req.body
+        const hashPassword = bcrypt.hashSync(senha, 10);
+
+        const user = await Usuario.create({
+                nome,
+                email,
+                senha: hashPassword,
+                admin: true,
+                comercial: false,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            });
+
+            console.log(user);
+
+        if (!user) {
+            return res.render('/', {
+                msg: "Não foi possível cadastrar!",
+            });
+        }
+
+        return res.redirect('/perfil');
     },
+
     login: (req, res) => {
         res.render('login')
     },

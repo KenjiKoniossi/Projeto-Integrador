@@ -3,8 +3,8 @@ const router = express.Router();
 const cadastroController = require('../controllers/cadastroController')
 
 
-router.get('/', cadastroController.cadastro);
-router.get('/novaConta', cadastroController.novaConta);
+router.get('/', cadastroController.view);
+router.post('/', cadastroController.store);
 router.get('/login', cadastroController.login);
 router.get('/recuperarSenha', cadastroController.recuperarSenha);
 
