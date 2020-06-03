@@ -1,4 +1,3 @@
-
 const problema_old = require('../model_problema_old');
 const {Problema, Endereco, Tag_problema} = require('../models');
 
@@ -29,7 +28,7 @@ const enviarProblemaController = {
             foto = req.files[0].filename;
         }
 
-        const {problema, problema_outro, descricao, cep, endereco, numero, bairro, cidade, estado, referencia} = req.body;
+        const {problema, problema_outro, descricao, cep, rua, numero, bairro, cidade, estado, referencia} = req.body;
 
         //Validação dos dados
         if (typeof(problema.trim()) !== 'string' || problema.trim() === '') {
@@ -49,7 +48,7 @@ const enviarProblemaController = {
             res.redirect('/enviarproblema?erro=cep')
         }
 
-        if (typeof(endereco.trim()) !== 'string' || endereco.trim() === '') {
+        if (typeof(rua.trim()) !== 'string' || rua.trim() === '') {
             res.redirect('/enviarproblema?erro=rua')
         }
 
@@ -64,7 +63,7 @@ const enviarProblemaController = {
         if (typeof(cidade.trim()) !== 'string' || cidade.trim() === '') {
             res.redirect('/enviarproblema?erro=cidade')
         }
-        
+
         if (typeof(estado.trim()) !== 'string' || estado.trim() === '') {
             res.redirect('/enviarproblema?erro=estado')
         }
@@ -107,7 +106,7 @@ const enviarProblemaController = {
             geolocalizacao: point,
             cep,
             bairro,
-            endereco,
+            rua,
             numero,
             cidade,
             estado,

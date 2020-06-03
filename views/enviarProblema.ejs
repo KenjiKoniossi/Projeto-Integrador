@@ -11,13 +11,14 @@
         
           <section>
             <div class="container">
-              <div class="alert alert-danger alert-dismissible mt-5 d-none">
+              <div class="alert alert-dismissible mt-5 d-none">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Erro!</strong> Os seguintes dados não são válidos:
               </div>
               <form class="" id="formProblema" action="/enviarproblema" method="POST" enctype="multipart/form-data">
               <h2 class="ml-0">1 - Sobre o problema</h2>
-              <p>Selecione o problema encontrado</p>
+              
+              <p>Selecione o problema encontrado *</p>
+              <p class="small mt-0 mb-1"><em>Campos com * são campos obrigatórios</em></p>
               <div class="p-2" >
                 <div class="form-group">
                   <div class="custom-control custom-radio">
@@ -84,32 +85,32 @@
             <h2 class="ml-0">2 - Localização do problema</h2>
           <div class="row">
             <div class="form-group col-md-4">
-              <label for="inputCEP">CEP</label>
-              <input type="number" class="form-control" name="cep" id="inputCEP" placeholder="Ex: 12345000" required>
+              <label for="inputCEP">CEP *</label>
+              <input type="text" class="form-control" name="cep" id="inputCEP" placeholder="Ex: 12345000" required>
             </div> 
             <div class="form-group col-md-8">
-              <label for="inputAddress">Rua</label>
-              <input type="text" class="form-control" name="endereco" id="inputAddress" placeholder="Ex: Av. Do Estado" required disabled>
+              <label for="inputAddress">Rua *</label>
+              <input type="text" class="form-control" name="rua" id="inputAddress" placeholder="Ex: Av. Do Estado" required disabled>
             </div>
           </div>
           <div class="row">
             
-            <div class="form-group col-md-9">
-              <label for="inputBairoo">Bairro</label>
+            <div class="form-group col-md-8">
+              <label for="inputBairoo">Bairro *</label>
               <input type="text" class="form-control" name="bairro" id="inputBairro" placeholder="Ex: Bairro da Liberdade" required disabled>
             </div>
-            <div class="form-group col-md-3">
-              <label for="inputNumero">Número</label>
-              <input type="number" class="form-control" name="numero" id="inputNumero" placeholder="Ex: 1234" required>
+            <div class="form-group col-md-4">
+              <label for="inputNumero">Número (Use "SN" para sem número) *</label>
+              <input type="text" class="form-control" name="numero" id="inputNumero" placeholder="Ex: 1234 ou SN" required>
             </div>
           </div>
           <div class="row">
             <div class="form-group col-md-7">
-              <label for="inputCity">Cidade</label>
+              <label for="inputCity">Cidade *</label>
               <input type="text" class="form-control" name="cidade" id="inputCidade" placeholder="Ex: São Paulo" required disabled>
             </div>
             <div class="form-group col-md-5">
-              <label for="inputCity">Estado</label>
+              <label for="inputCity">Estado *</label>
               <input type="text" class="form-control" name="estado" id="inputEstado" placeholder="Ex: SP" required disabled>
             </div>
           </div>
@@ -140,6 +141,9 @@
               <div class="row">
                   <button type="button" class="btn btn-warning btn-sm col-2 ml-3" data-toggle="modal" id="enviarBotao">Enviar
                   </button>
+              </div>
+              <div class="alert alert-danger alert-dismissible mt-5 d-none" id="alertaBaixo">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
               </div>
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">

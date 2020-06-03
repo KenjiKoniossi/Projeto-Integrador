@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     mensagem: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
     }
   }, {
     tableName: 'contato'
