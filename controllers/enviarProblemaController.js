@@ -40,7 +40,7 @@ const enviarProblemaController = {
             res.redirect('/enviarproblema?erro=problema-outro')
         }
 
-        if (typeof(descricao.trim()) !== 'string' || descricao.trim() === '') {
+        if (typeof(descricao.trim()) !== 'string') {
             res.redirect('/enviarproblema?erro=descricao')
         }
 

@@ -9,12 +9,12 @@ let alertaBaixo = document.getElementById('alertaBaixo');
 
 let camposObrigatorios = [
     document.querySelectorAll('input[type=radio]'),
-    document.getElementById('inputEstado'),
-    document.getElementById('inputCidade'),
-    document.getElementById('inputBairro'),
-    document.getElementById('inputAddress'),
     document.getElementById('inputCEP'),
+    document.getElementById('inputAddress'),
+    document.getElementById('inputBairro'),
     document.getElementById('inputNumero'),
+    document.getElementById('inputCidade'),
+    document.getElementById('inputEstado'),
 ]
 
 let urlSearch = new URLSearchParams(window.location.search);
@@ -119,31 +119,31 @@ for (let i = 0; i < 6; i++) {
 
 //Função que limpa a caixa do CEP, destaca em vermelho, retorna os exemplos e bloqueia os demais inputs
 function limpaCEP () {
-    camposObrigatorios[5].value = '';
-    camposObrigatorios[5].style.borderColor = 'red';
+    camposObrigatorios[1].value = '';
+    camposObrigatorios[1].style.borderColor = 'red';
     
-    camposObrigatorios[4].value = 'Ex: Av. Do Estado';
+    camposObrigatorios[2].value = 'Ex: Av. Do Estado';
     camposObrigatorios[3].value = 'Ex: Bairro da Liberdade';
-    camposObrigatorios[2].value = 'Ex: São Paulo';
-    camposObrigatorios[1].value = 'Ex: SP';
+    camposObrigatorios[5].value = 'Ex: São Paulo';
+    camposObrigatorios[6].value = 'Ex: SP';
 
-    camposObrigatorios[4].setAttribute('disabled', true);
-    camposObrigatorios[3].setAttribute('disabled', true);
     camposObrigatorios[2].setAttribute('disabled', true);
-    camposObrigatorios[1].setAttribute('disabled', true);
+    camposObrigatorios[3].setAttribute('disabled', true);
+    camposObrigatorios[5].setAttribute('disabled', true);
+    camposObrigatorios[6].setAttribute('disabled', true);
 }
 
 //Valida o CEP e completa endereço por API
-camposObrigatorios[5].addEventListener('blur', function () {
-    let valorCEP = camposObrigatorios[5].value.replace(/\D/g, '');
+camposObrigatorios[1].addEventListener('blur', function () {
+    let valorCEP = camposObrigatorios[1].value.replace(/\D/g, '');
 
     if (valorCEP != '') {
         let validaCEP = /^[0-9]{8}$/;
         if (validaCEP.test(valorCEP)) {
-            camposObrigatorios[4].value = 'Carregando...';
-            camposObrigatorios[3].value = 'Carregando...';
             camposObrigatorios[2].value = 'Carregando...';
-            camposObrigatorios[1].value = 'Carregando...';
+            camposObrigatorios[3].value = 'Carregando...';
+            camposObrigatorios[5].value = 'Carregando...';
+            camposObrigatorios[6].value = 'Carregando...';
 
             fetch('https://viacep.com.br/ws/' + valorCEP + '/json/')
                 .then(function (resultado) {
@@ -153,16 +153,16 @@ camposObrigatorios[5].addEventListener('blur', function () {
                     if (!resultadoJSON.erro) {
 
                         //Preenche os dados
-                        camposObrigatorios[4].value = resultadoJSON.logradouro;
+                        camposObrigatorios[2].value = resultadoJSON.logradouro;
                         camposObrigatorios[3].value = resultadoJSON.bairro;
-                        camposObrigatorios[2].value = resultadoJSON.localidade;
-                        camposObrigatorios[1].value = resultadoJSON.uf;
+                        camposObrigatorios[5].value = resultadoJSON.localidade;
+                        camposObrigatorios[6].value = resultadoJSON.uf;
                         
                         //Desbloqueia os campos
-                        camposObrigatorios[4].removeAttribute('disabled');
-                        camposObrigatorios[3].removeAttribute('disabled');
                         camposObrigatorios[2].removeAttribute('disabled');
-                        camposObrigatorios[1].removeAttribute('disabled');
+                        camposObrigatorios[3].removeAttribute('disabled');
+                        camposObrigatorios[5].removeAttribute('disabled');
+                        camposObrigatorios[6].removeAttribute('disabled');
                         
                     } else {
                         limpaCEP();
@@ -176,29 +176,43 @@ camposObrigatorios[5].addEventListener('blur', function () {
     }
 });
 
-
 //Verifica se todos os campos com required foram preenchidos, caso positivo abre modal
 enviarBotao.addEventListener("click", function () {
-    let campoPreenchido = true;
+    let campoPreenchido = false;
+    let textoErro = '';
 
-    //Verifica se os campos estão vazios
-    // for (let i = 0; i < camposObrigatorios[0].length; i++) {
-    //     if (camposObrigatorios[0][i].checked === true) {
-    //         //Verifica demais campos além do radio
-    //         for (let i = 1; i < camposObrigatorios.length; i++) {
-    //             if (camposObrigatorios[i].value === '') {
-    //                 campoPreenchido = false;
-    //             }
-    //         }
-    //     }
-    //     campoPreenchido = false;
-    // }
-    
+    // Verifica se os campos estão vazios
+    for (let i = 0; i < camposObrigatorios[0].length; i++) {
+        if (camposObrigatorios[0][i].checked === true) {
+
+            //Verifica demais campos além do radio
+            for (let j = 1; j < camposObrigatorios.length; j++) {
+                if (camposObrigatorios[j].value === '') {
+                    campoPreenchido = false;
+                    // camposObrigatorios[j].style.borderColor= 'red';
+                    textoErro = camposObrigatorios[j].name;
+                    let primeiraLetra = camposObrigatorios[j].name.charAt(0).toUpperCase();
+                    textoErro = primeiraLetra + textoErro.slice(1);
+                    break;
+
+                } else {
+                    campoPreenchido = true;
+                }
+            }
+        }
+    }
+
+    if (textoErro === '') {
+        textoErro = 'Seleção do problema';
+    } else if (textoErro === 'Cep') {
+        textoErro = textoErro.toUpperCase();
+    }
+
     if (campoPreenchido) {
         //Removido data-target="#exampleModal" do botão de enviar
         window.$("#exampleModal").modal('show');
     } else {
-        alertaBaixo.innerHTML += '<strong>Erro!</strong> Algumas informações estão faltando!'
+        alertaBaixo.innerHTML = '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Campo <strong>' + textoErro + '</strong> não preenchido ou selecionado.';
         alertaBaixo.classList.remove('d-none');
     };
   });
