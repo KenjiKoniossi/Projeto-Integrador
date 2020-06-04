@@ -1,9 +1,10 @@
 // const Sequelize = require("sequelize");
 // const config = require('../config/database');
 const bcrypt = require('bcrypt');
-const {Usuario} = require('../models');
+const { Usuario } = require('../models');
 
 const cadastroController = {
+
     view: (req, res) => {
         res.render('/')
     },
@@ -12,17 +13,25 @@ const cadastroController = {
         const { nome, email, senha } = req.body
         const hashPassword = bcrypt.hashSync(senha, 10);
 
-        const user = await Usuario.create({
-                nome,
-                email,
-                senha: hashPassword,
-                admin: true,
-                comercial: false,
-                createdAt: new Date(),
-                updatedAt: new Date(),
-            });
+        const getEmail = await Usuario.findOne({ where: { email } });
+        console.log(getEmail);
 
-            console.log(user);
+        if (getEmail) {
+            res.render('/', {
+                msg: 'E-mail já cadastrado'
+            });
+            // return res.status(400).json({ error: 'Email já cadastrado'})
+        }
+
+        const user = await Usuario.create({
+            nome,
+            email,
+            senha: hashPassword,
+            admin: true,
+            comercial: false,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+        });
 
         if (!user) {
             return res.render('/', {
