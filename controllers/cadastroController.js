@@ -17,10 +17,10 @@ const cadastroController = {
         console.log(getEmail);
 
         if (getEmail) {
-            res.render('/', {
-                msg: 'E-mail já cadastrado'
-            });
-            // return res.status(400).json({ error: 'Email já cadastrado'})
+            // res.render('/', {
+            //     msg: 'E-mail já cadastrado'
+            // });
+            return res.status(400).json({ error: 'Email já cadastrado'})
         }
 
         const user = await Usuario.create({
