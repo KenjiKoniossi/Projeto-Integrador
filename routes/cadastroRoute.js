@@ -5,7 +5,6 @@ const cadastroController = require('../controllers/cadastroController')
 
 router.get('/', cadastroController.view);
 router.post('/', cadastroController.store);
-router.get('/login', cadastroController.login);
 router.get('/recuperarSenha', cadastroController.recuperarSenha);
 
 

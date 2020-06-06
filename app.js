@@ -12,6 +12,7 @@ let mapaRouter = require('./routes/mapaRoute');
 let paginaInicialRouter = require('./routes/paginaInicialRoute');
 let perfilRouter = require('./routes/perfilRoute');
 let saibaMaisRouter = require('./routes/saibaMaisRoute');
+let loginRouter = require('./routes/loginRoute')
 
 const app = express();
 
@@ -36,7 +37,7 @@ app.use(
 
 app.use('/ajuda', ajudaRouter);
 app.use('/cadastro', cadastroRouter);
-app.use('/login', cadastroRouter);
+app.use('/login', loginRouter);
 app.use('/recuperarSenha', cadastroRouter);
 app.use('/enviarProblema', enviarProblemaRouter);
 app.use('/mapa', mapaRouter);
