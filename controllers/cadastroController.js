@@ -42,6 +42,7 @@ const cadastroController = {
     login: (req, res) => {
         res.render('login')
     },
+    
     recuperarSenha: (req, res) => {
         res.render('recuperarSenha')
     },
