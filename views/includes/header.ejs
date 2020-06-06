@@ -92,43 +92,43 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                           
-                            <form method="POST" action="/cadastro">
-                                <img src="img/logo.png" alt="">
-                                <img src="img/mob_map.png" alt="">
-                                <div class="user">
-                                    <input type="text" name="nome" id="nome" placeholder="Nome" required="">
-                                    <input type="email" name="email" id="email" placeholder="E-mail" required="">
-                                    <input type="password" name="senha" id="senha" placeholder="Senha" required="">
-                                </div>
-                                <button type="submit">Criar Conta</button>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck2" required="">
-                                    <label class="custom-control-label" for="customCheck2"> Concordo com a <a
-                                            href="privacyPolitics.html">Politica de Privacidade</a> e <a
-                                            href="termService.html">Termos de Serviço</a></label>
-                                </div>
-                                <h5>Já tem conta? <button type="button" data-toggle="modal" data-target="#loginModal">
-                                        Entrar</button></h5>
-                            </form>
-                    </div>
+
+                    <form method="POST" action="/cadastro">
+                                     
+                        <div class="user">
+                            <input type="text" name="nome" id="nome" placeholder="Nome" required="">
+                            <input type="email" name="email" id="email" placeholder="E-mail" required="">
+                            <input type="password" name="senha" id="senha" placeholder="Senha" required="">
+                        </div>
+                        <button type="submit">Criar Conta</button>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck2" required="">
+                            <label class="custom-control-label" for="customCheck2"> Concordo com a <a
+                                    href="privacyPolitics.html">Politica de Privacidade</a> e <a
+                                    href="termService.html">Termos de Serviço</a></label>
+                        </div>
+
+                        <h5>Já tem conta? <button type="button" data-toggle="modal" data-target="#loginModal">
+                                Entrar</button></h5>
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="esqueceuSenhaModal" tabindex="-1" role="dialog"
-            aria-labelledby="esqueceuSenhaModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <form action="post">
-                            <img src="img/logo.png" alt="">
-                            <img src="img/mob_map.png" alt="">
-                            <div class="user"></div>
-                            <input type="email" name="email" id="emailEsqueceuSenha" placeholder="E-mail" required="">
-                            <button type="submit">Recuperar Senha</button>
-                        </form>
-                    </div>
+    </div>
+    <div class="modal fade" id="esqueceuSenhaModal" tabindex="-1" role="dialog"
+        aria-labelledby="esqueceuSenhaModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form action="post">
+                        <img src="img/logo.png" alt="">
+                        <img src="img/mob_map.png" alt="">
+                        <div class="user"></div>
+                        <input type="email" name="email" id="emailEsqueceuSenha" placeholder="E-mail" required="">
+                        <button type="submit">Recuperar Senha</button>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 </header>

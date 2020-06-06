@@ -1,11 +1,9 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
-// var cookieParser = require('cookie-parser');
-// var logger = require('morgan');
+const logger = require("morgan");
+const session = require("express-session");
 
-// var indexRouter = require('./routes/index');
-// var usersRouter = require('./routes/users');
 
 let ajudaRouter = require('./routes/ajudaRoute');
 let cadastroRouter = require('./routes/cadastroRoute');
@@ -15,23 +13,27 @@ let paginaInicialRouter = require('./routes/paginaInicialRoute');
 let perfilRouter = require('./routes/perfilRoute');
 let saibaMaisRouter = require('./routes/saibaMaisRoute');
 
-
-
 const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// app.use(logger('dev'));
+app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('*/images',express.static('public/images'));
+app.use(
+  session({
+    secret: "369852asd147",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+// app.use(cookieParser());
 
-// app.use('/', indexRouter);
-// app.use('/users', usersRouter);
 app.use('/ajuda', ajudaRouter);
 app.use('/cadastro', cadastroRouter);
 app.use('/login', cadastroRouter);
@@ -58,7 +60,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 
 app.listen(3333, ()=>console.log("Servidor rodando na porta 3333"))

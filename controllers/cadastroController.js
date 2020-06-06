@@ -1,5 +1,4 @@
-// const Sequelize = require("sequelize");
-// const config = require('../config/database');
+
 const bcrypt = require('bcrypt');
 const { Usuario } = require('../models');
 
@@ -17,10 +16,8 @@ const cadastroController = {
         console.log(getEmail);
 
         if (getEmail) {
-            // res.render('/', {
-            //     msg: 'E-mail já cadastrado'
-            // });
-            return res.status(400).json({ error: 'Email já cadastrado'})
+            res.render('paginaInicial', { msg: 'E-mail já cadastrado' });
+            //return res.status(400).json({ error: 'Email já cadastrado'})
         }
 
         const user = await Usuario.create({
