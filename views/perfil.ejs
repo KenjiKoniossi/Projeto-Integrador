@@ -17,8 +17,13 @@
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-4 text-center">
         <img class="rounded-cicle" src="/images/profile.png" alt="imagem de perfil" width="200">
-        <h4>Karla Jhenifer</h4>
-        <span>karla@email.com</span>
+
+        <% if( typeof usuario !== 'undefined') {%>
+        <h4><%= usuario.nome %></h4>
+        <span><%= usuario.email %></span>
+        <% } %>
+
+
 
         <ul class="flex-column nav">
           <a class="nav-link" href="/perfil/atualizarPerfil">Atualizar perfil</a>

@@ -22,7 +22,7 @@ loginController = {
       email: usuario.email
     }
 
-    return res.redirect('/')
+    return res.redirect('/perfil')
   },
   destroy: (req, res) => {
     req.session = undefined

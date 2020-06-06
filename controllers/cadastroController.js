@@ -16,11 +16,11 @@ const cadastroController = {
         console.log(getEmail);
 
         if (getEmail) {
-            res.render('paginaInicial', { msg: 'E-mail já cadastrado' });
+            res.render('paginaInicial', { msg: 'E-mail já cadastrado, faça o login' });
             //return res.status(400).json({ error: 'Email já cadastrado'})
         }
 
-        const user = await Usuario.create({
+        const usuario = await Usuario.create({
             nome,
             email,
             senha: hashPassword,
@@ -30,19 +30,24 @@ const cadastroController = {
             updatedAt: new Date(),
         });
 
-        if (!user) {
+        if (!usuario) {
             return res.render('/', {
                 msg: "Não foi possível cadastrar!",
             });
         }
 
+        req.session.usuario = {
+            id: usuario.id,
+            nome: usuario.nome,
+            email: usuario.email,
+        };
+        
         return res.redirect('/perfil');
     },
 
     login: (req, res) => {
         res.render('login')
     },
-    
     recuperarSenha: (req, res) => {
         res.render('recuperarSenha')
     },

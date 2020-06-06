@@ -5,7 +5,7 @@ const app = express();
 const path = require('path');
 const logger = require("morgan");
 const session = require("express-session");
-const flash = require("connect-flash");
+const cookieParser = require("cookie-parser");
 
 // Rotas
 let ajudaRouter = require('./routes/ajudaRoute');
@@ -29,14 +29,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('*/images', express.static('public/images'));
 
 // Sessão
-app.use(session({
-  secret: "369852asd147mobmap",
-  resave: true,
-  saveUninitialized: true,
-}));
-app.use(flash());
-
-// app.use(cookieParser());
+app.use(session(
+  {
+    secret: "369852asd147mobmap",
+    resave: true,
+    saveUninitialized: true,
+  }
+));
+app.use(cookieParser());
 
 // Roteando
 app.use('/ajuda', ajudaRouter);
@@ -61,22 +61,16 @@ app.use(function(err, req, res, next) {
   res.status(500).redirect('/');
 });
 
-app.use((req, res, next) => {
-  res.locals.sucess_msg = req.flash('sucess_msg')
-  res.locals.error_msg = req.flash('error_msg')
-  next();
-});
-
 // // error handler
-// app.use(function(err, req, res, next) {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-//   // render the error page
-//   res.status(err.status || 500);
-//   res.render('error');
-// });
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
 
 
 app.listen(3333, () => console.log("Servidor rodando na porta 3333"))
