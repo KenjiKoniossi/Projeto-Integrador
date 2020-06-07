@@ -37,8 +37,16 @@
 
             </ul>
         </div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#entradaModal" id="logIn"
-            style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</button>
+        <% if (session.usuario === undefined) { %>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#entradaModal" id="logIn"
+                style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</button>
+        <% } else { %>
+            <form action="/perfil" method="GET" class="btn btn-primary" style="background-color: #4488DD;">
+                <button type="submit"  data-toggle="modal" data-target="#entradaModal" id="logIn"
+                    ><i class="fa fa-sign-in" aria-hidden="true"></i> Perfil</button>
+            </form>
+        <% } %>
+                    
     </nav>
     <div class="row">
         <div class="col-5"></div>

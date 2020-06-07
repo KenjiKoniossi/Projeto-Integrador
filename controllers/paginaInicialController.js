@@ -2,7 +2,8 @@ const { Contato } = require('../models')
 
 const paginaInicialController = {
     viewForm: (req, res) => {
-        res.render('paginaInicial')
+        console.log(req.session)
+        res.render('paginaInicial', { session: req.session })
     },
     enviarProblema: async (req, res) => {
         const { nome, email, mensagem } = req.body
