@@ -52,13 +52,42 @@
           <%= sobre_usuario %> 
         </p>
 
-        <h3 class="perfil">Contribuições</h3>
+        <h3 class="perfil">Suas Contribuições</h3>
         <hr class="perfil">
         <div class="row">
           <div class="col-12">
             <div class="list-group" id="list-tab" role="tablist">
               <% if (listaProblemas.length != 0) { %> 
                   <!-- Implementação para listar problemas enviados pelo usuário -->
+                  <div class="row">
+                    <div class="col-4 text-center">
+                      <p><strong>Ações</strong></p>
+                    </div>
+                    <div class="col-2">
+                      <p><strong>ID</strong></p>
+                    </div>
+                    <div class="col-6">
+                      <p><strong>Descrição do Problema</strong></p>
+                    </div>
+                  </div>
+
+                  <% for (let problema of listaProblemas) { %> 
+                    <div class="row">
+                      <div class="col-2">
+                        <a class="btn btn-success" href="#">Resolvido</a>
+                      </div>
+                      <div class="col-2">
+                        <a class="btn btn-danger" href="#">Apagar</a>
+                      </div>
+                      <div class="col-2">
+                        <p><%= problema.id %></p>
+                      </div>
+                      <div class="col-6">
+                        <p><%= (problema.descricao.length > 30) ? (problema.descricao.slice(0, 30) + '...') : (problema.descricao) %></p>
+                      </div>
+                    </div>
+                  <% } %> 
+                  
               <% } else { %> 
                 <p class="perfil" id="collapsePerfil">
                   Você ainda não fez contribuições relatando problemas.

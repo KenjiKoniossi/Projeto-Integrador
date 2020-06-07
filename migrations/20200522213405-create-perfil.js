@@ -27,7 +27,6 @@ module.exports = {
       },
       deficiencia_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: {
           model: 'deficiencia',
           key: 'id'
@@ -35,7 +34,6 @@ module.exports = {
       },
       endereco_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: {
           model: 'endereco',
           key: 'id'

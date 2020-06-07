@@ -10,7 +10,10 @@ module.exports = (sequelize, DataTypes) => {
     sobrenome: DataTypes.STRING,
     telefone: DataTypes.INTEGER,
     sobre_usuario: DataTypes.TEXT('LONG'),
-    usuario_id: DataTypes.INTEGER,
+    usuario_id: {
+      allowNull: false,
+      type: DataTypes.INTEGER
+    },
     deficiencia_id: DataTypes.INTEGER,
     endereco_id: DataTypes.INTEGER,
   }, {

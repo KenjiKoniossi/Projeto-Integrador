@@ -1,4 +1,4 @@
-const {Perfil, Problema} = require('../models');
+const {Perfil, Problema, Endereco, Usuario} = require('../models');
 
 const perfilController = {
     perfil: async (req, res) => {
@@ -21,16 +21,51 @@ const perfilController = {
                 usuario_id: req.session.usuario.id
             }
         });
-        //Trata o objeto Sequelize instances, convertendo para JSON
-        listaProblemas = JSON.stringify(listaProblemas);
-        //Trata o JSON para array
-        listaProblemas = JSON.parse(listaProblemas);
+
+        // //Trata o objeto Sequelize instances, convertendo para JSON
+        // listaProblemas = JSON.stringify(listaProblemas);
+        // //Trata o JSON para array
+        // listaProblemas = JSON.parse(listaProblemas);
         
         res.render('perfil', {sobre_usuario, listaProblemas});
     },
-    atualizarPerfil: (req, res) => {
-        res.render('atualizarPerfil')
+
+    atualizarPerfil: async (req, res) => {
+        //Verifica se o usuário já tem um perfil
+        let perfilUsuario = await Perfil.findOne({
+            where: {
+                usuario_id: req.session.usuario.id
+            }
+        });
+
+        //Cria perfil caso não tenha
+        if (perfilUsuario === null) {
+            perfilUsuario = await Perfil.create({
+                usuario_id: req.session.usuario.id
+            })
+        }
+
+        //Recupera dados do usuário
+        let dadosUsuario = await Usuario.findOne({
+            where: {
+                id: req.session.usuario.id
+            }
+        });
+
+        //Verifica se ele tem um endereço
+        let enderecoUsuario = await Endereco.findOne({
+            where: {
+                id: req.session.usuario.id
+            }
+        });
+
+        res.render('atualizarPerfil', {perfilUsuario});
     },
+
+    salvarPerfil: async (req, res) => {
+
+    },
+
     alterarSenha: (req, res) => {
         res.render('alterarSenha')
     },

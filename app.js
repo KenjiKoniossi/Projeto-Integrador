@@ -6,6 +6,7 @@ const path = require('path');
 const logger = require("morgan");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+const methodOverride = require('method-override');
 
 // Rotas
 let ajudaRouter = require('./routes/ajudaRoute');
@@ -27,6 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('*/images', express.static('public/images'));
+app.use(methodOverride('_method'));
 
 // Sessão
 app.use(session(
