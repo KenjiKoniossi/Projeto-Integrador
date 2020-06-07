@@ -8,11 +8,15 @@ MobMap é um sistema Web com o intuito de mapear pontos na cidade que dificultam
 
 ## Tecnologias utilizadas
 
-- NodeJS
-- ExpressJS
-- Sequelize
-- HTML/CSS
-- JavaScript
+- Back-end:
+	- NodeJS
+	- ExpressJS
+	- Sequelize (Banco de Dados com MySQL)
+
+- Front-end:
+	- JavaScript
+	- HTML/CSS
+	- Bootstrap
 
 ## Sobre o projeto
 
@@ -20,32 +24,32 @@ Projeto Integrador para conclusão do curso de Desenvolvimento Full Stack Node n
 
 ## Instruções para uso
 
-Instalar as dependências
+Após clonar o repositório, instalar as dependências:
 ```
 npm install
 ```
 
-Criar arquivo .env e colocar senha do banco de dados (substituir SENHA pela senha do banco de dados)
+Criar arquivo .env e para colocar a senha do banco de dados (substituir "SENHA" pela senha do banco de dados MySQL):
 ```
 echo DB_PASS=SENHA > .env
 ```
 
-Criar o banco de dados com o Sequelize
+Criar o banco de dados com o Sequelize:
 ```
 npx sequelize db:create
 ```
 
-Executar as migrations com o Sequelize
+Executar as migrations com o Sequelize:
 ```
 npx sequelize db:migrate
 ```
 
-Executar as seeders com o Sequelize
+Executar as seeders com o Sequelize:
 ```
 npx sequelize db:seed:all
 ```
 
-Para inicializar o servidor, use o comando
+Para inicializar o servidor na porta 3333 do localhost, use o comando:
 ```
 npx start
 ```
@@ -67,6 +71,6 @@ npm start
 - Matheus Sousa - [@matheussilvaesousa](https://github.com/matheussilvaesousa)
 - Wesley Soares - [@wesleybs90](https://github.com/wesleybs90)
 
-## Santander Coders - DigitalHouse
+## Santander Coders by DigitalHouse
 
 <img src="/public/images/logo_dh_grande.PNG" width="30%">

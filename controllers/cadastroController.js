@@ -24,7 +24,7 @@ const cadastroController = {
             nome,
             email,
             senha: hashPassword,
-            admin: true,
+            admin: false,
             comercial: false,
             createdAt: new Date(),
             updatedAt: new Date(),
