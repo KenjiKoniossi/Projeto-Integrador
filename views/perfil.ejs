@@ -46,24 +46,24 @@
       </div>
 
       <div class="col-sm-12 col-md-12 col-lg-8" style="margin-top:50px">
-        <h3 class="perfil"> Perfil </h3>
+        <h3 class="perfil">Perfil</h3>
         <hr class="perfil">
-        <p class="perfil" id="collapsePerfil">Lorem ipsum dolor, sit amet consectetur adipisicing
-          elit. Voluptatibus, dolore vel
-          ullam impedit enim
-          provident ut voluptatum atque aspernatur voluptates temporibus dolor ducimus quas architecto. Est
-          cumque vel impedit delectus.
+        <p class="perfil" id="collapsePerfil">
+          <%= sobre_usuario %> 
         </p>
 
-        <h3 class="perfil"> Avaliações </h3>
+        <h3 class="perfil">Contribuições</h3>
         <hr class="perfil">
         <div class="row">
-          <div class="col-4">
+          <div class="col-12">
             <div class="list-group" id="list-tab" role="tablist">
-              <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
-                href="#list-profile" role="tab" aria-controls="profile"> Positivas </a>
-              <a class="negativas list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
-                href="#list-melh-locais" role="tab" aria-controls="profile">Negativas</a>
+              <% if (listaProblemas.length != 0) { %> 
+                  <!-- Implementação para listar problemas enviados pelo usuário -->
+              <% } else { %> 
+                <p class="perfil" id="collapsePerfil">
+                  Você ainda não fez contribuições relatando problemas.
+                </p>
+              <% } %> 
             </div>
           </div>
           <div class="col-8">
