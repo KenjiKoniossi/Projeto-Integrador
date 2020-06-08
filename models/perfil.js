@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     sobrenome: DataTypes.STRING,
-    telefone: DataTypes.INTEGER,
+    telefone: DataTypes.STRING,
     sobre_usuario: DataTypes.TEXT('LONG'),
     usuario_id: {
       allowNull: false,

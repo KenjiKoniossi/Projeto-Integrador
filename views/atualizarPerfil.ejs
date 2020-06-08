@@ -17,8 +17,8 @@
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-4 text-center">
         <img class="rounded-cicle" src="/images/profile.png" alt="imagem de perfil" width="200">
-        <h4 class="card-title">Karla Jhenifer</h4>
-        <span>karla@email.com</span>
+        <h4 class="card-title"><%= dadosUsuario.nome %></h4>
+        <span><%= dadosUsuario.email %></span>
 
         <ul class="flex-column nav">
           <a class="nav-link" href="/perfil">Ver Perfil</a>
@@ -44,57 +44,64 @@
         <h3 class="perfil"> Atualizar Perfil </h3>
         <hr class="perfil">
 
-        <form id="atualizarPerfil" action="/atualizarperfil?_method=PUT" method="POST">
+        <form id="atualizarPerfil" action="/perfil/atualizarPerfil?_method=PUT" method="POST">
           <div class="form-row">
             <div class="form-group col-md-5">
-              <label for="nome">Nome</label>
-              <input type="nome" class="form-control" name="nome" id="nome">
+              <label for="nomePerfil">Nome</label>
+              <input type="text" class="form-control" name="nomePerfil" id="nomePerfil" value="<%= dadosUsuario.nome %>" required>
             </div>
             <div class="form-group col-md-7">
               <label for="sobrenome">Sobrenome</label>
-              <input type="text" class="form-control" name="sobrenome" id="sobrenome">
+              <input type="text" class="form-control" name="sobrenome" id="sobrenome" value="<%= (perfilUsuario !== null) ? perfilUsuario.sobrenome : '' %>">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-8">
-              <label for="sobrenome">Email</label>
-              <input type="email" class="form-control" name="email" id="email">
+              <label for="emailPerfil">Email</label>
+              <input type="email" class="form-control" name="emailPerfil" id="emailPerfil" value="<%= dadosUsuario.email %>" disabled required>
             </div>
             <div class="form-group col-md-4">
               <label for="telefone">Telefone</label>
-              <input type="tel" class="form-control" name="telefone" id="telefone">
+              <input type="number" class="form-control" name="telefone" id="telefone" value="<%= (perfilUsuario !== null) ? perfilUsuario.telefone : '' %>">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-10">
-              <label for="endereco">Endereço</label>
-              <input type="text" class="form-control" name="endereco" id="endereco" placeholder="">
+              <label for="rua">Endereço</label>
+              <input type="text" class="form-control" name="rua" id="rua" value="<%= (enderecoUsuario !== null) ? enderecoUsuario.rua : '' %>">
             </div>
             <div class="form-group col-md-2">
-              <label for="endereco">Nº</label>
-              <input type="text" class="form-control" name="endereco" id="endereco" placeholder=>
+              <label for="numero">Número</label>
+              <input type="text" class="form-control" name="numero" id="numero" value="<%= (enderecoUsuario !== null) ? enderecoUsuario.numero : '' %>">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="bairro">Bairro</label>
+              <input type="text" class="form-control" name="bairro" id="bairro" value="<%= (enderecoUsuario !== null) ? enderecoUsuario.bairro : '' %>">
+            </div>
+            <div class="form-group col-md-8">
+              <label for="referencia">Ponto de Referência</label>
+              <input type="text" class="form-control" name="referencia" id="referencia" value="<%= (enderecoUsuario !== null) ? enderecoUsuario.ponto_referencia : '' %>">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-2">
               <label for="cep">CEP</label>
-              <input type="text" class="form-control" id="cep">
+              <input type="number" class="form-control" name="cep" id="cep" value="<%= (enderecoUsuario !== null) ? enderecoUsuario.cep : '' %>">
             </div>
             <div class="form-group col-md-6">
               <label for="cidade">Cidade</label>
-              <input type="text" class="form-control" name="cidade" id="cidade">
+              <input type="text" class="form-control" name="cidade" id="cidade" value="<%= (enderecoUsuario !== null) ? enderecoUsuario.cidade : '' %>">
             </div>
             <div class="form-group col-md-4">
               <label for="estado">Estado</label>
-              <select id="estado" class="form-control">
-                <option selected>Escolher...</option>
-                <option>...</option>
-              </select>
+              <input type="text" class="form-control" name="estado" id="estado" value="<%= (enderecoUsuario !== null) ? enderecoUsuario.estado : '' %>">
             </div>
           </div>
 
-          <label for="estado">Fale um pouco sobre você</label>
-          <textarea class="form-control" name="perfil-usuario" id="" rows="5"></textarea>
+          <label for="sobreUsuario">Fale um pouco sobre você</label>
+          <textarea class="form-control" name="sobreUsuario" id="sobreUsuario" rows="5"><%= (perfilUsuario !== null) ? perfilUsuario.sobre_usuario : '' %></textarea>
 
           <button type="submit" class="btn btn-padrao">Alterar</button>
           <button class="btn btn-padrao">Voltar</button>

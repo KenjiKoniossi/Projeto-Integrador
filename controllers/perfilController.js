@@ -2,10 +2,17 @@ const {Perfil, Problema, Endereco, Usuario} = require('../models');
 
 const perfilController = {
     perfil: async (req, res) => {
+
         //Verifica se o usuário já tem um perfil
         let perfilUsuario = await Perfil.findOne({
             where: {
                 usuario_id: req.session.usuario.id
+            }
+        });
+
+        let dadosUsuario = await Usuario.findOne({
+            where: {
+                id: req.session.usuario.id
             }
         });
 
@@ -14,6 +21,8 @@ const perfilController = {
         if (perfilUsuario !== null) {
             sobre_usuario = perfilUsuario.sobre_usuario;
         }
+
+        //Sugestão de implementação, adicionar os dados do perfil do usuário na view e não somente o texto sobre
 
         //Verifica se o usuário já enviou problemas
         let listaProblemas = await Problema.findAll({
@@ -27,10 +36,11 @@ const perfilController = {
         // //Trata o JSON para array
         // listaProblemas = JSON.parse(listaProblemas);
         
-        res.render('perfil', {sobre_usuario, listaProblemas});
+        res.render('perfil', {dadosUsuario, sobre_usuario, listaProblemas});
     },
 
     atualizarPerfil: async (req, res) => {
+
         //Verifica se o usuário já tem um perfil
         let perfilUsuario = await Perfil.findOne({
             where: {
@@ -38,32 +48,150 @@ const perfilController = {
             }
         });
 
-        //Cria perfil caso não tenha
-        if (perfilUsuario === null) {
-            perfilUsuario = await Perfil.create({
-                usuario_id: req.session.usuario.id
-            })
-        }
-
         //Recupera dados do usuário
         let dadosUsuario = await Usuario.findOne({
             where: {
                 id: req.session.usuario.id
             }
         });
-
+        
         //Verifica se ele tem um endereço
-        let enderecoUsuario = await Endereco.findOne({
-            where: {
-                id: req.session.usuario.id
-            }
-        });
+        let enderecoUsuario = null;
+        if (perfilUsuario !== null) {
+            enderecoUsuario = await Endereco.findOne({
+                where: {
+                    id: perfilUsuario.endereco_id
+                }
+            });
+        };
 
-        res.render('atualizarPerfil', {perfilUsuario});
+        res.render('atualizarPerfil', {perfilUsuario, dadosUsuario, enderecoUsuario});
     },
 
     salvarPerfil: async (req, res) => {
 
+        //Dados Temporários
+        const point = {
+            type: 'Point',
+            coordinates: [39.807222,-76.984722]
+        };
+        const pais = 'BR';
+
+        const {nomePerfil, sobrenome, emailPerfil, telefone, rua, numero, bairro, referencia, cep, cidade, estado, sobreUsuario} = req.body;
+
+        //Verifica se o email enviado é diferente do original, caso positivo, retornar erro
+
+        //Atualiza o nome do usuário, retorna uma array, não a model
+        let dadosUsuario = await Usuario.update({
+            nome: nomePerfil
+        },{
+            where: {
+                id: req.session.usuario.id
+            }
+        })
+
+        //Verifica se o usuário já tem um perfil
+        let perfilUsuario = await Perfil.findOne({
+            where: {
+                usuario_id: req.session.usuario.id
+            }
+        });
+
+        let enderecoUsuario = {
+            id: null
+        };
+        //Usuario não tem perfil
+        if (perfilUsuario === null) {
+            //Cria o endereço caso CEP e número não sejam nulos
+            if (cep != '' && numero != '') {
+                enderecoUsuario = await Endereco.create({
+                    geolocalizacao: point,
+                    cep,
+                    bairro,
+                    rua,
+                    numero,
+                    cidade,
+                    estado,
+                    ponto_referencia: referencia,
+                    pais
+                })
+            }
+            //Cria perfil
+            perfilUsuario = await Perfil.create({
+                sobrenome,
+                telefone,
+                sobre_usuario: sobreUsuario,
+                usuario_id: req.session.usuario.id,
+                endereco_id: enderecoUsuario.id
+            })
+        } else {
+
+            //Altera os dados já existentes no perfil
+            perfilUsuario = await Perfil.update({
+                sobrenome,
+                telefone,
+                sobre_usuario: sobreUsuario
+            },{
+                where: {
+                    usuario_id: req.session.usuario.id
+                }
+            });
+
+            perfilUsuario = await Perfil.findOne({
+                where: {
+                    usuario_id: req.session.usuario.id
+                }
+            });
+
+            //Caso: usuário tenha perfil e endereço
+            if (perfilUsuario.endereco_id !== null) {
+
+                //Atualiza os dados do endereço
+                enderecoUsuario = await Endereco.update({
+                    geolocalizacao: point,
+                    cep,
+                    bairro,
+                    rua,
+                    numero,
+                    cidade,
+                    estado,
+                    ponto_referencia: referencia,
+                    pais
+                },{
+                    where: {
+                        id: perfilUsuario.endereco_id
+                    }
+                });
+
+            } else {
+                
+                //Caso: usuário tem perfil, mas não tem endereço
+                if (cep != '' && numero != '') {
+                    enderecoUsuario = await Endereco.create({
+                        geolocalizacao: point,
+                        cep,
+                        bairro,
+                        rua,
+                        numero,
+                        cidade,
+                        estado,
+                        ponto_referencia: referencia,
+                        pais
+                    });
+
+                    //Atualiza o endereco_id no perfil
+                    perfilUsuario = await Perfil.update({
+                        endereco_id: enderecoUsuario.id
+                    },{
+                        where: {
+                            usuario_id: req.session.usuario.id
+                        }
+                    });
+                }
+            }
+        }
+        
+        res.redirect('/perfil')
     },
 
     alterarSenha: (req, res) => {

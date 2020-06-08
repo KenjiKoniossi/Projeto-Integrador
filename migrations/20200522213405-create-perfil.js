@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       telefone: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       sobre_usuario: {
         type: Sequelize.TEXT('LONG')

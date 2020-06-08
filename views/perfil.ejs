@@ -18,10 +18,8 @@
       <div class="col-sm-12 col-md-12 col-lg-4 text-center">
         <img class="rounded-cicle" src="/images/profile.png" alt="imagem de perfil" width="200">
 
-        <% if( typeof usuario !== 'undefined') {%>
-        <h4><%= usuario.nome %></h4>
-        <span><%= usuario.email %></span>
-        <% } %>
+        <h4><%= dadosUsuario.nome %></h4>
+        <span><%= dadosUsuario.email %></span>
 
 
 
@@ -60,29 +58,29 @@
               <% if (listaProblemas.length != 0) { %> 
                   <!-- Implementação para listar problemas enviados pelo usuário -->
                   <div class="row">
-                    <div class="col-4 text-center">
+                    <div class="col-6 col-md-4 text-center">
                       <p><strong>Ações</strong></p>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 col-md-2">
                       <p><strong>ID</strong></p>
                     </div>
-                    <div class="col-6">
+                    <div class="col-4 col-md-6">
                       <p><strong>Descrição do Problema</strong></p>
                     </div>
                   </div>
 
                   <% for (let problema of listaProblemas) { %> 
                     <div class="row">
-                      <div class="col-2">
+                      <div class="col-3 col-md-2">
                         <a class="btn btn-success" href="#">Resolvido</a>
                       </div>
-                      <div class="col-2">
+                      <div class="col-3 col-md-2">
                         <a class="btn btn-danger" href="#">Apagar</a>
                       </div>
-                      <div class="col-2">
+                      <div class="col-2 col-md-2">
                         <p><%= problema.id %></p>
                       </div>
-                      <div class="col-6">
+                      <div class="col-4 col-md-6">
                         <p><%= (problema.descricao.length > 30) ? (problema.descricao.slice(0, 30) + '...') : (problema.descricao) %></p>
                       </div>
                     </div>
