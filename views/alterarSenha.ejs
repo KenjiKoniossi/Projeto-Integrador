@@ -18,8 +18,8 @@
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-4 text-center">
         <img class="rounded-cicle" src="/images/profile.png" alt="imagem de perfil" width="200">
-        <h4>Karla Jhenifer</h4>
-        <span>karla@email.com</span>
+        <h4><%= dadosUsuario.nome %></h4>
+        <span><%= dadosUsuario.email %></span>
 
         <ul class="flex-column nav">
           <a class="nav-link" href="/perfil/atualizarPerfil">Atualizar Perfil</a>
@@ -29,25 +29,26 @@
       </div>
 
       <div class="col-sm-12 col-md-12 col-lg-8" style="margin-top:50px;">
+        <p><%- typeof(erroSenha) !== 'undefined' ? erroSenha : '' %> </p>
         <h3 class="perfil"> Alteração de senha </h3>
         <hr class="perfil">
-        <form>
+        <form id="alterarSenha" action="/perfil/alterarSenha?_method=PUT" method="POST">
           <div class="form-row">
             <div class="form-group col-sm-12 col-md-12 col-lg-6">
-              <label for="senha-atual">Senha atual</label>
-              <input type="password" class="form-control" name="senha-atual" id="senha-atual">
+              <label for="senhaAtual">Senha atual</label>
+              <input type="password" class="form-control" name="senhaAtual" id="senhaAtual">
             </div>
           </div>
           <div class="form-row">
-            <div class="form-group col-sm-12 col-md-12 col-lg-6"">
-              <label for=" nova-senha">Nova senha</label>
-              <input type="password" class="form-control" name="nova-senha" id="nova-senha">
+            <div class="form-group col-sm-12 col-md-12 col-lg-6">
+              <label for=" novaSenha">Nova senha</label>
+              <input type="password" class="form-control" name="novaSenha" id="novaSenha">
             </div>
           </div>
           <div class="form-row">
-            <div class="form-group col-sm-12 col-md-12 col-lg-6"">
-              <label for=" conf-nova-senha">Confirmar nova senha</label>
-              <input type="password" class="form-control" name="conf-nova-senha" id="conf-nova-senha">
+            <div class="form-group col-sm-12 col-md-12 col-lg-6">
+              <label for=" confNovaSenha">Confirmar nova senha</label>
+              <input type="password" class="form-control" name="confNovaSenha" id="confNovaSenha">
             </div>
           </div>
           <button type="submit" class="btn btn-padrao">Alterar</button>

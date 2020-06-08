@@ -104,7 +104,7 @@
           <textarea class="form-control" name="sobreUsuario" id="sobreUsuario" rows="5"><%= (perfilUsuario !== null) ? perfilUsuario.sobre_usuario : '' %></textarea>
 
           <button type="submit" class="btn btn-padrao">Alterar</button>
-          <button class="btn btn-padrao">Voltar</button>
+          <button type="button" onclick="window.location.href = '/perfil'"  class="btn btn-padrao">Voltar</button>
 
         </form>
 

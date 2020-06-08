@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const {Perfil, Problema, Endereco, Usuario} = require('../models');
 
 const perfilController = {
@@ -194,9 +195,55 @@ const perfilController = {
         res.redirect('/perfil')
     },
 
-    alterarSenha: (req, res) => {
-        res.render('alterarSenha')
+    alterarSenha: async (req, res) => {
+
+        //Recupera dados do usuário
+        let dadosUsuario = await Usuario.findOne({
+            where: {
+                id: req.session.usuario.id
+            }
+        });
+
+        res.render('alterarSenha', {dadosUsuario})
     },
+    
+    salvarSenha: async (req, res) => {
+
+        const {senhaAtual, novaSenha, confNovaSenha} = req.body;
+
+        //Recupera dados do usuário
+        let dadosUsuario = await Usuario.findOne({
+            where: {
+                id: req.session.usuario.id
+            }
+        });
+
+        //Compara senha atual com senha guardada, se falso retorna erro
+        if (!bcrypt.compareSync(senhaAtual, dadosUsuario.senha)) {
+            let erroSenha = '<strong>Senha atual inválida</strong>';
+            return res.render('alterarSenha', {dadosUsuario, erroSenha});
+        }
+
+        //Gera hash da nova senha e faz update
+        const hashSenha = bcrypt.hashSync(novaSenha, 10);
+
+        //Confirma se senhas digitadas são iguais
+        if (!bcrypt.compareSync(confNovaSenha, hashSenha)) {
+            let erroSenha = '<strong>Nova senha e confirmação de senha devem ser iguais</strong>';
+            return res.render('alterarSenha', {dadosUsuario, erroSenha});
+        }
+
+        let updateDadosUsuario = await Usuario.update({
+            senha: hashSenha
+        },{
+            where: {
+                id: req.session.usuario.id
+            }
+        });
+
+        res.redirect('/perfil');
+    },
+
     excluirConta: (req, res) => {
         res.render('excluirPerfil')
     }
