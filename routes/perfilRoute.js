@@ -15,6 +15,8 @@ router.get('/excluirPerfil', perfilController.excluirConta);
 router.delete('/excluirPerfil', perfilController.salvaExcluirConta);
 router.get('/problema/:id/resolvido', perfilController.viewProblemaResolvido);
 router.put('/problema/:id/resolvido', perfilController.problemaResolvido);
+router.get('/problema/:id/apagar', perfilController.viewApagarProblema);
+router.delete('/problema/:id/apagar', perfilController.apagarProblema);
 
 
 module.exports = router;

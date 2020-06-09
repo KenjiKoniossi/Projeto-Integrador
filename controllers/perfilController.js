@@ -328,9 +328,50 @@ const perfilController = {
                 id
             }
         })
-
+        
         res.redirect('/perfil')
 
+    },
+
+    viewApagarProblema: async (req, res) => {
+
+        let {id} = req.params;
+
+        //Recupera dados do usuário
+        let dadosUsuario = await Usuario.findOne({
+            where: {
+                id: req.session.usuario.id
+            }
+        });
+
+        res.render('apagarProblema', {dadosUsuario, id});
+},
+
+    apagarProblema: async (req, res) => {
+
+        let {id} = req.params;
+
+        //Recuperar model do problema
+        let dadosProblema = await Problema.findOne({
+            where: {
+                id
+            }
+        });
+
+        //Recuperar endereço do problema
+        let dadosEndereco = await Endereco.findOne({
+            where: {
+                id: dadosProblema.endereco_id
+            }
+        })
+
+        //Apagar o relato de problema enviado
+        await dadosProblema.destroy();
+
+        //Apagar endereço depois do problema pois está atrelado ao problema pela FK
+        await dadosEndereco.destroy();
+
+        res.redirect('/perfil');
     },
     
 }
