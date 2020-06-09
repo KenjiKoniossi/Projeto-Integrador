@@ -281,7 +281,7 @@ const perfilController = {
 
                 //Delete endereço
                 await dadosEndereco.destroy();
-                
+
             } else {
 
                 //Deleta perfil
@@ -299,7 +299,39 @@ const perfilController = {
         });
 
         res.redirect('/');
-    }
+    },
+
+    viewProblemaResolvido: async (req, res) => {
+
+        let {id} = req.params;
+
+        //Recupera dados do usuário
+        let dadosUsuario = await Usuario.findOne({
+            where: {
+                id: req.session.usuario.id
+            }
+        });
+
+        res.render('problemaResolvido', {dadosUsuario, id});
+
+    },
+
+    problemaResolvido: async (req, res) => {
+
+        let {id} = req.params;
+
+        //Update do status do problema para resolvido
+        let updateProblema = await Problema.update({
+            resolvido: true
+        }, {
+            where: {
+                id
+            }
+        })
+
+        res.redirect('/perfil')
+
+    },
     
 }
 

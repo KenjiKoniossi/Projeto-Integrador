@@ -16,7 +16,7 @@ const enviarProblemaController = {
 
     envioProb: async (req, res) =>{
         //Dados Temporários
-        const usuarioId = 1;
+        const usuarioId = req.session.usuario.id;
         const point = {
             type: 'Point',
             coordinates: [39.807222,-76.984722]
