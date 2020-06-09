@@ -220,7 +220,7 @@ const perfilController = {
 
         //Compara senha atual com senha guardada, se falso retorna erro
         if (!bcrypt.compareSync(senhaAtual, dadosUsuario.senha)) {
-            let erroSenha = '<strong>Senha atual inválida</strong>';
+            let erroSenha = '<div class="alert alert-danger" role="alert"><strong>Senha atual</strong> digitada inválida.</div>';
             return res.render('alterarSenha', {dadosUsuario, erroSenha});
         }
 
@@ -229,7 +229,7 @@ const perfilController = {
 
         //Confirma se senhas digitadas são iguais
         if (!bcrypt.compareSync(confNovaSenha, hashSenha)) {
-            let erroSenha = '<strong>Nova senha e confirmação de senha devem ser iguais</strong>';
+            let erroSenha = '<div class="alert alert-danger" role="alert"><strong>Nova senha</strong> e <strong>confirmação de senha</strong> devem ser iguais.</div>';
             return res.render('alterarSenha', {dadosUsuario, erroSenha});
         }
 
@@ -244,8 +244,61 @@ const perfilController = {
         res.redirect('/perfil');
     },
 
-    excluirConta: (req, res) => {
-        res.render('excluirPerfil')
+    excluirConta: async (req, res) => {
+
+        //Recupera dados do usuário
+        let dadosUsuario = await Usuario.findOne({
+            where: {
+                id: req.session.usuario.id
+            }
+        });
+
+        res.render('excluirPerfil', {dadosUsuario});
+    },
+
+    salvaExcluirConta: async (req, res) => {
+
+        //Recupera dados do perfil do usuário
+        let dadosPefil = await Perfil.findOne({
+            where: {
+                id: req.session.usuario.id
+            }
+        });
+        
+        if(dadosPefil !== null) {
+
+            //Recupera endereço
+            let dadosEndereco = await Endereco.findOne({
+                where: {
+                    id: dadosPefil.endereco_id
+                }
+            });
+
+            if (dadosEndereco !== null) {
+
+                //Deleta perfil
+                await dadosPefil.destroy();
+
+                //Delete endereço
+                await dadosEndereco.destroy();
+                
+            } else {
+
+                //Deleta perfil
+                await dadosPefil.destroy();
+            }
+
+
+        }
+        
+        //Deleta usuário
+        let excluirConta = await Usuario.destroy({
+            where: {
+                id: req.session.usuario.id
+            }
+        });
+
+        res.redirect('/');
     }
     
 }

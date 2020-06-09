@@ -29,7 +29,7 @@
       </div>
 
       <div class="col-sm-12 col-md-12 col-lg-8" style="margin-top:50px;">
-        <p><%- typeof(erroSenha) !== 'undefined' ? erroSenha : '' %> </p>
+        <%- typeof(erroSenha) !== 'undefined' ? erroSenha : '' %>
         <h3 class="perfil"> Alteração de senha </h3>
         <hr class="perfil">
         <form id="alterarSenha" action="/perfil/alterarSenha?_method=PUT" method="POST">

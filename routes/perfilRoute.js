@@ -12,6 +12,7 @@ router.put('/atualizarPerfil', perfilController.salvarPerfil);
 router.get('/alterarSenha', perfilController.alterarSenha);
 router.put('/alterarSenha', perfilController.salvarSenha);
 router.get('/excluirPerfil', perfilController.excluirConta);
+router.delete('/excluirPerfil', perfilController.salvaExcluirConta);
 
 
 module.exports = router;

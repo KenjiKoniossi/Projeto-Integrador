@@ -17,8 +17,8 @@
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-4 text-center">
         <img class="rounded-cicle" src="/images/profile.png" alt="imagem de perfil" width="200">
-        <h4>Karla Jhenifer</h4>
-        <span>karla@email.com</span>
+        <h4><%= dadosUsuario.nome %></h4>
+        <span><%= dadosUsuario.email %></span>
 
         <ul class="flex-column nav">
           <a class="nav-link" href="/perfil/atualizarPerfil">Atualizar perfil</a>
@@ -31,13 +31,15 @@
         <h3 class="perfil" style="color: red;"> Excluir sua conta
         </h3>
         <hr style="border-bottom: 2px solid rgb(221, 99, 68);">
-        <p> Oi <strong>Karla</strong> </p>
+        <p> Oi <strong><%= dadosUsuario.nome %></strong> </p>
         <p> Sentimos muito por você estar prestes a excluir sua conta. </p>
         <class="perfil"> Antes de excluir, caso deseje, converse com a gente:
-          <a href="">mobmap@email.com</a>
+          <a href="/#home-contato">Formulário de Contato</a>
           </p>
-          <button type="submit" class="btn btn-danger">Excluir</button>
-          <button type="button" onclick="window.location.href = '/perfil'" class="btn btn-success">Cancelar</button>
+          <form id="excluirPerfil" action="/perfil/excluirPerfil?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-danger">Excluir</button>
+            <button type="button" onclick="window.location.href = '/perfil'" class="btn btn-success">Cancelar</button>
+          </form>
       </div>
 
       <div class="col-lg-4 redes-sociais text-center" style="margin-top: 50px;">
