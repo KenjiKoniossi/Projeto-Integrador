@@ -14,8 +14,25 @@
     <p class="alert alert-warning d-flex justify-content-center" role="alert"><%= msg %></p>
     <% } %>
 
+    <% if (typeof(listaErrosContato) != 'undefined') { %>
+        <div class="alert alert-danger mt-3 w-75" style="margin: 0 auto;" role="alert">
+            <ul class="m-0">
+            <% listaErrosContato.forEach(erro => { %>
+            <li><%- erro.msg %></li>
+            <% }) %> 
+        </ul>
+        </div>
+    <% } %> 
+
+    <% if(typeof(sucessoContato) != 'undefined') {%>
+        <div class="alert alert-success mt-3 w-75" style="margin: 0 auto;" role="alert">
+            <%- sucessoContato %>
+        </div>
+    <% } %>
+
     <main id="main-home" class="container-fluid">
         <section id="home-inicio" class="row justify-content-center bg-home-inicio">
+
             <div
                 class="col-12 col-md-10 d-flex flex-column justify-content-center align-items-center align-items-md-start">
                 <img class="content-mobile" src="../images/wesley_logo_novo_azul.png" alt="">
@@ -138,20 +155,18 @@
         </section>
 
         <section id="home-contato" class="row justify-content-center align-items-center bg-home-contato">
-            <div
-                class="col-12 col-md-10 col-lg-8 d-flex flex-column justify-content-center align-items-start align-items-md-end">
+            <div class="col-12 col-md-10 col-lg-8 d-flex flex-column justify-content-center align-items-start align-items-md-end">
                 <h2 class="align-self-center align-self-md-start">Entre em Contato</h2>
                 <hr>
                 <form id="form-contato" class="col d-flex flex-column justify-content-center align-items-start pl-md-0"
                     action="/" method="POST">
                     <label for="nome">Nome</label>
-                    <input type="text" name="nome" id="contato-nome">
+                    <input type="text" name="nomeContato" id="contato-nome">
                     <label for="nome">Email</label>
-                    <input type="text" name="email" id="contato-email">
+                    <input type="text" name="emailContato" id="contato-email">
                     <label for="nome">Mensagem</label>
-                    <textarea name="mensagem" id="" cols="30" rows="7"></textarea>
-                    <button class="btn btn-default btn-inicio d-flex align-items-center justify-content-center"
-                        type="submit">Enviar</button>
+                    <textarea name="mensagemContato" id="" cols="30" rows="7"></textarea>
+                    <button class="btn btn-default btn-inicio d-flex align-items-center justify-content-center" type="submit">Enviar</button>
                 </form>
             </div>
 

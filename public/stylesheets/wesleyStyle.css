@@ -147,7 +147,13 @@ body {
     border: 2px solid #224455;
     border-radius: 5px;
     margin-bottom: 10px;
+    padding: 0 5px;
 }
+
+#home-contato input:focus, #home-contato textarea:focus {
+    border: 2px solid #F79707;
+    box-shadow: none;
+  }
 
 /* CSS botão geral */
 .btn-default {

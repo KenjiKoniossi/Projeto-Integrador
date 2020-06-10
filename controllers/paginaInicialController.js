@@ -1,19 +1,30 @@
 const { Contato } = require('../models')
+const {check, validationResult, body} = require('express-validator');
 
 const paginaInicialController = {
     viewForm: (req, res) => {
-        console.log(req.session)
         res.render('paginaInicial', { session: req.session })
     },
-    enviarProblema: async (req, res) => {
-        const { nome, email, mensagem } = req.body
-        const problema = await Contato.create({
-            nome,
-            email,
-            mensagem
+
+    enviarContato: async (req, res) => {
+
+        //Validação dos dados
+        let listaErrosContato = validationResult(req).errors;
+        if (listaErrosContato.length != 0) {
+            return res.render('paginaInicial', {listaErrosContato})
+        }
+
+        //Modificado os 'names' para não conflitar com o cadastro/login
+        const { nomeContato, emailContato, mensagemContato } = req.body;
+
+        const enviarContato = await Contato.create({
+            nome: nomeContato,
+            email: emailContato,
+            mensagem: mensagemContato
         })
 
-        res.redirect('/')
+        let sucessoContato = 'Mensagem enviada com <strong>sucesso</strong>!';
+        res.render('paginaInicial', {sucessoContato});
     }
 }
 
