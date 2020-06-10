@@ -47,7 +47,7 @@
         <h3 class="perfil">Perfil</h3>
         <hr class="perfil">
         <p class="perfil" id="collapsePerfil">
-          <%= sobre_usuario %> 
+          <%- sobre_usuario %> 
         </p>
 
         <h3 class="perfil">Suas Contribuições</h3>
@@ -70,7 +70,7 @@
                   </div>
 
                   <% for (let problema of listaProblemas) { %> 
-                    <div class="row mb-1">
+                    <div class="row mb-1 ml-1">
                       <div class="col-3 col-md-2 d-flex justify-content-center align-items-center">
                         <% if (problema.resolvido === true) { %>
                           <p class="m-0"><strong>Resolvido</strong></p>
@@ -78,14 +78,21 @@
                           <a class="btn btn-success" href="/perfil/problema/<%= problema.id %>/resolvido">Resolvido</a>
                         <% } %>
                       </div>
-                      <div class="col-3 col-md-2">
+                      <div class="col-3 col-md-2 d-flex align-items-center">
                         <a class="btn btn-danger" href="/perfil/problema/<%= problema.id %>/apagar">Apagar</a>
                       </div>
                       <div class="col-2 col-md-2 d-flex align-items-center">
                         <p class="m-0"><%= problema.id %></p>
                       </div>
                       <div class="col-4 col-md-6 d-flex align-items-center">
-                        <p class="m-0"><%= (problema.descricao.length > 30) ? (problema.descricao.slice(0, 30) + '...') : (problema.descricao) %></p>
+                        <p class="m-0">
+                          <% if (problema.descricao.length != 0) { %>
+                            <%= (problema.descricao.length > 30) ? (problema.descricao.slice(0, 30) + '...') : (problema.descricao) %>
+                          <% } else { %>
+                            Problema sem descrição.
+                          <% } %> 
+                        </p>
+                        <p class="m-0"></p>
                       </div>
                     </div>
                   <% } %> 
@@ -95,23 +102,6 @@
                   Você ainda não fez contribuições relatando problemas.
                 </p>
               <% } %> 
-            </div>
-          </div>
-          <div class="col-8">
-            <div class="tab-content" id="nav-tabContent">
-              <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                <ul class="nav">
-                  <li class="alert alert-primary">Praça Noix: Paisagem e locomoção</li>
-                  <li class="alert alert-primary">Rua Naylor: Ótima calçada</li>
-                </ul>
-              </div>
-              <div class="tab-pane fade" id="list-melh-locais" role="tabpanel" aria-labelledby="list-profile-list">
-                <ul class="nav">
-                  <li class="alert alert-warning">Rua das Oliveiras - buraco na calçada impede a passagem </li>
-                  <li class="alert alert-warning">Rua de Olinda: Não há descida na calçada</li>
-                  <li class="alert alert-warning">Rua das Oliveiras - buraco na calçada impede a passagem </li>
-                </ul>
-              </div>
             </div>
           </div>
         </div>

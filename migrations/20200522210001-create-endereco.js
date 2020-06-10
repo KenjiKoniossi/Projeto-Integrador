@@ -23,7 +23,7 @@ module.exports = {
       },
       numero: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       cidade: {
         type: Sequelize.STRING,

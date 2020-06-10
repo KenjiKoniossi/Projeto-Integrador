@@ -1,5 +1,6 @@
 const problema_old = require('../model_problema_old');
 const {Problema, Endereco, Tag_problema} = require('../models');
+const {check, validationResult, body} = require('express-validator');
 
 const enviarProblemaController = {
     viewForm: (req, res) => {
@@ -15,12 +16,20 @@ const enviarProblemaController = {
     },
 
     envioProb: async (req, res) =>{
+
+        //Validação dos dados
+        let listaDeErros = validationResult(req).errors;
+        if (listaDeErros.length != 0) {
+            return res.render('enviarProblema', {listaDeErros});
+        }
+        
         //Dados Temporários
-        const usuarioId = req.session.usuario.id;
         const point = {
             type: 'Point',
             coordinates: [39.807222,-76.984722]
         };
+
+        const usuarioId = req.session.usuario.id;
         const pais = 'BR';
 
         let foto = 'imagem-padrao-mobmap.png';
@@ -30,44 +39,7 @@ const enviarProblemaController = {
 
         const {problema, problema_outro, descricao, cep, rua, numero, bairro, cidade, estado, referencia} = req.body;
 
-        //Validação dos dados
-        if (typeof(problema.trim()) !== 'string' || problema.trim() === '') {
-            //Envia para view
-            res.redirect('/enviarproblema?erro=problema')
-        }
-
-        if (problema === 'Outro' && (typeof(problema_outro.trim()) !== 'string' || problema_outro.trim() === '')) {
-            res.redirect('/enviarproblema?erro=problema-outro')
-        }
-
-        if (typeof(descricao.trim()) !== 'string') {
-            res.redirect('/enviarproblema?erro=descricao')
-        }
-
-        if (typeof(cep.trim()) !== 'string' || cep.trim() === '') {
-            res.redirect('/enviarproblema?erro=cep')
-        }
-
-        if (typeof(rua.trim()) !== 'string' || rua.trim() === '') {
-            res.redirect('/enviarproblema?erro=rua')
-        }
-
-        if (typeof(numero.trim()) !== 'string' || numero.trim() === '') {
-            res.redirect('/enviarproblema?erro=numero')
-        }
-
-        if (typeof(bairro.trim()) !== 'string' || bairro.trim() === '') {
-            res.redirect('/enviarproblema?erro=bairro')
-        }
-
-        if (typeof(cidade.trim()) !== 'string' || cidade.trim() === '') {
-            res.redirect('/enviarproblema?erro=cidade')
-        }
-
-        if (typeof(estado.trim()) !== 'string' || estado.trim() === '') {
-            res.redirect('/enviarproblema?erro=estado')
-        }
-
+        //Seleção do ID da tag ou criação da tag
         let tagId = null;
         switch (problema) {
             case 'Calçada esburacada':
@@ -102,6 +74,7 @@ const enviarProblemaController = {
                 break;
         }
 
+        //Criação do endereço relacionado ao problema
         const enderecoCreate = await Endereco.create({
             geolocalizacao: point,
             cep,
@@ -114,6 +87,7 @@ const enviarProblemaController = {
             pais,
         })
 
+        //Criação do problema
         const problemaCreate = await Problema.create({
             descricao,
             imagem: foto,
@@ -124,6 +98,7 @@ const enviarProblemaController = {
             endereco_id: enderecoCreate.id,
         })
 
+        let sucessoEnviado = true;
         res.redirect('/enviarproblema?sucesso=problema-enviado')
     },
     

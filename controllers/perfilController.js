@@ -18,7 +18,7 @@ const perfilController = {
         });
 
         //Se tiver um perfil, recupera a descrição do perfil, se não, adiciona um frase padrão
-        let sobre_usuario = 'Adicione aqui uma informações sobre você. Clique em "Atualizar perfil" para editar suas informações.';
+        let sobre_usuario = 'Adicione aqui informações sobre você. Clique em <strong>"Atualizar perfil"</strong> para editar suas informações.';
         if (perfilUsuario !== null) {
             sobre_usuario = perfilUsuario.sobre_usuario;
         }

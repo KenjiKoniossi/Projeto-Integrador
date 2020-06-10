@@ -32,7 +32,9 @@
         </h3>
         <hr style="border-bottom: 2px solid rgb(221, 99, 68);">
         <p> Oi <strong><%= dadosUsuario.nome %></strong> </p>
-        <p> Caso você deseje apagar o relato de problema de ID <strong><%= id %></strong>, clique em <strong>"Apagar"</strong> para fazer a ação. Após a confirmação, não é possível reverter a ação após a exclusão. </p>
+        <p>Atenção! Recomendamos apagar um relato de problema somente em caso de erro nos dados enviados ou não queira mais relatar o problema.</p>
+        <p>Se o problema já foi resolvido, não é necessário apagar o problema. Apenas marque-o como resolvido.</p>
+        <p>Caso você realmente deseje apagar o relato de problema de ID <strong><%= id %></strong>, clique em <strong>"Apagar"</strong> para fazer a ação. Após a confirmação, não é possível reverter a ação após a exclusão. </p>
           <form id="excluirPerfil" action="/perfil/problema/<%= id %>/apagar?_method=DELETE" method="POST">
             <button type="submit" class="btn btn-danger">Apagar</button>
             <button type="button" onclick="window.location.href = '/perfil'" class="btn btn-primary">Cancelar</button>

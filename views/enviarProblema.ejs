@@ -14,6 +14,15 @@
               <div class="alert alert-dismissible mt-5 d-none">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
               </div>
+              <% if (typeof(listaDeErros) != 'undefined') { %>
+                <div class="alert alert-danger mt-4" role="alert">
+                  <ul class="m-0">
+                  <% listaDeErros.forEach(erro => { %>
+                    <li><%- erro.msg %></li>
+                  <% }) %> 
+                </ul>
+                </div>
+              <% } %> 
               <form class="" id="formProblema" action="/enviarproblema" method="POST" enctype="multipart/form-data">
               <h2 class="ml-0">1 - Sobre o problema</h2>
               
