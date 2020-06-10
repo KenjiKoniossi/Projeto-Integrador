@@ -25,7 +25,7 @@
                         Mapa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #224455;" href="http://localhost:3000/enviarproblema"><i
+                    <a class="nav-link" style="color: #224455;" href="http://localhost:3000/enviarProblema"><i
                             class="fa fa-envelope-open" id="envelope" aria-hidden="true"></i>
                         Enviar Problema</a>
                 </li>
@@ -37,15 +37,8 @@
 
             </ul>
         </div>
-        <% if (session.usuario === undefined) { %>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#entradaModal" id="logIn"
-                style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</button>
-        <% } else { %>
-            <form action="/perfil" method="GET" class="btn btn-primary" style="background-color: #4488DD;">
-                <button type="submit"  data-toggle="modal" data-target="#entradaModal" id="logIn"
-                    ><i class="fa fa-sign-in" aria-hidden="true"></i> Perfil</button>
-            </form>
-        <% } %>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#entradaModal" id="logIn"
+            style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</button>
                     
     </nav>
     <div class="row">
