@@ -9,28 +9,28 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="logo">
-            <a class="navbar-brand active" href="http://localhost:3000"><img src="/public/images/logo.png" alt=""></a>
-            <a class="navbar-brand active" href="http://localhost:3000"><img src="/public/images/mobmap.png" alt=""></a>
+            <a class="navbar-brand active" href="/"><img src="/public/images/logo.png" alt=""></a>
+            <a class="navbar-brand active" href="/"><img src="/public/images/mobmap.png" alt=""></a>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav" style="margin: 0px, 150px, 0, 25px;">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #224455;" href="http://localhost:3000/saibamais"><i
+                    <a class="nav-link" style="color: #224455;" href="/saibamais"><i
                             class="fa fa-question" id="question" aria-hidden="true"></i>
                         Saiba Mais</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #224455;" href="http://localhost:3000/mapa"><i
+                    <a class="nav-link" style="color: #224455;" href="/mapa"><i
                             class="fa fa-hashtag" id="hashtag" aria-hidden="true"></i>
                         Mapa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #224455;" href="http://localhost:3000/enviarProblema"><i
+                    <a class="nav-link" style="color: #224455;" href="/enviarProblema"><i
                             class="fa fa-envelope-open" id="envelope" aria-hidden="true"></i>
                         Enviar Problema</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #224455;" href="http://localhost:3000/ajuda"><i
+                    <a class="nav-link" style="color: #224455;" href="/ajuda"><i
                             class="fa fa-envelope-open" id="envelope" aria-hidden="true"></i>
                         Ajuda</a>
                 </li>
@@ -50,8 +50,8 @@
             <div class="modal-content">
                 <div class="modal-body" style="background-color: rgb(68, 137, 221);">
                     <form action="post">
-                        <img src="img/logoWhite.png" alt="">
-                        <img src="img/mob_mapWhite.png" alt="">
+                        <img src="/public/images/logoWhite.png" alt="">
+                        <img src="/public/images/mob_mapWhite.png" alt="">
                         <div class="user"></div>
                         <button type="button" data-toggle="modal" data-target="#registerModal"
                             style="background-color: white; color: rgb(68, 137, 221); margin-top: 20px;">Criar
@@ -68,8 +68,8 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <form method="POST" action="/login" id="login">
-                            <img src="img/logo.png" alt="">
-                            <img src="img/mob_map.png" alt="">
+                            <img src="/public/images/logo.png" alt="">
+                            <img src="/public/images//mob_map.png" alt="">
                             <div class="user"></div>
                                 <input type="email" name="email" id="emailLogin" placeholder="E-mail" required="">
                                 <input type="password" name="senha" id="password" placeholder="Senha" required=""> 
@@ -118,8 +118,8 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <form action="post">
-                        <img src="img/logo.png" alt="">
-                        <img src="img/mob_map.png" alt="">
+                        <img src="/public/images/logo.png" alt="">
+                        <img src="/public/images/mob_map.png" alt="">
                         <div class="user"></div>
                         <input type="email" name="email" id="emailEsqueceuSenha" placeholder="E-mail" required="">
                         <button type="submit">Recuperar Senha</button>
