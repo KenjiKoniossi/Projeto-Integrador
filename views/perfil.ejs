@@ -57,14 +57,14 @@
             <div class="list-group" id="list-tab" role="tablist">
               <% if (listaProblemas.length != 0) { %> 
                   <!-- Implementação para listar problemas enviados pelo usuário -->
-                  <div class="row">
-                    <div class="col-6 col-md-4 text-center">
+                  <div class="row ml-1">
+                    <div class="col-6 col-md-4 d-flex justify-content-center align-items-center">
                       <p><strong>Ações</strong></p>
                     </div>
-                    <div class="col-2 col-md-2">
+                    <div class="col-2 col-md-2 d-flex justify-content-center align-items-center">
                       <p><strong>ID</strong></p>
                     </div>
-                    <div class="col-4 col-md-6">
+                    <div class="col-4 col-md-6 d-flex align-items-center">
                       <p><strong>Descrição do Problema</strong></p>
                     </div>
                   </div>
@@ -78,10 +78,10 @@
                           <a class="btn btn-success" href="/perfil/problema/<%= problema.id %>/resolvido">Resolvido</a>
                         <% } %>
                       </div>
-                      <div class="col-3 col-md-2 d-flex align-items-center">
+                      <div class="col-3 col-md-2 d-flex justify-content-center align-items-center">
                         <a class="btn btn-danger" href="/perfil/problema/<%= problema.id %>/apagar">Apagar</a>
                       </div>
-                      <div class="col-2 col-md-2 d-flex align-items-center">
+                      <div class="col-2 col-md-2 d-flex justify-content-center align-items-center">
                         <p class="m-0"><%= problema.id %></p>
                       </div>
                       <div class="col-4 col-md-6 d-flex align-items-center">

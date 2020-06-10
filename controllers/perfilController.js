@@ -312,6 +312,18 @@ const perfilController = {
             }
         });
 
+        //Recuperar model do problema
+        let dadosProblema = await Problema.findOne({
+            where: {
+                id
+            }
+        });
+
+        //Valida os dados, verifica se o usuario_id do problema tem o mesmo ID do usuário
+        if (dadosUsuario.id != dadosProblema.usuario_id) {
+            return res.redirect('/perfil');
+        }
+
         res.render('problemaResolvido', {dadosUsuario, id});
 
     },
@@ -319,6 +331,26 @@ const perfilController = {
     problemaResolvido: async (req, res) => {
 
         let {id} = req.params;
+
+        //Recupera dados do usuário
+        let dadosUsuario = await Usuario.findOne({
+            where: {
+                id: req.session.usuario.id
+            }
+        });
+
+        //Recuperar model do problema
+        let dadosProblema = await Problema.findOne({
+            where: {
+                id
+            }
+        });
+
+        //Validação dos dados, verifica se usuário da sessão é o mesmo do problema
+        if (dadosUsuario.id != dadosProblema.usuario_id) {
+            let erroProblemaResolvido = 'Houve um <strong>erro</strong> ao tentar alterar o status do relato de problema como resolvido, tente novamente.'
+            return res.render('problemaResolvido', {dadosUsuario, id, erroProblemaResolvido})
+        }
 
         //Update do status do problema para resolvido
         let updateProblema = await Problema.update({
@@ -344,6 +376,18 @@ const perfilController = {
             }
         });
 
+        //Recuperar model do problema
+        let dadosProblema = await Problema.findOne({
+            where: {
+                id
+            }
+        });
+
+        //Valida os dados, verifica se o usuario_id do problema tem o mesmo ID do usuário
+        if (dadosUsuario.id != dadosProblema.usuario_id) {
+            return res.redirect('/perfil');
+        }
+
         res.render('apagarProblema', {dadosUsuario, id});
 },
 
@@ -351,12 +395,25 @@ const perfilController = {
 
         let {id} = req.params;
 
+        //Recupera dados do usuário
+        let dadosUsuario = await Usuario.findOne({
+            where: {
+                id: req.session.usuario.id
+            }
+        });
+
         //Recuperar model do problema
         let dadosProblema = await Problema.findOne({
             where: {
                 id
             }
         });
+
+        //Validação dos dados, verifica se usuário da sessão é o mesmo do problema
+        if (dadosUsuario.id != dadosProblema.usuario_id) {
+            let erroApagarProblema = 'Houve um <strong>erro</strong> ao tentar apagar o relato de problema, tente novamente.'
+            return res.render('apagarProblema', {dadosUsuario, id, erroApagarProblema})
+        }
 
         //Recuperar endereço do problema
         let dadosEndereco = await Endereco.findOne({

@@ -28,6 +28,11 @@
       </div>
 
       <div class="col-sm-12 col-md-12 col-lg-8" style="margin-top:50px">
+        <% if (typeof(erroApagarProblema) !== 'undefined') { %>
+          <div class="alert alert-danger" role="alert">
+            <%- erroApagarProblema %> 
+          </div>
+        <% } %> 
         <h3 class="perfil" style="color: red;"> Apagar relato de problema
         </h3>
         <hr style="border-bottom: 2px solid rgb(221, 99, 68);">

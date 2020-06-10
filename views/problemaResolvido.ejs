@@ -28,6 +28,11 @@
       </div>
 
       <div class="col-sm-12 col-md-12 col-lg-8" style="margin-top:50px">
+        <% if (typeof(erroProblemaResolvido) !== 'undefined') { %>
+          <div class="alert alert-danger" role="alert">
+            <%- erroProblemaResolvido %> 
+          </div>
+        <% } %> 
         <h3 class="perfil"> Marcar relato de problema como resolvido
         </h3>
         <hr style="border-bottom: 2px solid #4488DD;">
