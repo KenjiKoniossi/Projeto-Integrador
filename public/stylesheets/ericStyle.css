@@ -53,7 +53,7 @@ p{
   margin-left: 20px;
 }
 
-.btn.btn-warning.btn-sm{
+/* .btn.btn-warning.btn-sm{
   justify-content: center;
   color: white;
   width: 7vw;
@@ -63,6 +63,33 @@ p{
   color: white;
   padding: 5px 10px 5px 10px;
   margin: -10px 0px 0px 20px;
+} */
+
+.btn-envio {
+  width: 170px;
+  height: 60px;
+}
+
+.btn-default {
+  background-color: #F79707;
+  font-family: "M PLUS Rounded 1c", Roboto;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #fff;
+  border-color: #F79707;
+  border-radius: 10px;
+}
+
+/* .btn-default:hover {
+  color: #224455;
+  background-color: #4488DD;
+  border-color: #4488DD;
+} */
+
+.btn-default:hover {
+  color: #fff;
+  background-color: #d88405;
+  border-color: #d88405;
 }
 
 .card-header{
@@ -82,7 +109,8 @@ p{
 
 .form-control, .form-check-input {
   border: 2px solid #224455;
-  border-radius: 5px;
+  box-sizing: border-box;
+  border-radius: 10px;
 }
 
 .form-control:focus, .form-check-input:focus {

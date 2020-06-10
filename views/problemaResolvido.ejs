@@ -39,8 +39,8 @@
         <p> Oi <strong><%= dadosUsuario.nome %></strong> </p>
         <p> Caso você deseje marcar o relato de problema de ID <strong><%= id %></strong> como resolvido, clique em <strong>"Confirmar"</strong> para fazer a ação. Após a confirmação, não é possível reverter a ação. </p>
           <form id="excluirPerfil" action="/perfil/problema/<%= id %>/resolvido?_method=PUT" method="POST">
-            <button type="submit" class="btn btn-success">Confirmar</button>
-            <button type="button" onclick="window.location.href = '/perfil'" class="btn btn-primary">Cancelar</button>
+            <button type="submit" class="btn btn-padrao btn-green">Confirmar</button>
+            <button type="button" onclick="window.location.href = '/perfil'" class="btn btn-padrao">Cancelar</button>
           </form>
       </div>
 

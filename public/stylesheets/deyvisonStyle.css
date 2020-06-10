@@ -89,20 +89,53 @@ form .form-control {
 
 form .form-control:focus {
     border: 2px solid #F79707;
-    box-shadow: 2px 2px #F79707;
+    /* box-shadow: 2px 2px #F79707; */
+    box-shadow: none;
 }
 
 .btn-padrao {
-    width: 140px;
-    height: 50px;
+    width: 170px;
+    height: 60px;
     background-color: #F79707;
-    border-radius: 10px;
     color: #FFFFFF;
-    font-weight: bold;
+    font-family: "M PLUS Rounded 1c", Roboto;
+    font-size: 1rem;
+    font-weight: 900;
+    border-radius: 10px;
     margin: 15px 10px 15px 0;
 }
 
-.btn-padrao:hover {
+/* .btn-padrao:hover {
     color: #224455;
     background-color: #4488DD;
+} */
+
+.btn-padrao:hover {
+    color: #fff;
+    background-color: #d88405;
+    border-color: #d88405;
+}
+
+.btn-red {
+    background-color: #dc3545;
+}
+
+.btn-red:hover {
+    color: #fff;
+    background-color: #b92635;
+}
+
+.btn-green {
+    background-color: #28a745;
+}
+
+.btn-green:hover {
+    color: #fff;
+    background-color: #20943b;
+}
+
+.btn {
+    font-family: "M PLUS Rounded 1c", Roboto;
+    font-size: 1rem;
+    font-weight: 900;
 }
