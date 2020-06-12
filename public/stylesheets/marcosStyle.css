@@ -2,7 +2,7 @@ header {
     border-bottom: solid #00000014;
 }
 
-header form{
+.modal-dialog {
     width: 300px;
     height: 500px;
     margin: auto;

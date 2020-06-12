@@ -57,7 +57,7 @@
                                 style="background-color: white; color: rgb(68, 137, 221); margin-top: 20px;">Criar
                                 Conta</button>
                             <button type="button" data-toggle="modal" data-target="#loginModal"
-                                style="border: 1px solid white;">Login</button>
+                                style="border: 1px solid white;"> Login </button>
                         </div>
                     </form>
                 </div>
@@ -69,18 +69,23 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
+
+                    <img src="/public/images/logo.png" alt="logo mobmap">
+                    <h4>Faça login</h4>
+
                     <form method="POST" action="/login" id="login">
-                        <img src="/public/images/logo.png" alt="">
-                        <img src="/public/images//mob_map.png" alt="">
-                        <div class="user"></div>
-                        <input type="email" name="email" id="emailLogin" placeholder="E-mail" required="">
-                        <input type="password" name="senha" id="password" placeholder="Senha" required="">
+
+                        <div class="user">
+                            <input type="email" name="email" id="emailLogin" placeholder="E-mail" required="">
+                            <input type="password" name="senha" id="password" placeholder="Senha" required="">
+                        </div>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" name="customCheck1" id="customCheck1">
                             <label class="custom-control-label" for="customCheck1">Manter-me conectado</label>
-                            <p><button type="button" data-toggle="modal" data-target="#esqueceuSenhaModal">Esqueceu a
-                                    senha?</button></p>
+                            <p></p>
                         </div>
+                        <button type="button" data-toggle="modal" data-target="#esqueceuSenhaModal">Esqueceu a
+                            senha?</button>
                         <button type="submit">Entrar</button>
                         <h5>Não tem conta? <button type="button" data-toggle="modal"
                                 data-target="#registerModal">Registre-se</button></h5>
@@ -95,6 +100,9 @@
             <div class="modal-content">
                 <div class="modal-body">
 
+                    <img src="/public/images/logo.png" alt="logo mobmap">
+                    <h4>Cadastar</h4>
+
                     <form method="POST" action="/cadastro">
 
                         <div class="user">
@@ -102,15 +110,13 @@
                             <input type="email" name="email" id="email" placeholder="E-mail" required="">
                             <input type="password" name="senha" id="senha" placeholder="Senha" required="">
                         </div>
-                        <button type="submit">Criar Conta</button>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck2" required="">
-                            <label class="custom-control-label" for="customCheck2"> Concordo com a <a
-                                    href="privacyPolitics.html">Politica de Privacidade</a> e <a
-                                    href="termService.html">Termos de Serviço</a></label>
-                        </div>
+                        <button type="submit">Criar minha conta</button>
 
-                        <h5>Já tem conta? <button type="button" data-toggle="modal" data-target="#loginModal">
+                        <label>Ao clicar em "criar minha conta", concordo com a <a href="privacyPolitics.html">Politica
+                                de Privacidade</a> e <a href="termService.html">Termos de Serviço</a></label>
+
+                        <h5>Já tem conta? <button type="button" data-toggle="modal" data-dismiss="modal"
+                                data-target="#loginModal">
                                 Entrar</button></h5>
                     </form>
                 </div>
