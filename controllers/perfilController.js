@@ -205,7 +205,14 @@ const perfilController = {
             }
         });
 
-        res.render('alterarSenha', {dadosUsuario})
+        //Verifica se o usuário já tem um perfil
+        let perfilUsuario = await Perfil.findOne({
+            where: {
+                usuario_id: req.session.usuario.id
+            }
+        });
+
+        res.render('alterarSenha', {dadosUsuario, perfilUsuario})
     },
     
     salvarSenha: async (req, res) => {
@@ -254,7 +261,14 @@ const perfilController = {
             }
         });
 
-        res.render('excluirPerfil', {dadosUsuario});
+        //Verifica se o usuário já tem um perfil
+        let perfilUsuario = await Perfil.findOne({
+            where: {
+                usuario_id: req.session.usuario.id
+            }
+        });
+
+        res.render('excluirPerfil', {dadosUsuario, perfilUsuario});
     },
 
     salvaExcluirConta: async (req, res) => {
