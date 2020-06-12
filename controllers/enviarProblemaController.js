@@ -32,7 +32,7 @@ const enviarProblemaController = {
         const usuarioId = req.session.usuario.id;
         const pais = 'BR';
 
-        let foto = 'imagem-padrao-mobmap.png';
+        let foto = 'imagem-padrao-mobmap.jpg';
         if (req.files.length > 0) {
             foto = req.files[0].filename;
         }

@@ -17,7 +17,13 @@
   <main class="container">
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-4 text-center">
-        <img class="rounded-cicle" src="/images/profile.png" alt="imagem de perfil" width="200">
+        
+        <% if (perfilUsuario !== null) { %>
+          <img class="rounded-circle" src="/images_avatar/<%= perfilUsuario.avatar !== null ? perfilUsuario.avatar : 'avatar-padrao-mobmap.jpg' %>" alt="Avatar do perfil do usuário" width="200px" height="200px">
+        <% } else { %> 
+          <img class="rounded-circle" src="/images_avatar/avatar-padrao-mobmap.jpg" alt="Avatar do perfil do usuário" width="200">
+        <% } %> 
+
         <h4><%= dadosUsuario.nome %></h4>
         <span><%= dadosUsuario.email %></span>
 

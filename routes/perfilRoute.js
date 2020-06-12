@@ -5,10 +5,19 @@ const path = require("path");
 const multer = require("multer");
 const perfilController = require('../controllers/perfilController');
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.join('public','images_avatar'))
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname)
+    }
+  });
+const upload = multer({ storage: storage })
 
 router.get('/', auth, perfilController.perfil);
 router.get('/atualizarPerfil', perfilController.atualizarPerfil);
-router.put('/atualizarPerfil', perfilController.salvarPerfil);
+router.put('/atualizarPerfil', upload.any(), perfilController.salvarPerfil);
 router.get('/alterarSenha', perfilController.alterarSenha);
 router.put('/alterarSenha', perfilController.salvarSenha);
 router.get('/excluirPerfil', perfilController.excluirConta);

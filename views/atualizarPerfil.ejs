@@ -16,7 +16,13 @@
   <main class="container">
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-4 text-center">
-        <img class="rounded-cicle" src="/images/profile.png" alt="imagem de perfil" width="200">
+        
+        <% if (perfilUsuario !== null) { %>
+          <img class="rounded-circle" src="/images_avatar/<%= perfilUsuario.avatar !== null ? perfilUsuario.avatar : 'avatar-padrao-mobmap.jpg' %>" alt="Avatar do perfil do usuário" width="200px" height="200px">
+        <% } else { %> 
+          <img class="rounded-circle" src="/images_avatar/avatar-padrao-mobmap.jpg" alt="Avatar do perfil do usuário" width="200">
+        <% } %> 
+        
         <h4 class="card-title"><%= dadosUsuario.nome %></h4>
         <span><%= dadosUsuario.email %></span>
 
@@ -44,7 +50,7 @@
         <h3 class="perfil"> Atualizar Perfil </h3>
         <hr class="perfil">
 
-        <form id="atualizarPerfil" action="/perfil/atualizarPerfil?_method=PUT" method="POST">
+        <form id="atualizarPerfil" action="/perfil/atualizarPerfil?_method=PUT" method="POST" enctype="multipart/form-data">
           <div class="form-row">
             <div class="form-group col-md-5">
               <label for="nomePerfil">Nome</label>
@@ -100,6 +106,10 @@
             </div>
           </div>
 
+          <div class="form-group col-md-12">
+          <label for="foto">Adicione uma foto/avatar:</label>
+          <input type="file" class="m-3" name="foto">
+          </div>
           <label for="sobreUsuario">Fale um pouco sobre você</label>
           <textarea class="form-control" name="sobreUsuario" id="sobreUsuario" rows="5"><%= (perfilUsuario !== null) ? perfilUsuario.sobre_usuario : '' %></textarea>
 

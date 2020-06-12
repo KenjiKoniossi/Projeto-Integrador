@@ -75,6 +75,7 @@ body {
     width: 30px;
     border: 2px solid #4488DD;
     border-radius: 5px;
+    background-color: #4488DD;
     margin-top: 10px;
     margin-bottom: 50px;
 }
@@ -169,16 +170,10 @@ body {
     border-radius: 10px;
 }
 
-/* .btn-default:hover {
-    color: #224455;
-    background-color: #4488DD;
-    border-color: #4488DD;
-} */
-
 .btn-default:hover {
-    color: #fff;
-    background-color: #d88405;
-    border-color: #d88405;
+    color: #F79707;
+    background-color: #fff;
+    border: 3px solid #F79707;
 }
 
 @media (min-width: 576px) {

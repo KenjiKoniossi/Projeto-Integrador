@@ -87,9 +87,9 @@ p{
 } */
 
 .btn-default:hover {
-  color: #fff;
-  background-color: #d88405;
-  border-color: #d88405;
+  color: #F79707;
+  background-color: #fff;
+  border: 3px solid #F79707;
 }
 
 .card-header{

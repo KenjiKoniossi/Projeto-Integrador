@@ -14,10 +14,15 @@
   <%- include("includes/header") %>
 
   <main class="container">
-    <div class="row">
+    <div class="row mt-5 mb-5">
       <div class="col-sm-12 col-md-12 col-lg-4 text-center">
-        <img class="rounded-cicle" src="/images/profile.png" alt="imagem de perfil" width="200">
 
+        <% if (perfilUsuario !== null) { %>
+          <img class="rounded-circle" src="/images_avatar/<%= perfilUsuario.avatar !== null ? perfilUsuario.avatar : 'avatar-padrao-mobmap.jpg' %>" alt="Avatar do perfil do usuário" width="200px" height="200px">
+        <% } else { %> 
+          <img class="rounded-circle" src="/images_avatar/avatar-padrao-mobmap.jpg" alt="Avatar do perfil do usuário" width="200">
+        <% } %> 
+        
         <h4><%= dadosUsuario.nome %></h4>
         <span><%= dadosUsuario.email %></span>
 
@@ -47,7 +52,11 @@
         <h3 class="perfil">Perfil</h3>
         <hr class="perfil">
         <p class="perfil" id="collapsePerfil">
-          <%- sobre_usuario %> 
+          <% if (perfilUsuario !== null) { %>
+            <%- perfilUsuario.sobre_usuario !== null ? perfilUsuario.sobre_usuario : 'Adicione aqui informações sobre você. Clique em <strong>"Atualizar perfil"</strong> para editar suas informações.' %> 
+            <% } else { %> 
+              Adicione aqui informações sobre você. Clique em <strong>"Atualizar perfil"</strong> para editar suas informações.
+          <% } %> 
         </p>
 
         <h3 class="perfil">Suas Contribuições</h3>

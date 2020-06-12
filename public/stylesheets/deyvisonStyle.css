@@ -111,9 +111,9 @@ form .form-control:focus {
 } */
 
 .btn-padrao:hover {
-    color: #fff;
-    background-color: #d88405;
-    border-color: #d88405;
+    color: #F79707;
+    background-color: #fff;
+    border: 3px solid #F79707;
 }
 
 .btn-red {
@@ -121,8 +121,9 @@ form .form-control:focus {
 }
 
 .btn-red:hover {
-    color: #fff;
-    background-color: #b92635;
+    color: #dc3545;
+    background-color: #fff;
+    border: 3px solid #dc3545;
 }
 
 .btn-green {
@@ -130,8 +131,9 @@ form .form-control:focus {
 }
 
 .btn-green:hover {
-    color: #fff;
-    background-color: #20943b;
+    color: #28a745;
+    background-color: #fff;
+    border: 3px solid #28a745;
 }
 
 .btn {
