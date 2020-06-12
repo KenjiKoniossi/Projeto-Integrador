@@ -15,23 +15,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav" style="margin: 0px, 150px, 0, 25px;">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #224455;" href="/saibamais"><i
-                            class="fa fa-question" id="question" aria-hidden="true"></i>
+                    <a class="nav-link" style="color: #224455;" href="/saibamais"><i class="fa fa-question"
+                            id="question" aria-hidden="true"></i>
                         Saiba Mais</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #224455;" href="/mapa"><i
-                            class="fa fa-hashtag" id="hashtag" aria-hidden="true"></i>
+                    <a class="nav-link" style="color: #224455;" href="/mapa"><i class="fa fa-hashtag" id="hashtag"
+                            aria-hidden="true"></i>
                         Mapa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #224455;" href="/enviarProblema"><i
-                            class="fa fa-envelope-open" id="envelope" aria-hidden="true"></i>
+                    <a class="nav-link" style="color: #224455;" href="/enviarProblema"><i class="fa fa-envelope-open"
+                            id="envelope" aria-hidden="true"></i>
                         Enviar Problema</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #224455;" href="/ajuda"><i
-                            class="fa fa-envelope-open" id="envelope" aria-hidden="true"></i>
+                    <a class="nav-link" style="color: #224455;" href="/ajuda"><i class="fa fa-envelope-open"
+                            id="envelope" aria-hidden="true"></i>
                         Ajuda</a>
                 </li>
 
@@ -39,7 +39,7 @@
         </div>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#entradaModal" id="logIn"
             style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</button>
-                    
+
     </nav>
     <div class="row">
         <div class="col-5"></div>
@@ -52,38 +52,43 @@
                     <form action="post">
                         <img src="/public/images/logoWhite.png" alt="">
                         <img src="/public/images/mob_mapWhite.png" alt="">
-                        <div class="user"></div>
-                        <button type="button" data-toggle="modal" data-target="#registerModal"
-                            style="background-color: white; color: rgb(68, 137, 221); margin-top: 20px;">Criar
-                            Conta</button>
-                        <button type="button" data-toggle="modal" data-target="#loginModal"
-                            style="border: 1px solid white;">Login</button>
+                        <div class="user">
+                            <button type="button" data-toggle="modal" data-target="#registerModal"
+                                style="background-color: white; color: rgb(68, 137, 221); margin-top: 20px;">Criar
+                                Conta</button>
+                            <button type="button" data-toggle="modal" data-target="#loginModal"
+                                style="border: 1px solid white;">Login</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <form method="POST" action="/login" id="login">
-                            <img src="/public/images/logo.png" alt="">
-                            <img src="/public/images//mob_map.png" alt="">
-                            <div class="user"></div>
-                                <input type="email" name="email" id="emailLogin" placeholder="E-mail" required="">
-                                <input type="password" name="senha" id="password" placeholder="Senha" required=""> 
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="customCheck1" id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1">Manter-me conectado</label> <p><button type="button" data-toggle="modal" data-target="#esqueceuSenhaModal">Esqueceu a senha?</button></p>
-                                </div>
-                            <button type="submit">Entrar</button>
-                            <h5>Não tem conta? <button type="button" data-toggle="modal" data-target="#registerModal">Registre-se</button></h5>
-                        </form>
-                    </div>
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form method="POST" action="/login" id="login">
+                        <img src="/public/images/logo.png" alt="">
+                        <img src="/public/images//mob_map.png" alt="">
+                        <div class="user"></div>
+                        <input type="email" name="email" id="emailLogin" placeholder="E-mail" required="">
+                        <input type="password" name="senha" id="password" placeholder="Senha" required="">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" name="customCheck1" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">Manter-me conectado</label>
+                            <p><button type="button" data-toggle="modal" data-target="#esqueceuSenhaModal">Esqueceu a
+                                    senha?</button></p>
+                        </div>
+                        <button type="submit">Entrar</button>
+                        <h5>Não tem conta? <button type="button" data-toggle="modal"
+                                data-target="#registerModal">Registre-se</button></h5>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
     <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -91,7 +96,7 @@
                 <div class="modal-body">
 
                     <form method="POST" action="/cadastro">
-                                     
+
                         <div class="user">
                             <input type="text" name="nome" id="nome" placeholder="Nome" required="">
                             <input type="email" name="email" id="email" placeholder="E-mail" required="">

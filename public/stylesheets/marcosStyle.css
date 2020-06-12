@@ -7,6 +7,10 @@ header form{
     height: 500px;
     margin: auto;
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 header form button{
     position: relative;
