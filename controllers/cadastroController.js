@@ -13,10 +13,9 @@ const cadastroController = {
         const hashPassword = bcrypt.hashSync(senha, 10);
 
         const getEmail = await Usuario.findOne({ where: { email } });
-        console.log(getEmail);
 
         if (getEmail) {
-            res.render('paginaInicial', { msg: 'E-mail já cadastrado, faça o login' });
+            return res.render('paginaInicial', { msg: 'E-mail já cadastrado, faça o login' });
         }
 
         const usuario = await Usuario.create({
@@ -30,9 +29,7 @@ const cadastroController = {
         });
 
         if (!usuario) {
-            return res.render('/', {
-                msg: "Não foi possível cadastrar!",
-            });
+            return res.render('paginaInicial', { msg: "Não foi possível cadastrar!" });
         }
 
         req.session.usuario = {

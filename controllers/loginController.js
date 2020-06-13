@@ -1,25 +1,26 @@
-const Sequelize = require("sequelize")
-const config = require("../config/database")
-const bcrypt = require("bcrypt")
+// const Sequelize = require("sequelize");
+const config = require("../config/database");
+const bcrypt = require("bcrypt");
+const { Usuario } = require('../models');
 
 loginController = {
   create: async (req, res) => {
     const { email, senha } = req.body
-    const con = new Sequelize(config.development)
-    
-    const [ usuario ] = await con.query('SELECT * FROM usuario WHERE email=:email LIMIT 1', {
-      replacements: { email },
-      type: Sequelize.QueryTypes.SELECT
-    })
 
-    if (!usuario || !bcrypt.compareSync(senha, usuario.senha)) {
-      return res.send('Login ou senha incorretos')
+    const dadosUsuario = await Usuario.findOne({
+      where: {
+        email
+      }
+    });
+
+    if (!dadosUsuario || !bcrypt.compareSync(senha, dadosUsuario.senha)) {
+      return res.render('paginaInicial', { msg: "Login ou senha incorretos" });
     }
-
+    
     req.session.usuario = {
-      id: usuario.id,
-      nome: usuario.nome,
-      email: usuario.email
+      id: dadosUsuario.id,
+      nome: dadosUsuario.nome,
+      email: dadosUsuario.email
     }
 
     return res.redirect('/perfil')
@@ -28,6 +29,7 @@ loginController = {
     
     req.session.destroy()
     return res.redirect('/')
+
   }
 }
 
