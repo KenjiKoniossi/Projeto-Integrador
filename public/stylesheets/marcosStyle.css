@@ -27,7 +27,8 @@ header form button:hover{
     background-color: orange;
 }
 header input,select {
-    height: 30px;
+    width: 230px;
+    height: 32px;
     margin-bottom: 20px;
     padding-left: 6px;
     border-radius: 5px;
