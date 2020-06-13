@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     deficiencia_id: DataTypes.INTEGER,
     endereco_id: DataTypes.INTEGER,
   }, {
-    tableName: 'perfil'
+    tableName: 'perfil',
+    freezeTableName: true
   });
   Perfil.associate = function(models) {
     Perfil.belongsTo(models.Deficiencia, {

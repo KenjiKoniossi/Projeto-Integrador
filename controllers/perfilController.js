@@ -313,8 +313,8 @@ const perfilController = {
             }
         });
 
-        req.session.usuario = undefined
-        res.locals.session = undefined
+        req.session.destroy();
+        res.locals.session = undefined;
 
         res.redirect('/');
     },

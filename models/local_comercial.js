@@ -31,7 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     usuario_id: DataTypes.INTEGER,
     endereco_id: DataTypes.INTEGER
   }, {
-    tableName: 'local_comercial'
+    tableName: 'local_comercial',
+    freezeTableName: true
   });
   Local_comercial.associate = function(models) {
     Local_comercial.belongsTo(models.Usuario, {

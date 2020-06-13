@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
   }, {
-    tableName: 'tag_problema'
+    tableName: 'tag_problema',
+    freezeTableName: true
   });
   Tag_problema.associate = function(models) {
     Tag_problema.hasMany(models.Problema, {

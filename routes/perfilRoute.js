@@ -16,16 +16,16 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 router.get('/', auth, perfilController.perfil);
-router.get('/atualizarPerfil', perfilController.atualizarPerfil);
-router.put('/atualizarPerfil', upload.any(), perfilController.salvarPerfil);
-router.get('/alterarSenha', perfilController.alterarSenha);
-router.put('/alterarSenha', perfilController.salvarSenha);
-router.get('/excluirPerfil', perfilController.excluirConta);
-router.delete('/excluirPerfil', perfilController.salvaExcluirConta);
-router.get('/problema/:id/resolvido', perfilController.viewProblemaResolvido);
-router.put('/problema/:id/resolvido', perfilController.problemaResolvido);
-router.get('/problema/:id/apagar', perfilController.viewApagarProblema);
-router.delete('/problema/:id/apagar', perfilController.apagarProblema);
+router.get('/atualizarPerfil', auth, perfilController.atualizarPerfil);
+router.put('/atualizarPerfil', auth, upload.any(), perfilController.salvarPerfil);
+router.get('/alterarSenha', auth, perfilController.alterarSenha);
+router.put('/alterarSenha', auth, perfilController.salvarSenha);
+router.get('/excluirPerfil', auth, perfilController.excluirConta);
+router.delete('/excluirPerfil', auth, perfilController.salvaExcluirConta);
+router.get('/problema/:id/resolvido', auth, perfilController.viewProblemaResolvido);
+router.put('/problema/:id/resolvido', auth, perfilController.problemaResolvido);
+router.get('/problema/:id/apagar', auth, perfilController.viewApagarProblema);
+router.delete('/problema/:id/apagar', auth, perfilController.apagarProblema);
 
 
 module.exports = router;
