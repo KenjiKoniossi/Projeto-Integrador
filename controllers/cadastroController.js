@@ -17,7 +17,6 @@ const cadastroController = {
 
         if (getEmail) {
             res.render('paginaInicial', { msg: 'E-mail já cadastrado, faça o login' });
-            //return res.status(400).json({ error: 'Email já cadastrado'})
         }
 
         const usuario = await Usuario.create({
