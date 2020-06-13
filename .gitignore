@@ -1,3 +1,7 @@
+# Pastas ignoradas
 node_modules
+public/images_avatar
+public/images_problemas
 
+# Arquivos ignorados
 .env
