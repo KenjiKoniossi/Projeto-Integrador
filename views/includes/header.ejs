@@ -56,14 +56,17 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body" style="background-color: rgb(68, 137, 221);">
+
+                    <span class="closeModal" data-dismiss="modal"> x </span>
+
                     <form action="post">
                         <img src="/public/images/logoWhite.png" alt="">
                         <img src="/public/images/mob_mapWhite.png" alt="">
                         <div class="user">
-                            <button type="button" data-toggle="modal" data-target="#registerModal"
+                            <button type="button" data-toggle="modal" data-target="#registerModal" data-dismiss="modal"
                                 style="background-color: white; color: rgb(68, 137, 221); margin-top: 20px;">Criar
                                 Conta</button>
-                            <button type="button" data-toggle="modal" data-target="#loginModal"
+                            <button type="button" data-toggle="modal" data-target="#loginModal" data-dismiss="modal"
                                 style="border: 1px solid white;"> Login </button>
                         </div>
                     </form>
@@ -77,9 +80,11 @@
             <div class="modal-content">
                 <div class="modal-body">
 
+                    <span class="closeModal closeBlue" data-dismiss="modal"> x </span>
+
                     <img src="/public/images/logo.png" alt="logo mobmap">
                     <h4>Faça login</h4>
-
+                    
                     <form method="POST" action="/login" id="login">
 
                         <div class="user">
@@ -108,6 +113,7 @@
             <div class="modal-content">
                 <div class="modal-body">
 
+                    <span class="closeModal closeBlue" data-dismiss="modal"> x </span>
                     <img src="/public/images/logo.png" alt="logo mobmap">
                     <h4>Cadastrar</h4>
 
