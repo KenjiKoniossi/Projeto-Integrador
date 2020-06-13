@@ -42,8 +42,9 @@
             style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</button>
         <% } else { %>
         <a href="/perfil"><button type="button" class="btn btn-primary" id="perfil"
-            style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i> Perfil</button></a>
-        <a href="/login/logout"><button type="button" class="btn btn-danger ml-2" id="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button></a>
+                style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i> Perfil</button></a>
+        <a href="/login/logout"><button type="button" class="btn btn-danger ml-2" id="logout"><i class="fa fa-sign-out"
+                    aria-hidden="true"></i> Logout</button></a>
         <% } %>
 
     </nav>
@@ -91,8 +92,9 @@
                             <p></p>
                         </div>
                         <button type="submit">Entrar</button>
-                        <button type="button" data-toggle="modal" data-target="#esqueceuSenhaModal">Esqueceu a
-                            senha?</button>
+                        <button type="button" data-toggle="modal" data-dismiss="modal" data-target="#esqueceuSenhaModal">
+                            Esqueceu a senha?
+                        </button>
                         <h5>Não tem conta? <button type="button" data-toggle="modal"
                                 data-target="#registerModal">Registre-se</button></h5>
                     </form>
@@ -121,9 +123,7 @@
                         <label>Ao clicar em "criar minha conta", concordo com a <a href="privacyPolitics.html">Politica
                                 de Privacidade</a> e <a href="termService.html">Termos de Serviço</a></label>
 
-                        <h5>Já tem conta? <button type="button" 
-                                data-toggle="modal" 
-                                data-dismiss="modal"
+                        <h5>Já tem conta? <button type="button" data-toggle="modal" data-dismiss="modal"
                                 data-target="#loginModal">
                                 Entrar</button></h5>
                     </form>
@@ -136,9 +136,11 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
+
+                    <img src="/public/images/logo.png" alt="logo mobmap">
+                    <h4>Esqueci a senha</h4>
+
                     <form action="post">
-                        <img src="/public/images/logo.png" alt="">
-                        <img src="/public/images/mob_map.png" alt="">
                         <div class="user"></div>
                         <input type="email" name="email" id="emailEsqueceuSenha" placeholder="E-mail" required="">
                         <button type="submit">Recuperar Senha</button>
