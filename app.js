@@ -40,6 +40,11 @@ app.use(session(
 ));
 app.use(cookieParser());
 
+app.use(function(req, res, next) {
+  res.locals.session = req.session
+  next()
+})
+
 // Roteando
 app.use('/ajuda', ajudaRouter);
 app.use('/cadastro', cadastroRouter);
