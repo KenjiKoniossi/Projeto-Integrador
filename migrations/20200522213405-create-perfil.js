@@ -17,6 +17,9 @@ module.exports = {
       sobre_usuario: {
         type: Sequelize.TEXT('LONG')
       },
+      avatar: {
+        type: Sequelize.STRING
+      },
       usuario_id: {
         type: Sequelize.INTEGER,
         allowNull: false,

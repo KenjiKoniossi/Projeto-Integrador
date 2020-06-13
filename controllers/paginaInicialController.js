@@ -3,7 +3,7 @@ const {check, validationResult, body} = require('express-validator');
 
 const paginaInicialController = {
     viewForm: (req, res) => {
-        res.render('paginaInicial', { session: req.session })
+        res.render('paginaInicial')
     },
 
     enviarContato: async (req, res) => {

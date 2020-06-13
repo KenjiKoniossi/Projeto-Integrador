@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     ponto_referencia: DataTypes.STRING,
     pais: DataTypes.STRING
   }, {
-    tableName: 'endereco'
+    tableName: 'endereco',
+    freezeTableName: true
   });
   Endereco.associate = function(models) {
     Endereco.hasMany(models.Perfil, {

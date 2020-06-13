@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const auth = require("../middlewares/auth");
 const path = require('path');
 const multer = require('multer');
 const enviarProblemaController = require('../controllers/enviarProblemaController')
@@ -15,8 +16,8 @@ const storage = multer.diskStorage({
   });
 const upload = multer({ storage: storage })
 
-router.get('/', enviarProblemaController.viewForm);
-router.post('/', upload.any(), [
+router.get('/', auth, enviarProblemaController.viewForm);
+router.post('/', auth, upload.any(), [
   check('problema').not().isEmpty().withMessage('Você deve selecionar um opção na <strong>Seleção do Problema</strong>.'),
   check('problema_outro').if(check('problema').equals('Outro'))
   .not().isEmpty().withMessage('Você selecionou a opção <strong>"Outro"</strong>, a caixa de texto desta opção deve ser preenchida.'),

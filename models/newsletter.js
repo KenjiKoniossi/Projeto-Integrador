@@ -1,30 +1,26 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Contato = sequelize.define('Contato', {
+  const Newsletter = sequelize.define('Newsletter', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    nome: {
-      allowNull: false,
-      type: DataTypes.STRING
-    },
     email: {
       allowNull: false,
       type: DataTypes.STRING
     },
-    mensagem: {
+    ativo: {
       allowNull: false,
-      type: DataTypes.TEXT
+      type: DataTypes.BOOLEAN
     }
-  }, {
-    tableName: 'contato',
+  },{
+    tableName: 'newsletter',
     freezeTableName: true
   });
-  Contato.associate = function(models) {
+  Newsletter.associate = function(models) {
     // associations can be defined here
   };
-  return Contato;
+  return Newsletter;
 };

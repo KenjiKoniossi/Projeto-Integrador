@@ -37,8 +37,14 @@
 
             </ul>
         </div>
+        <% if (!session.usuario) { %>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#entradaModal" id="logIn"
             style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</button>
+        <% } else { %>
+        <a href="/perfil"><button type="button" class="btn btn-primary" id="perfil"
+            style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i> Perfil</button></a>
+        <a href="/login/logout"><button type="button" class="btn btn-danger ml-2" id="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button></a>
+        <% } %>
 
     </nav>
     <div class="row">
@@ -84,9 +90,9 @@
                             <label class="custom-control-label" for="customCheck1">Manter-me conectado</label>
                             <p></p>
                         </div>
+                        <button type="submit">Entrar</button>
                         <button type="button" data-toggle="modal" data-target="#esqueceuSenhaModal">Esqueceu a
                             senha?</button>
-                        <button type="submit">Entrar</button>
                         <h5>Não tem conta? <button type="button" data-toggle="modal"
                                 data-target="#registerModal">Registre-se</button></h5>
                     </form>

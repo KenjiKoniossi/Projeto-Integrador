@@ -17,12 +17,6 @@ const perfilController = {
             }
         });
 
-        //Se tiver um perfil, recupera a descrição do perfil, se não, adiciona um frase padrão
-        let sobre_usuario = 'Adicione aqui informações sobre você. Clique em <strong>"Atualizar perfil"</strong> para editar suas informações.';
-        if (perfilUsuario !== null) {
-            sobre_usuario = perfilUsuario.sobre_usuario;
-        }
-
         //Sugestão de implementação, adicionar os dados do perfil do usuário na view e não somente o texto sobre
 
         //Verifica se o usuário já enviou problemas
@@ -32,12 +26,7 @@ const perfilController = {
             }
         });
 
-        // //Trata o objeto Sequelize instances, convertendo para JSON
-        // listaProblemas = JSON.stringify(listaProblemas);
-        // //Trata o JSON para array
-        // listaProblemas = JSON.parse(listaProblemas);
-        
-        res.render('perfil', {dadosUsuario, sobre_usuario, listaProblemas});
+        res.render('perfil', {dadosUsuario, perfilUsuario, listaProblemas});
     },
 
     atualizarPerfil: async (req, res) => {
@@ -98,6 +87,16 @@ const perfilController = {
             }
         });
 
+        //Salvar avatar do usuário
+        let foto = 'avatar-padrao-mobmap.jpg';
+        if (req.files.length > 0) {
+            foto = req.files[0].filename;
+        } else {
+            if (perfilUsuario.avatar !== null || perfilUsuario.avatar !== 'avatar-padrao-mobmap.jpg') {
+                foto = perfilUsuario.avatar;
+            }
+        }
+
         let enderecoUsuario = {
             id: null
         };
@@ -122,6 +121,7 @@ const perfilController = {
                 sobrenome,
                 telefone,
                 sobre_usuario: sobreUsuario,
+                avatar: foto,
                 usuario_id: req.session.usuario.id,
                 endereco_id: enderecoUsuario.id
             })
@@ -131,7 +131,8 @@ const perfilController = {
             perfilUsuario = await Perfil.update({
                 sobrenome,
                 telefone,
-                sobre_usuario: sobreUsuario
+                sobre_usuario: sobreUsuario,
+                avatar: foto
             },{
                 where: {
                     usuario_id: req.session.usuario.id
@@ -204,7 +205,14 @@ const perfilController = {
             }
         });
 
-        res.render('alterarSenha', {dadosUsuario})
+        //Verifica se o usuário já tem um perfil
+        let perfilUsuario = await Perfil.findOne({
+            where: {
+                usuario_id: req.session.usuario.id
+            }
+        });
+
+        res.render('alterarSenha', {dadosUsuario, perfilUsuario})
     },
     
     salvarSenha: async (req, res) => {
@@ -253,7 +261,14 @@ const perfilController = {
             }
         });
 
-        res.render('excluirPerfil', {dadosUsuario});
+        //Verifica se o usuário já tem um perfil
+        let perfilUsuario = await Perfil.findOne({
+            where: {
+                usuario_id: req.session.usuario.id
+            }
+        });
+
+        res.render('excluirPerfil', {dadosUsuario, perfilUsuario});
     },
 
     salvaExcluirConta: async (req, res) => {
@@ -297,6 +312,9 @@ const perfilController = {
                 id: req.session.usuario.id
             }
         });
+
+        req.session.destroy();
+        res.locals.session = undefined;
 
         res.redirect('/');
     },

@@ -27,7 +27,8 @@ module.exports = (sequelize, DataTypes) => {
     usuario_id: DataTypes.INTEGER,
     endereco_id: DataTypes.INTEGER
   }, {
-    tableName: 'problema'
+    tableName: 'problema',
+    freezeTableName: true
   });
   Problema.associate = function(models) {
     Problema.belongsTo(models.Usuario, {

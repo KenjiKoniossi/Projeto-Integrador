@@ -1,10 +1,12 @@
+// SENHAS: 123456
+
 module.exports = {
     up: (queryInterface, Sequelize) => queryInterface.bulkInsert('usuario', 
       [
         {
             nome: 'Wesley Soares',
             email: 'wesley@email.com',
-            senha: '123456',
+            senha: '$2b$10$YqGhcRPM2QsV6l41MoVnBePSGa/qLFKg49HduxEIfRpptS/E.eAfe',
             admin: true,
             comercial: false,
             createdAt: new Date(),
@@ -13,7 +15,7 @@ module.exports = {
         {
             nome: 'João Carlos',
             email: 'joao@email.com',
-            senha: '9ff7b641722c30acdc058f2499d97dd8',
+            senha: '$2b$10$YqGhcRPM2QsV6l41MoVnBePSGa/qLFKg49HduxEIfRpptS/E.eAfe',
             admin: false,
             comercial: false,
             createdAt: new Date(),
