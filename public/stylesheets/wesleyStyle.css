@@ -176,6 +176,12 @@ body {
     border: 3px solid #F79707;
 }
 
+.btn {
+    font-family: "M PLUS Rounded 1c", Roboto;
+    font-size: 1rem;
+    font-weight: 900;
+}
+
 @media (min-width: 576px) {
     /* CSS Página inicial - tela como funciona */
     .bg-home-como {

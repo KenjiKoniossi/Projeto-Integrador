@@ -141,3 +141,9 @@ form .form-control:focus {
     font-size: 1rem;
     font-weight: 900;
 }
+
+#avatar-usuario {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}

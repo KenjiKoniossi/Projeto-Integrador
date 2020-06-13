@@ -25,7 +25,8 @@ loginController = {
     return res.redirect('/perfil')
   },
   destroy: (req, res) => {
-    req.session = undefined
+    
+    req.session.destroy()
     return res.redirect('/')
   }
 }
