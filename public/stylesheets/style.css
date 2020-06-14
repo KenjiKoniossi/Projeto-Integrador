@@ -14,6 +14,13 @@
     font-weight: 500;
     color: #fff;
     text-align: center;
+    margin: 0 0 10px 0;
+}
+
+#footer-geral h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.75rem;
+    font-weight: 900;
 }
 
 #footer-geral a, #footer-geral a:hover {
@@ -85,6 +92,10 @@
     border-color: #fff;
     color: #fff;
 }
+
+
+
+
 
 @media (min-width: 768px) {
     /* Footer - footer para todas as páginas */

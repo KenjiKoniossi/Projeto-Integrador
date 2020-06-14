@@ -7,6 +7,7 @@ const multer = require("multer");
 const {check, validationResult, body} = require('express-validator');
 
 router.get('/', paginaInicialController.viewForm);
+router.post('/newsletter', paginaInicialController.enviarNewsletter);
 router.post('/', [
     check('nomeContato').isLength({min: 3}).withMessage('Mínimo de 3 caracteres em <strong>Nome</strong>.'),
     check('emailContato').isEmail().withMessage('<strong>Email</strong> inválido.'),
