@@ -7,6 +7,13 @@ const paginaInicialController = {
     },
 
     enviarNewsletter: async (req, res) => {
+        
+        //Validação dos dados
+        let listaErrosContato = validationResult(req).errors;
+        if (listaErrosContato.length != 0) {
+            return res.status(400).json();
+        }
+
         const {email} = req.body;
 
         try {
@@ -17,25 +24,18 @@ const paginaInicialController = {
             })
     
             if (emailCadastrado !== null) {
-    
                 emailCadastrado.ativo = true;
                 await emailCadastrado.save();
-    
             } else {
-    
                 const dadosNewsletter = await Newsletter.create({
                     email,
                     ativo: true
                 })
-    
             }
-    
-            return res.status(201);
+            return res.status(201).json();
 
         } catch {
-
-            return res.status(400);
-
+            return res.status(400).json();
         }
 
     },

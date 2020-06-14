@@ -16,7 +16,7 @@ botaoNewsletter.addEventListener('click', async function (event) {
         method: "POST",
         body: JSON.stringify({email: emailNewsletter.value})
     })
-
+    
     //Apaga os elementos e adiciona a frase de sucesso ou erro
 
 })
