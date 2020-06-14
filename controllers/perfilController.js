@@ -226,10 +226,17 @@ const perfilController = {
             }
         });
 
+        //Verifica se o usuário já tem um perfil
+        let perfilUsuario = await Perfil.findOne({
+            where: {
+                usuario_id: req.session.usuario.id
+            }
+        });
+
         //Compara senha atual com senha guardada, se falso retorna erro
         if (!bcrypt.compareSync(senhaAtual, dadosUsuario.senha)) {
             let erroSenha = '<div class="alert alert-danger" role="alert"><strong>Senha atual</strong> digitada inválida.</div>';
-            return res.render('alterarSenha', {dadosUsuario, erroSenha});
+            return res.render('alterarSenha', {dadosUsuario, perfilUsuario, erroSenha});
         }
 
         //Gera hash da nova senha e faz update
@@ -238,7 +245,7 @@ const perfilController = {
         //Confirma se senhas digitadas são iguais
         if (!bcrypt.compareSync(confNovaSenha, hashSenha)) {
             let erroSenha = '<div class="alert alert-danger" role="alert"><strong>Nova senha</strong> e <strong>confirmação de senha</strong> devem ser iguais.</div>';
-            return res.render('alterarSenha', {dadosUsuario, erroSenha});
+            return res.render('alterarSenha', {dadosUsuario, perfilUsuario, erroSenha});
         }
 
         let updateDadosUsuario = await Usuario.update({

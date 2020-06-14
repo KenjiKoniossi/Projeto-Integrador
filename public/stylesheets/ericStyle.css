@@ -124,6 +124,10 @@ p{
   box-shadow: none;
 }
 
+#defaultCheck8 {
+  width: 200px;
+}
+
 /* .alert-danger {
   position: fixed;
   top: 0;

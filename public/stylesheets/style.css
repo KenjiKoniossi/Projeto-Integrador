@@ -1,7 +1,7 @@
 
 /* Footer - footer para todas as páginas */
-#footer-geral div{
-    height: 90px;
+#footer-geral {
+    height: 600px;
     background-color: #4488DD;
 }
 
@@ -10,15 +10,86 @@
 }
 
 #footer-geral p {
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 500;
+    color: #fff;
+    text-align: center;
+}
+
+#footer-geral a, #footer-geral a:hover {
+    font-family: "M PLUS Rounded 1c", Roboto;
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 0.1rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+#footer-geral a:hover {
+    color: #b7d7ff;
+}
+
+#footer-geral h3, #footer-geral label {
+    color: #fff;
+}
+
+#footer-geral label {
+    font-weight: 500;
+}
+
+#footer-geral input {
+    width: 90vw;
+    border: 2px solid #224455;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 0 5px;
+}
+
+#footer-geral input:focus {
+    border: 2px solid #F79707;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#footer-geral .btn-newsletter {
+    height: 40px;
+    width: 100px;
+}
+
+/* CSS botão geral */
+#footer-geral .btn-default {
+    background-color: #F79707;
+    font-family: "M PLUS Rounded 1c", Roboto;
+    font-size: 1rem;
+    font-weight: 900;
+    color: #fff;
+    border-color: #F79707;
+    border-radius: 10px;
+}
+
+#footer-geral .btn-default:hover {
+    color: #F79707;
+    background-color: #fff;
+    border: 3px solid #F79707;
+}
+
+#footer-geral .btn {
+    font-family: "M PLUS Rounded 1c", Roboto;
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+#footer-geral .btn-newsletter:hover {
+    background-color: #4488DD;
+    border-color: #fff;
     color: #fff;
 }
 
 @media (min-width: 768px) {
     /* Footer - footer para todas as páginas */
-    #footer-geral div{
-        height: 100px;
+    #footer-geral {
+        height: 265px;
     }
     
     #footer-geral img {
@@ -29,6 +100,11 @@
         font-size: 1rem;
         font-weight: 500;
         color: #fff;
+        text-align: start;
+    }
+
+    #footer-geral input {
+        width: 500px;
     }
 }
 
