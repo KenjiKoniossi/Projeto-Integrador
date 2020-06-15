@@ -1,7 +1,7 @@
 
 /* Footer - footer para todas as páginas */
 #footer-geral {
-    height: 600px;
+    height: 650px;
     background-color: #4488DD;
 }
 
@@ -24,10 +24,8 @@
 }
 
 #footer-geral a, #footer-geral a:hover {
-    font-family: "M PLUS Rounded 1c", Roboto;
-    font-size: 1.1rem;
-    font-weight: 900;
-    letter-spacing: 0.1rem;
+    font-size: 1rem;
+    font-weight: 400;
     color: #fff;
     text-decoration: none;
 }
@@ -93,14 +91,19 @@
     color: #fff;
 }
 
-
+#erro-newsletter {
+    color: #940000 !important;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    height: 20px;
+}
 
 
 
 @media (min-width: 768px) {
     /* Footer - footer para todas as páginas */
     #footer-geral {
-        height: 265px;
+        height: 300px;
     }
     
     #footer-geral img {
