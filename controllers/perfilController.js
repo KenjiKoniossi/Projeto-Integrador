@@ -337,6 +337,13 @@ const perfilController = {
             }
         });
 
+        //Verifica se o usuário já tem um perfil
+        let perfilUsuario = await Perfil.findOne({
+            where: {
+                usuario_id: req.session.usuario.id
+            }
+        });
+
         //Recuperar model do problema
         let dadosProblema = await Problema.findOne({
             where: {
@@ -349,7 +356,7 @@ const perfilController = {
             return res.redirect('/perfil');
         }
 
-        res.render('problemaResolvido', {dadosUsuario, id});
+        res.render('problemaResolvido', {dadosUsuario, perfilUsuario, id});
 
     },
 
@@ -401,6 +408,13 @@ const perfilController = {
             }
         });
 
+        //Verifica se o usuário já tem um perfil
+        let perfilUsuario = await Perfil.findOne({
+            where: {
+                usuario_id: req.session.usuario.id
+            }
+        });
+
         //Recuperar model do problema
         let dadosProblema = await Problema.findOne({
             where: {
@@ -413,7 +427,7 @@ const perfilController = {
             return res.redirect('/perfil');
         }
 
-        res.render('apagarProblema', {dadosUsuario, id});
+        res.render('apagarProblema', {dadosUsuario, perfilUsuario, id});
 },
 
     apagarProblema: async (req, res) => {

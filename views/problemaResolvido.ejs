@@ -4,7 +4,7 @@
 <head>
   <%- include("includes/head") %>
 
-  <title>MobMap - Perfil</title>
+  <title>MobMap - Problema Resolvido</title>
   <link rel='stylesheet' href='/stylesheets/deyvisonStyle.css'>
   <meta name="keywords" content="Mobilidade, Mapas, Perfil">
   <meta name="author" content="Deyvison J Paula">
@@ -16,7 +16,13 @@
   <main class="container">
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-4 text-center">
-        <img class="rounded-cicle" src="/images/profile.png" alt="imagem de perfil" width="200">
+
+        <% if (perfilUsuario !== null) { %>
+          <img class="rounded-circle mb-2" src="/images_avatar/<%= perfilUsuario.avatar !== null ? perfilUsuario.avatar : 'avatar-padrao-mobmap.jpg' %>" alt="Avatar do perfil do usuário" id="avatar-usuario">
+        <% } else { %> 
+          <img class="rounded-circle mb-2" src="/images_avatar/avatar-padrao-mobmap.jpg" alt="Avatar do perfil do usuário" id="avatar-usuario">
+        <% } %>
+
         <h4><%= dadosUsuario.nome %></h4>
         <span><%= dadosUsuario.email %></span>
 

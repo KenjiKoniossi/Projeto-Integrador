@@ -43,9 +43,9 @@ botaoNewsletter.addEventListener('click', async function (event) {
         method: "POST",
         body: JSON.stringify({email: emailNewsletter.value})
     })
+
+    const dados = await resposta.json();
     
-    console.log(resposta.status)
-    console.log(typeof(resposta.status))
     //Apaga os elementos e adiciona a frase de sucesso ou erro
     if (resposta.status !== 201) {
         divNewsletter.innerHTML = '<h3 class="text-center">Algo deu errado! Recarregue a página e tente novamente.</h3>'

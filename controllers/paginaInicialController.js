@@ -32,7 +32,9 @@ const paginaInicialController = {
                     ativo: true
                 })
             }
-            return res.status(201).json();
+            return res.status(201).json({
+                mensagem: "Email cadastrado"
+            });
 
         } catch {
             return res.status(400).json();
