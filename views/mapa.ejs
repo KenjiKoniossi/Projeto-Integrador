@@ -1,306 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<html>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head>
+    <%- include("includes/head") %>
+    <link rel='stylesheet' href='../stylesheets/mapaStyle.css'>
+    <title>MobMap - Mapa</title>
+</head>
 
-    <link rel="stylesheet" href="../public/stylesheets/matheusStyle.css">
-    <title>Mapa</title>
-  </head>
-
-  <body>
-
-    <div class="container-fluid m-0 p-0">
-      <div class="row m-0 p-0">
-
-        <!-- Coluna counteúdo -->
-        <div class="col-sm-6 col-lg-4 col-xl-3 p-0 m-0">
-
-          <!-- Barra pesquisa -->
-
-          <div class="row mb-4 m-3 p-3" style="max-height: 18vh;">
-
-            <div class="col-2 d-flex justify-content-start">
-
-              <a href="http://localhost:3000" class="d-flex justify-content-start">
-                <img style="width: 50px;" src="/public/images/wesley_logo_novo_azul.png" alt="">
-              </a>
-
-              <!-- <nav class="navbar d-flex justify-content-center">
-
-                <a class="navbar-brand" href="#"></a>
-    
-                <button class="col-1 d-flex justify-content-center navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#menuPrincipal">
-                  <span class="fas fa-bars fa-1x">&#9776;</span>
-                </button>
-    
-                <div class="collapse navbar-collapse" id="menuPrincipal">
-    
-                  <ul class="navbar-nav">
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Página Inicial</a>
-                    </li>
-                    <li class="nav-item active">
-                      <a class="nav-link" href="#">Mapa</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Enviar Problema</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Seu Perfil</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Saiba Mais</a>
-                    </li>
-                  </ul>
-    
+<body>
+    <main id="main-mapa" class="container-fluid">
+        <section id="mapa-inicio" class="row main-mapa">
+            <div id="div-mapa" class="col-12">
+                <div id="botao-voltar" class="">
+                    <a href="/" class="btn btn-default"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
                 </div>
-    
-              </nav> -->
+                <iframe width="100%" height="100%" frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJGUXrf6tQzpQRlM85BNsNn3M&key=AIzaSyDwhTa-9AxuYqmhQ3x52R8b8eCLRF_83zM" allowfullscreen></iframe>
 
             </div>
+            <div id="div-pesquisa" class="col-12">
+                <div id="barra-pesquisa" class="col-12">
+                    <form id="form-pesquisa" action="/pesquisa" method="GET">
+                        <label for="input-pesquisa">Faça um busca:</label>
+                        <input type="text" class="form-control" name="inputPesquisa" id="input-pesquisa" placeholder="Ex.: Digite um endereço">
+                        <button class="btn btn-default" type="submit" id="submit-pesquisa"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+                <div id="resultado-pesquisa">
 
-                        
-            <div class="col-10">
-              
-              <form class="form-inline mt-0">
-
-                <input class="col-12 form-control form-control-sm" type="text" placeholder="Pesquisar endereço"
-                  aria-label="Search" style="width: auto;">
-                
-              </form>
-
+                </div>
             </div>
+        </section>
 
-          </div>
+    </main>
 
-          <!-- Fim: barra pesquisa -->
+    <%- include("includes/footer") %>
 
-          <!-- Cards resultado pesquisa -->
-          <div class="mw-25 mh-75" style="overflow-y: scroll; overflow-x: hidden; max-height: 86vh;">
+    <%- include("includes/script") %>
+    
+</body>
 
-            <a href="#">
-
-              <div class="card rounded-0 border-bottom-0">
-                <div class="row d-flex justify-content-center align-items-center">
-
-                  <div class="card-body col-7 p-2">
-                    <h6 class="card-title text-dark">Rua Siqueira Bueno</h6>
-                    <p class="card-text small font-weight-light text-muted">Rua Siqueira Bueno, Bairro da Mooca, São Paulo, SP</p>
-                  </div>
-
-                  <div class="col-3 m-0 p-0">
-                    <img class="mobile-content" src="/public/images/matheus_placeholder_cidade.jpg" alt="" style="width: 100px;">
-                  </div>
-
-                </div>
-              </div>
-
-            </a>
-
-            <a href="#">
-
-              <div class="card rounded-0 border-bottom-0">
-                <div class="row d-flex justify-content-center align-items-center">
-
-                  <div class="card-body col-7 p-2">
-                    <h6 class="card-title text-dark">Escola Municipal Siqueira Bueno, 324</h6>
-                    <p class="card-text small font-weight-light text-muted">Praça Nossa Sra. Aparecida, 324, Jd. Vila Galvão, Guarulhos, SP</p>
-                  </div>
-
-                  <div class="col-3 m-0 p-0">
-                    <img class="mobile-content" src="/public/images/matheus_placeholder_cidade.jpg" alt="" style="width: 100px;">
-                  </div>
-
-                </div>
-              </div>
-
-            </a>
-
-            <a href="#">
-
-              <div class="card rounded-0 border-bottom-0 mw-100">
-                <div class="row d-flex justify-content-center align-items-center">
-
-                  <div class="card-body col-7 p-2">
-                    <h6 class="card-title text-dark">Rua Bartolomeu Bueno de Siqueira</h6>
-                    <p class="card-text small font-weight-light text-muted">Rua Bartolomeu Bueno de Siqueira, Parque Cruzeiro do Sul, São Paulo, SP</p>
-                  </div>
-
-                  <div class="col-3 m-0 p-0">
-                    <img class="mobile-content" src="/public/images/matheus_placeholder_cidade.jpg" alt="" style="width: 100px;">
-                  </div>
-
-                </div>
-              </div>
-
-            </a>
-
-            <a href="#">
-
-              <div class="card rounded-0 border-bottom-0 mw-100">
-                <div class="row d-flex justify-content-center align-items-center">
-
-                  <div class="card-body col-7 p-2">
-                    <h6 class="card-title text-dark">Escola Municipal Siqueira Bueno, 324</h6>
-                    <p class="card-text small font-weight-light text-muted">Praça Nossa Sra. Aparecida, 324, Jd. Vila Galvão, Guarulhos, SP</p>
-                  </div>
-
-                  <div class="col-3 m-0 p-0">
-                    <img class="mobile-content" src="/public/images/matheus_placeholder_cidade.jpg" alt="" style="width: 100px;">
-                  </div>
-
-                </div>
-              </div>
-
-            </a>
-
-            <a href="#">
-
-              <div class="card rounded-0 border-bottom-0 mw-100">
-                <div class="row d-flex justify-content-center align-items-center">
-
-                  <div class="card-body col-7 p-2">
-                    <h6 class="card-title text-dark">Vila Siqueira Bueno, Belenzinho</h6>
-                    <p class="card-text small font-weight-light text-muted">Vila Siqueira Bueno, Belenzinho, São Paulo, SP</p>
-                  </div>
-
-                  <div class="col-3 m-0 p-0">
-                    <img class="mobile-content" src="/public/images/matheus_placeholder_cidade.jpg" alt="" style="width: 100px;">
-                  </div>
-
-                </div>
-              </div>
-
-            </a>
-
-            <a href="#">
-
-              <div class="card rounded-0 border-bottom-0">
-                <div class="row d-flex justify-content-center align-items-center">
-
-                  <div class="card-body col-7 p-2">
-                    <h6 class="card-title text-dark">Rua Siqueira Bueno</h6>
-                    <p class="card-text small font-weight-light text-muted">Rua Siqueira Bueno, Bairro da Mooca, São Paulo, SP</p>
-                  </div>
-
-                  <div class="col-3 m-0 p-0">
-                    <img class="mobile-content" src="/public/images/matheus_placeholder_cidade.jpg" alt="" style="width: 100px;">
-                  </div>
-
-                </div>
-              </div>
-
-            </a>
-
-            <a href="#">
-
-              <div class="card rounded-0 border-bottom-0">
-                <div class="row d-flex justify-content-center align-items-center">
-
-                  <div class="card-body col-7 p-2">
-                    <h6 class="card-title text-dark">Escola Municipal Siqueira Bueno, 324</h6>
-                    <p class="card-text small font-weight-light text-muted">Praça Nossa Sra. Aparecida, 324, Jd. Vila Galvão, Guarulhos, SP</p>
-                  </div>
-
-                  <div class="col-3 ml-2 p-0">
-                    <img class="mobile-content" src="/public/images/matheus_placeholder_cidade.jpg" alt="" style="width: 100px;">
-                  </div>
-
-                </div>
-              </div>
-
-            </a>
-
-            <a href="#">
-
-              <div class="card rounded-0 border-bottom-0 mw-100">
-                <div class="row d-flex justify-content-center align-items-center">
-
-                  <div class="card-body col-7 p-2">
-                    <h6 class="card-title text-dark">Rua Bartolomeu Bueno de Siqueira</h6>
-                    <p class="card-text small font-weight-light text-muted">Rua Bartolomeu Bueno de Siqueira, Parque Cruzeiro do Sul, São Paulo, SP</p>
-                  </div>
-
-                  <div class="col-3 m-0 p-0">
-                    <img class="mobile-content" src="/public/images/matheus_placeholder_cidade.jpg" alt="" style="width: 100px;">
-                  </div>
-
-                </div>
-              </div>
-
-            </a>
-
-            <a href="#">
-
-              <div class="card rounded-0 border-bottom-0 mw-100">
-                <div class="row d-flex justify-content-center align-items-center">
-
-                  <div class="card-body col-7 p-2">
-                    <h6 class="card-title text-dark">Escola Municipal Siqueira Bueno, 324</h6>
-                    <p class="card-text small font-weight-light text-muted">Praça Nossa Sra. Aparecida, 324, Jd. Vila Galvão, Guarulhos, SP</p>
-                  </div>
-
-                  <div class="col-3 m-0 p-0">
-                    <img class="mobile-content" src="/public/images/matheus_placeholder_cidade.jpg" alt="" style="width: 100px;">
-                  </div>
-
-                </div>
-              </div>
-
-            </a>
-
-            <a href="#">
-
-              <div class="card rounded-0 border-bottom-0 mw-100">
-                <div class="row d-flex justify-content-center align-items-center">
-
-                  <div class="card-body col-7 p-2">
-                    <h6 class="card-title text-dark">Vila Siqueira Bueno, Belenzinho</h6>
-                    <p class="card-text small font-weight-light text-muted">Vila Siqueira Bueno, Belenzinho, São Paulo, SP</p>
-                  </div>
-
-                  <div class="col-3 m-0 p-0">
-                    <img class="mobile-content" src="/public/images/matheus_placeholder_cidade.jpg" alt="" style="width: 100px;">
-                  </div>
-
-                </div>
-              </div>
-
-            </a>
-
-
-          </div>
-          <!-- Fim: cards resultado pesquisa -->
-
-        </div>
-        <!-- Fim: coluna conteúdo -->
-
-
-        <div class="col-sm-6 col-lg-8 col-xl-9">
-          <iframe
-            width="100%"
-            height="100%"
-            frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=API_KEY_HERE
-              &q=Space+Needle,Seattle+WA" allowfullscreen>
-          </iframe>
-        </div>
-        <!-- <div class="col-sm-6 col-lg-3 col-xl-3">
-          
-        </div>
-        <div class="col-sm-6 col-lg-3 col-xl-3">
-          
-        </div> -->
-      </div>
-
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-  </body>
 </html>
