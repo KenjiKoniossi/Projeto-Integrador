@@ -57,7 +57,7 @@ h1, h2, h3 {
 
 #barra-pesquisa {
     height: 12vh;
-    margin: 0;
+    margin: 0 0 10px 0;
     padding: 10px;
     background-color: #4488DD;
 }
@@ -86,6 +86,14 @@ h1, h2, h3 {
     color: #fff;
     font-size: 35px;
     /* margin-bottom: 10px; */
+}
+
+#resultado-pesquisa h5, #resultado-pesquisa p {
+    color: #224455;
+}
+
+.div-problemas {
+    padding: 5px 15px;
 }
 
 
