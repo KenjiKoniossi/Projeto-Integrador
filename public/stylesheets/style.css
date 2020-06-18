@@ -1,7 +1,7 @@
 
 /* Footer - footer para todas as páginas */
-#footer-geral {
-    height: 650px;
+#row-footer {
+    min-height: 600px;
     background-color: #4488DD;
 }
 
@@ -21,6 +21,7 @@
     margin: 0 0 10px 0;
     font-size: 1.75rem;
     font-weight: 900;
+    text-align: center;
 }
 
 #footer-geral a, #footer-geral a:hover {
@@ -44,6 +45,7 @@
 
 #footer-geral input {
     width: 90vw;
+    max-width: 400px;
     border: 2px solid #224455;
     box-sizing: border-box;
     border-radius: 10px;
@@ -100,12 +102,16 @@
 
 
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
     /* Footer - footer para todas as páginas */
-    #footer-geral {
-        height: 300px;
-    }
+    /* #footer-geral {
+        height: 320px;
+    } */
     
+    #row-footer {
+        min-height: 320px;
+    }
+
     #footer-geral img {
         height: 70px;
     }
@@ -117,9 +123,14 @@
         text-align: start;
     }
 
-    #footer-geral input {
-        width: 500px;
+    #footer-geral h3 {
+        text-align: start;
     }
+
+    /* #footer-geral input {
+        width: 90vw;
+        max-width: 400px;
+    } */
 }
 
 

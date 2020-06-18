@@ -184,6 +184,10 @@ body {
 
 @media (min-width: 576px) {
     /* CSS Página inicial - tela como funciona */
+    #home-como div {
+        height: 75%;
+    }
+
     .bg-home-como {
         background-image: url("../images/wesley_fundo_como.png");
         background-repeat: no-repeat;

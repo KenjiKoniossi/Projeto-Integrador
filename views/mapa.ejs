@@ -17,11 +17,14 @@
                 </div>
             </div>
             <div id="div-pesquisa" class="col-12">
-                <div id="barra-pesquisa" class="col-12">
-                    <form id="form-pesquisa" action="/pesquisa" method="GET">
-                        <!-- <label for="input-pesquisa">Faça um busca:</label> -->
-                        <input type="text" class="form-control" name="inputPesquisa" id="input-pesquisa" placeholder="Ex.: Digite uma rua ou bairro">
-                        <button class="btn btn-default" type="submit" id="submit-pesquisa"><i class="fa fa-search" aria-hidden="true"></i></button>
+                <div id="barra-pesquisa" class="col-12 d-flex align-items-center">
+                    <form id="form-pesquisa" class="" action="/pesquisa" method="GET">
+                        <div class="form-row">
+                            <div class="form-group col-12 m-auto d-flex justify-content-around align-items-center">
+                                <input type="text" class="form-control" name="inputPesquisa" id="input-pesquisa" placeholder="Ex.: Digite uma rua ou bairro">
+                                <button class="btn btn-default" type="submit" id="submit-pesquisa"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div id="resultado-pesquisa">
