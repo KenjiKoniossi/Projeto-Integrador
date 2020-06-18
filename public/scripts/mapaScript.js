@@ -49,7 +49,6 @@ submitPesquisa.addEventListener("click", async function (event) {
         inputPesquisa.style.borderColor = 'red';
         return;
     }
-console.log(inputPesquisa.value);
 
     //Solicita o request de envio dos dados
     const resposta = await fetch('/mapa/pesquisa', {
@@ -62,9 +61,15 @@ console.log(inputPesquisa.value);
 
     const dadosBusca = await resposta.json();
 
-    console.log(resposta.status)
     if (resposta.status !== 200) {
-        //Ocorreu erro
+
+        //Caso retorne erro, mostrar frase
+        let divConteudo = document.createElement('div');
+        divConteudo.classList.add('col-12', 'div-problemas');
+        let pConteudo = document.createElement('p');
+        pConteudo.innerText = 'Algo deu errado, recarregue a página e tente novamente.'
+        divConteudo.appendChild(pConteudo);
+        resultadoPesquisa.appendChild(divConteudo);
 
     } else {
 
@@ -110,14 +115,5 @@ console.log(inputPesquisa.value);
             divConteudo.appendChild(pConteudo);
             resultadoPesquisa.appendChild(divConteudo);
         }
-
-        //Caso retorne erro, mostrar frase
-        let divConteudo = document.createElement('div');
-        divConteudo.classList.add('col-12', 'div-problemas');
-        let pConteudo = document.createElement('p');
-        pConteudo.innerText = 'Algo deu errado, recarregue a página e tente novamente.'
-        divConteudo.appendChild(pConteudo);
-        resultadoPesquisa.appendChild(divConteudo);
-
     }
 })
