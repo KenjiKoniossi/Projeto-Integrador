@@ -8,16 +8,45 @@ h1, h2, h3 {
 }
 
 .main-mapa {
-    height: 200vh;
+    height: 189vh;
+}
+
+#container-mapa {
+    position: relative;
 }
 
 #div-mapa {
-    height: 100vh;
+    position: relative;
+    z-index: 1;
+    height: 89vh;
     padding: 0;
+}
+
+#form-pesquisa input{
+    display: inline-block;
+    width: 80%;
+    border: 2px solid #224455;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 0 5px;
+}
+
+#form-pesquisa input:focus {
+    border: 2px solid #F79707;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#form-pesquisa button {
+    color: #fff;
+    font-size: 30px;
+    margin-bottom: 10px;
 }
 
 #botao-voltar {
     position: absolute;
+    z-index: 100;
     top: 20px;
     left: 20px;
 }
@@ -44,7 +73,15 @@ h1, h2, h3 {
 
 #div-pesquisa {
     height: 100vh;
+    padding: 0;
     background-color: #fff;
+}
+
+#barra-pesquisa {
+    height: 11vh;
+    margin: 0;
+    padding: 10px;
+    background-color: #4488DD;
 }
 
 
@@ -53,12 +90,22 @@ h1, h2, h3 {
         height: 100vh;
     }
 
+    #div-mapa {
+        height: 100vh;
+    }
+
     #div-pesquisa {
         width: 350px;
         height: 75vh;
+        border: 2px solid #224455;
         position: absolute;
+        z-index: 100;
         top: 100px;
         left: 20px;
+    }
+
+    #barra-pesquisa {
+        height: 80px;
     }
 
 }

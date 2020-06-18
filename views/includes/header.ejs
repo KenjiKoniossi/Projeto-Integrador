@@ -36,13 +36,15 @@
             </ul>
         </div>
         <% if (!session.usuario) { %>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#entradaModal" id="logIn"
-            style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#entradaModal" id="logIn"
+                style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</button>
         <% } else { %>
-        <a href="/perfil"><button type="button" class="btn btn-primary" id="perfil"
-                style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i> Perfil</button></a>
-        <a href="/login/logout"><button type="button" class="btn btn-danger ml-2" id="logout"><i class="fa fa-sign-out"
-                    aria-hidden="true"></i> Sair</button></a>
+            <div id="botao-login">
+                <a href="/perfil"><button type="button" class="btn btn-primary" id="perfil"
+                        style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i> Perfil</button></a>
+                <a href="/login/logout"><button type="button" class="btn btn-danger ml-2" id="logout"><i class="fa fa-sign-out"
+                            aria-hidden="true"></i> Sair</button></a>
+            </div>
         <% } %>
 
     </nav>
