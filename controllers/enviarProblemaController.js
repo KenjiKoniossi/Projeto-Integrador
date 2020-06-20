@@ -22,12 +22,6 @@ const enviarProblemaController = {
         if (listaDeErros.length != 0) {
             return res.render('enviarProblema', {listaDeErros});
         }
-        
-        //Dados Temporários
-        const point = {
-            type: 'Point',
-            coordinates: [39.807222,-76.984722]
-        };
 
         const usuarioId = req.session.usuario.id;
         const pais = 'BR';
@@ -37,7 +31,13 @@ const enviarProblemaController = {
             foto = req.files[0].filename;
         }
 
-        const {problema, problema_outro, descricao, cep, rua, numero, bairro, cidade, estado, referencia} = req.body;
+        const {problema, problema_outro, descricao, cep, rua, numero, bairro, cidade, estado, referencia, longitude, latitude} = req.body;
+
+        //Dados da latitude e longitude
+        const point = {
+            type: 'Point',
+            coordinates: [latitude,longitude]
+        };
 
         //Seleção do ID da tag ou criação da tag
         let tagId = null;

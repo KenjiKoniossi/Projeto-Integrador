@@ -6,6 +6,8 @@ let formProblema = document.querySelectorAll('#formProblema');
 let inputTextarea = document.getElementById('exampleFormControlTextarea1');
 let alertTopo = document.querySelector('.alert');
 let alertaBaixo = document.getElementById('alertaBaixo');
+let inputLongitude = document.getElementById('inputLongitude');
+let inputLatitude = document.getElementById('inputLatitude');
 
 let camposObrigatorios = [
     document.querySelectorAll('input[type=radio]'),
@@ -176,6 +178,20 @@ camposObrigatorios[1].addEventListener('blur', function () {
     }
 });
 
+//Converte endereço em geocode
+async function converteParaGeo(endereco, lat, lng) {
+
+    //Endereço completo: NUMERO + RUA + BAIRRO + CIDADE
+    const enderecoCompleto = endereco[4].value + '+' + endereco[2].value + '+' + endereco[3].value + '+' + endereco[5].value;
+
+    const API_KEY = '';
+    const resposta = await fetch('https://maps.googleapis.com/maps/api/geocode/json?key=' + API_KEY + '&address=' + enderecoCompleto);
+    const dados = await resposta.json();
+
+    lng.value = dados.results[0].geometry.location.lng;
+    lat.value = dados.results[0].geometry.location.lat;
+}
+
 //Verifica se todos os campos com required foram preenchidos, caso positivo abre modal
 enviarBotao.addEventListener("click", function () {
     let campoPreenchido = false;
@@ -209,6 +225,9 @@ enviarBotao.addEventListener("click", function () {
     }
 
     if (campoPreenchido) {
+
+        converteParaGeo(camposObrigatorios, inputLatitude, inputLongitude);
+
         //Removido data-target="#exampleModal" do botão de enviar
         window.$("#exampleModal").modal('show');
     } else {

@@ -18,7 +18,7 @@ const tileUrl = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}
     id: 'mapbox/streets-v11',
     tileSize: 512,
     zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoiY3RpcHBldHQiLCJhIjoiS3lpTnN4MCJ9.YG_uH8r7IgwgcSWEPYROMA'
+    accessToken: 'pk.eyJ1Ijoid2VzbGV5YnMwMDEiLCJhIjoiY2tibmI4NmNnMXBjajJzazBvZXNoOTQ2MyJ9.bVWk-q7qy71I279L4BEv6Q'
 }).addTo(mapa);
 
 L.control.zoom({
@@ -36,7 +36,26 @@ function pegarGeolocation(){
 
 pegarGeolocation();
 
-inputPesquisa.addEventListener('keypress', function () {
+inputPesquisa.addEventListener('keydown', async function (e) {
+
+    const resposta = await fetch('https://nominatim.openstreetmap.org/search/' + inputPesquisa.value + '?format=json&limit=5');
+    const dados = await resposta.json();
+
+    console.log("Digitado: " + inputPesquisa.value);
+    for (let i = 0; i < dados.length; i++) {
+        console.log(dados[i].display_name);
+    }
+
+    //Assim que começar a digitar carrega a div com o texto "Carregando"
+
+    //Adiciona o elemento HTML com o retorno da query do API
+
+    //Ao usuário clicar em um das respostas, pega a lat e lng do selecionado
+
+    //Faz a busca no banco de dados pelo raio da lat e lng
+
+    //Lista o resultado dos problemas dentro do raio
+
 
     inputPesquisa.style.borderColor = '';
 })
