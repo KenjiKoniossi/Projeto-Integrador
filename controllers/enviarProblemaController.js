@@ -12,7 +12,6 @@ const enviarProblemaController = {
         let [foto] = req.files
         problema_old.envioProblema(req.body.problema, req.body.descricao, req.body.cep, req.body.endereco, req.body.numero, req.body.bairro, req.body.cidade, req.body.estado, req.body.referencia, foto.filename);
         res.redirect('/')
-        console.log(req)
     },
 
     envioProb: async (req, res) =>{
