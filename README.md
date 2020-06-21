@@ -49,7 +49,7 @@ Executar as seeders com o Sequelize:
 npx sequelize db:seed:all
 ```
 
-Para inicializar o servidor na porta 3333 do localhost, use o comando:
+Para inicializar o servidor na porta 3000 do localhost, use o comando:
 ```
 npx start
 ```
@@ -57,6 +57,10 @@ ou
 ```
 npm start
 ```
+
+Acessivel pelo link:
+[mobmap](https://mobmapsdh.herokuapp.com/)
+
 
 ## Grupo
 
