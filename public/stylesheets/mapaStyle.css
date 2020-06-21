@@ -57,7 +57,8 @@ h1, h2, h3 {
 
 #barra-pesquisa {
     height: 12vh;
-    margin: 0 0 10px 0;
+    min-height: 68px;
+    margin: 0;
     padding: 10px;
     background-color: #4488DD;
 }
@@ -88,14 +89,23 @@ h1, h2, h3 {
     /* margin-bottom: 10px; */
 }
 
-#resultado-pesquisa h5, #resultado-pesquisa p {
-    color: #224455;
-}
-
 .div-problemas {
-    padding: 5px 15px;
+    color: #224455;
+    padding: 10px 15px;
 }
 
+.div-problemas:hover {
+    color: #FFF;
+    background-color: #F79707;
+}
+
+.p-pequena {
+    font-size: 13px;
+}
+
+.cor-cinza {
+    background-color: #F8F8F8;
+}
 
 
 @media (min-width: 768px) {

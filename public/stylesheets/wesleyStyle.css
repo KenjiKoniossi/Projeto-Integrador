@@ -21,6 +21,7 @@ body {
 /* CSS Página inicial - tela inicio */
 #home-inicio {
     height: 100vh;
+    min-height: 580px;
     margin: 0;
     background-color: #FFF;
 }
@@ -55,7 +56,9 @@ body {
 /* CSS Página inicial - tela como funciona */
 #home-como {
     height: 100vh;
+    min-height: 660px;
     margin: 0;
+    padding-bottom: 25px;
     background-color: #F8F8F8;
 }
 
@@ -114,6 +117,7 @@ body {
 /* CSS Página inicial - tela sobre nós */
 #home-sobre {
     height: 125vh;
+    min-height: 800px;
     margin: 0;
     background-color: #FFF;
 }
@@ -136,6 +140,7 @@ body {
 /* CSS Página inicial - tela contato */
 #home-contato {
     height: 100vh;
+    min-height: 640px;
     margin: 0;
     background-color: #F8F8F8;
 }
