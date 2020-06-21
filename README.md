@@ -58,7 +58,7 @@ ou
 npm start
 ```
 
-Acessivel pelo link:
+Acessível pelo link:
 [mobmap](https://mobmapsdh.herokuapp.com/)
 
 
