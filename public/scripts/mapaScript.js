@@ -173,12 +173,22 @@ submitPesquisa.addEventListener("click", async function (event) {
                 arrayDivResultados.push(divConteudo);
 
                 //Ajusta tamanho do popup
+                let larguraPopup = 300;
+                const tamanhoMapa = mapa.getSize();
+                if (tamanhoMapa.x < 768) {
+                    larguraPopup = tamanhoMapa.x * 0.80;
+                } else {
+                    larguraPopup = 400;
+                }
+
                 //Popup
                 let conteudoPopup = document.createElement('div');
                 conteudoPopup.classList.add('col-12', 'd-flex', 'flex-wrap', 'p-0');
                 conteudoPopup.innerHTML = `<div class="col-12 p-0 container-image">
-                                                <img src="../images_problemas/${dadosBusca.buscaRua[i].imagem}" class="col-12 m-0 mb-2 imagem-problema">
+                                                <a href="">
+                                                <img src="../images_problemas/${dadosBusca.buscaRua[i].imagem}" class="col-12 p-0 m-0 mb-2 imagem-problema">
                                                 <p class="m-0 baixo-centro p-pequena">Clique para aumentar</p>
+                                                </a>
                                             </div>
                                             <p class="col-4 m-0 mb-1 p-pequena"><strong>ID: </strong>${dadosBusca.buscaRua[i].id}</p>
                                             <p class="col-8 m-0 mb-1 p-pequena"><strong>Data: </strong>${dataCriacao.getDate()}/${dataCriacao.getMonth()}/${dataCriacao.getFullYear()}</p>
@@ -189,7 +199,8 @@ submitPesquisa.addEventListener("click", async function (event) {
                 //Adiciona marcador no mapa
                 let marcador = L.marker([dadosBusca.buscaRua[i].endereco.geolocalizacao.coordinates[0], dadosBusca.buscaRua[i].endereco.geolocalizacao.coordinates[1]])
                 .bindPopup(conteudoPopup, {
-                    maxWidth: 300
+                    maxWidth: larguraPopup,
+                    minWidth: larguraPopup
                 }).addTo(mapa);
                 arrayMarcadores.push(marcador);
 
@@ -200,18 +211,19 @@ submitPesquisa.addEventListener("click", async function (event) {
                     latlngOriginal.y -= valorDeslocamentoY;
                     const latlngNovo = mapa.options.crs.pointToLatLng(latlngOriginal, 17);
 
-                    console.log(this.getLatLng());
-                    console.log(latlngOriginal);
-                    console.log(latlngNovo);
-
                     mapa.panTo(latlngNovo);
                 });
                 
                 //Centraliza o mapa ao clicar em um dos resultados
                 arrayDivResultados[i].addEventListener("click", function (){
+                    const valorDeslocamentoY = mapa.getSize().y*0.30;
+                    let latlngOriginal = mapa.options.crs.latLngToPoint(arrayMarcadores[i].getLatLng(), 17);
+                    latlngOriginal.y -= valorDeslocamentoY;
+                    const latlngNovo = mapa.options.crs.pointToLatLng(latlngOriginal, 17);
+                    
                     arrayMarcadores[i].openPopup();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                    mapa.panTo(arrayMarcadores[i].getLatLng());
+                    mapa.panTo(latlngNovo);
                 });
             }
 
