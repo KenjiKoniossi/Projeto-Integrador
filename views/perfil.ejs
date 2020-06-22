@@ -66,34 +66,32 @@
             <div class="list-group" id="list-tab" role="tablist">
               <% if (listaProblemas.length != 0) { %> 
                   <!-- Implementação para listar problemas enviados pelo usuário -->
-                  <div class="row ml-1">
-                    <div class="col-6 col-md-4 d-flex justify-content-center align-items-center">
+                  <div class="row">
+                    <div class="col-5 d-flex justify-content-center align-items-center">
                       <p><strong>Ações</strong></p>
                     </div>
-                    <div class="col-2 col-md-2 d-flex justify-content-center align-items-center">
+                    <div class="col-2 d-flex justify-content-center align-items-center">
                       <p><strong>ID</strong></p>
                     </div>
-                    <div class="col-4 col-md-6 d-flex align-items-center">
+                    <div class="col-5 d-flex align-items-center">
                       <p><strong>Descrição do Problema</strong></p>
                     </div>
                   </div>
 
                   <% for (let problema of listaProblemas) { %> 
-                    <div class="row mb-1 ml-1">
-                      <div class="col-3 col-md-2 d-flex justify-content-center align-items-center">
+                    <div class="row mt-2 mb-2">
+                      <div class="col-5 d-flex flex-wrap justify-content-around align-items-center">
                         <% if (problema.resolvido === true) { %>
-                          <p class="m-0"><strong>Resolvido</strong></p>
+                          <p class="m-2 ml-3 mr-3"><strong>Resolvido</strong></p>
                         <% } else { %>
-                          <a class="btn btn-success" href="/perfil/problema/<%= problema.id %>/resolvido">Resolvido</a>
+                          <a class="btn btn-success m-1" href="/perfil/problema/<%= problema.id %>/resolvido">Resolvido</a>
                         <% } %>
+                        <a class="btn btn-danger m-1" href="/perfil/problema/<%= problema.id %>/apagar">Apagar</a>
                       </div>
-                      <div class="col-3 col-md-2 d-flex justify-content-center align-items-center">
-                        <a class="btn btn-danger" href="/perfil/problema/<%= problema.id %>/apagar">Apagar</a>
-                      </div>
-                      <div class="col-2 col-md-2 d-flex justify-content-center align-items-center">
+                      <div class="col-2 d-flex flex-wrap justify-content-center align-items-center">
                         <p class="m-0"><%= problema.id %></p>
                       </div>
-                      <div class="col-4 col-md-6 d-flex align-items-center">
+                      <div class="col-5 d-flex flex-wrap align-items-center">
                         <p class="m-0">
                           <% if (problema.descricao.length != 0) { %>
                             <%= (problema.descricao.length > 30) ? (problema.descricao.slice(0, 30) + '...') : (problema.descricao) %>
@@ -101,7 +99,6 @@
                             Problema sem descrição.
                           <% } %> 
                         </p>
-                        <p class="m-0"></p>
                       </div>
                     </div>
                   <% } %> 
