@@ -123,6 +123,37 @@ function retornaErro(mensagemErro) {
     resultadoPesquisa.removeAttribute('tabindex');
 }
 
+function retornaDescricao(descricao) {
+    if (descricao.length > 0) {
+        const limite = 100;
+        if (descricao.length > limite) {
+            const novaDescricao = `${descricao.slice(0, limite)}<span class="pontos-descricao">... </span><span class="resto-descricao">${descricao.slice(limite, descricao.length)} </span><a href="#">Ler Mais</a>`;
+            return novaDescricao;
+        } else {
+            return descricao;
+        }
+    } else {
+        return 'Problema sem descrição.'
+    }
+}
+
+//Evento para o leia mais
+function lerMais() {
+    let descricaoElemento = document.querySelector('.descricao-problema');
+    if (descricaoElemento !== null) {
+        descricaoElemento.addEventListener('click', function (event) {
+            event.preventDefault;
+            let pontos = document.querySelector('.pontos-descricao');
+            let restoDescricao = document.querySelector('.resto-descricao');
+            let lerMaisLink = document.querySelector('.descricao-problema a');
+
+            pontos.style.display = 'none';
+            restoDescricao.style.display = 'inline';
+            lerMaisLink.style.display = 'none';
+        })
+    }
+}
+
 submitPesquisa.addEventListener("click", async function (event) {
     event.preventDefault();
 
@@ -218,7 +249,7 @@ submitPesquisa.addEventListener("click", async function (event) {
                                             <p class="col-12 m-0 mb-1 p-pequena"><strong>Status: </strong>${(dadosBusca.buscaRua[i].resolvido != 1 ? 'Não Resolvido' : 'Resolvido')}</p>
                                             <p class="col-8 m-0 p-pequena"><strong>Problema:</strong></p>
                                             <h6 class="col-12 mb-2">${dadosBusca.buscaRua[i].tag.tag}</h6>
-                                            <p class="col-12 m-0 mb-2"><strong>Descrição: </strong>${(dadosBusca.buscaRua[i].descricao.length > 0 ? dadosBusca.buscaRua[i].descricao : 'Problema sem descrição.')}</p>`;
+                                            <p class="col-12 m-0 mb-2 descricao-problema"><strong>Descrição: </strong>${retornaDescricao(dadosBusca.buscaRua[i].descricao)}</p>`;
                 
                 //Adiciona marcador no mapa
                 let marcador = L.marker([dadosBusca.buscaRua[i].endereco.geolocalizacao.coordinates[0], dadosBusca.buscaRua[i].endereco.geolocalizacao.coordinates[1]])
@@ -234,21 +265,27 @@ submitPesquisa.addEventListener("click", async function (event) {
                     let latlngOriginal = mapa.options.crs.latLngToPoint(this.getLatLng(), 17);
                     latlngOriginal.y -= valorDeslocamentoY;
                     const latlngNovo = mapa.options.crs.pointToLatLng(latlngOriginal, 17);
+                    lerMais();
 
                     mapa.panTo(latlngNovo);
                 });
                 
                 //Centraliza o mapa ao clicar em um dos resultados
                 arrayDivResultados[i].addEventListener("click", function (){
+                    
                     const valorDeslocamentoY = mapa.getSize().y*0.30;
                     let latlngOriginal = mapa.options.crs.latLngToPoint(arrayMarcadores[i].getLatLng(), 17);
                     latlngOriginal.y -= valorDeslocamentoY;
                     const latlngNovo = mapa.options.crs.pointToLatLng(latlngOriginal, 17);
                     
+                    // mapa.closePopup();
                     arrayMarcadores[i].openPopup();
+                    lerMais();
+
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     mapa.panTo(latlngNovo);
                 });
+             
             }
 
             //Foca nos resultados da busca
@@ -257,7 +294,6 @@ submitPesquisa.addEventListener("click", async function (event) {
             resultadoPesquisa.removeAttribute('tabindex');
 
         } else {
-
             retornaErro('Não foram encontrados resultados.')
         }
     }

@@ -73,8 +73,6 @@ h1, h2, h3 {
     border: 2px solid #224455;
     box-sizing: border-box;
     border-radius: 10px;
-    /* margin-bottom: 10px;
-    padding: 0 5px; */
 }
 
 #form-pesquisa input:focus {
@@ -86,7 +84,6 @@ h1, h2, h3 {
 #form-pesquisa button {
     color: #fff;
     font-size: 35px;
-    /* margin-bottom: 10px; */
 }
 
 .div-problemas {
@@ -140,6 +137,18 @@ h1, h2, h3 {
     z-index: 1000;
     animation-name: zoom;
     animation-duration: 0.5s;
+}
+
+.resto-descricao {
+    display: none;
+}
+
+.pontos-descricao {
+    display: inline;
+}
+
+.descricao-problema {
+    display: inline;
 }
 
 @keyframes zoom {
