@@ -148,6 +148,7 @@ header .modal {
 }
 
 header .logo * {
+    width: 40px;
     margin: 1px;
 }
 
