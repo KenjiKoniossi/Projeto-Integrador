@@ -1,6 +1,10 @@
 const inputPesquisa = document.getElementById('input-pesquisa');
 const submitPesquisa = document.getElementById('submit-pesquisa');
 const resultadoPesquisa = document.getElementById('resultado-pesquisa');
+const botaoFechar = document.getElementById('botao-fechar');
+const zoomImagem = document.getElementById('zoom-imagem-fundo');
+const containerMapa = document.getElementById('container-mapa');
+const imagemZoom = document.querySelector('#zoom-imagem-fundo img');
 
 //Array de marcadores
 let arrayMarcadores = [];
@@ -61,6 +65,21 @@ function pegarGeolocation(){
 
 pegarGeolocation();
 
+//Fechar zoom da imagem
+botaoFechar.addEventListener('click', function (event) {
+    event.preventDefault;
+
+    zoomImagem.style.display = 'none';
+})
+
+function abreZoom(event, imagem) {
+    event.preventDefault;
+    imagemZoom.src = '../images_problemas/' + imagem;
+    zoomImagem.style.display = 'block';
+
+
+}
+
 inputPesquisa.addEventListener('keydown', async function (e) {
 
     // const resposta = await fetch('https://nominatim.openstreetmap.org/search/' + inputPesquisa.value + '?format=json&limit=5');
@@ -84,6 +103,25 @@ inputPesquisa.addEventListener('keydown', async function (e) {
 
     inputPesquisa.style.borderColor = '';
 })
+
+function retornaErro(mensagemErro) {
+    //Limpa os resultados
+    resultadoPesquisa.innerHTML = '';
+
+    //Caso retorne erro, mostrar frase
+    let divConteudo = document.createElement('div');
+    divConteudo.classList.add('col-12', 'd-flex', 'flex-wrap', 'div-problemas');
+    let pConteudo = document.createElement('p');
+    pConteudo.classList.add('col-12');
+    pConteudo.innerText = mensagemErro
+    divConteudo.appendChild(pConteudo);
+    resultadoPesquisa.appendChild(divConteudo);
+
+    //Foca nos resultados da busca
+    resultadoPesquisa.setAttribute('tabindex', '-1');
+    resultadoPesquisa.focus();
+    resultadoPesquisa.removeAttribute('tabindex');
+}
 
 submitPesquisa.addEventListener("click", async function (event) {
     event.preventDefault();
@@ -114,22 +152,7 @@ submitPesquisa.addEventListener("click", async function (event) {
 
     if (resposta.status !== 200) {
 
-        //Limpa os resultados
-        resultadoPesquisa.innerHTML = '';
-
-        //Caso retorne erro, mostrar frase
-        let divConteudo = document.createElement('div');
-        divConteudo.classList.add('col-12', 'd-flex', 'flex-wrap', 'div-problemas');
-        let pConteudo = document.createElement('p');
-        pConteudo.classList.add('col-12');
-        pConteudo.innerText = 'Algo deu errado, recarregue a página e tente novamente.'
-        divConteudo.appendChild(pConteudo);
-        resultadoPesquisa.appendChild(divConteudo);
-
-        //Foca nos resultados da busca
-        resultadoPesquisa.setAttribute('tabindex', '-1');
-        resultadoPesquisa.focus();
-        resultadoPesquisa.removeAttribute('tabindex');
+        retornaErro('Algo deu errado, recarregue a página e tente novamente.')
 
     } else {
 
@@ -185,13 +208,14 @@ submitPesquisa.addEventListener("click", async function (event) {
                 let conteudoPopup = document.createElement('div');
                 conteudoPopup.classList.add('col-12', 'd-flex', 'flex-wrap', 'p-0');
                 conteudoPopup.innerHTML = `<div class="col-12 p-0 container-image">
-                                                <a href="">
+                                                <a href="#" onclick="abreZoom(event, '${dadosBusca.buscaRua[i].imagem}')">
                                                 <img src="../images_problemas/${dadosBusca.buscaRua[i].imagem}" class="col-12 p-0 m-0 mb-2 imagem-problema">
                                                 <p class="m-0 baixo-centro p-pequena">Clique para aumentar</p>
                                                 </a>
                                             </div>
-                                            <p class="col-4 m-0 mb-1 p-pequena"><strong>ID: </strong>${dadosBusca.buscaRua[i].id}</p>
-                                            <p class="col-8 m-0 mb-1 p-pequena"><strong>Data: </strong>${dataCriacao.getDate()}/${dataCriacao.getMonth()}/${dataCriacao.getFullYear()}</p>
+                                            <p class="col-6 m-0 mb-1 p-pequena"><strong>ID: </strong>${dadosBusca.buscaRua[i].id}</p>
+                                            <p class="col-6 m-0 mb-1 p-pequena"><strong>Data: </strong>${dataCriacao.getDate()}/${dataCriacao.getMonth()}/${dataCriacao.getFullYear()}</p>
+                                            <p class="col-12 m-0 mb-1 p-pequena"><strong>Status: </strong>${(dadosBusca.buscaRua[i].resolvido != 1 ? 'Não Resolvido' : 'Resolvido')}</p>
                                             <p class="col-8 m-0 p-pequena"><strong>Problema:</strong></p>
                                             <h6 class="col-12 mb-2">${dadosBusca.buscaRua[i].tag.tag}</h6>
                                             <p class="col-12 m-0 mb-2"><strong>Descrição: </strong>${(dadosBusca.buscaRua[i].descricao.length > 0 ? dadosBusca.buscaRua[i].descricao : 'Problema sem descrição.')}</p>`;
@@ -234,22 +258,7 @@ submitPesquisa.addEventListener("click", async function (event) {
 
         } else {
 
-            //Limpa os resultados
-            resultadoPesquisa.innerHTML = '';
-
-            //Caso retorne vazio, mostrar frase
-            let divConteudo = document.createElement('div');
-            divConteudo.classList.add('col-12', 'd-flex', 'flex-wrap', 'div-problemas');
-            let pConteudo = document.createElement('p');
-            pConteudo.classList.add('col-12');
-            pConteudo.innerText = 'Não foram encontrados resultados.'
-            divConteudo.appendChild(pConteudo);
-            resultadoPesquisa.appendChild(divConteudo);
-
-            //Foca nos resultados da busca
-            resultadoPesquisa.setAttribute('tabindex', '-1');
-            resultadoPesquisa.focus();
-            resultadoPesquisa.removeAttribute('tabindex');
+            retornaErro('Não foram encontrados resultados.')
         }
     }
 })

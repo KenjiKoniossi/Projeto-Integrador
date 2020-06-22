@@ -121,13 +121,54 @@ h1, h2, h3 {
 .baixo-centro {
     color: #FFF;
     font-weight: bold;
-    background-color: rgba(70, 138, 221, 0.7);
-    width: 70%;
+    background-color: rgba(70, 138, 221, 0.8);
+    width: 100%;
     position: absolute;
     bottom: 8px;
     left: 50%;
     transform: translate(-50%, 0);
-  }
+}
+
+.zoom-imagem-fundo {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    animation-name: zoom;
+    animation-duration: 0.5s;
+}
+
+@keyframes zoom {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.container-imagem {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container-imagem img {
+    max-width: 100%;
+}
+
+#botao-fechar {
+    cursor: pointer;
+    color: #FFF;
+    font-size: 3rem;
+    position: fixed;
+    top: 3vh;
+    right: 5vw;
+    z-index: 1002;
+}
+
 
 @media (min-width: 768px) {
     .main-mapa {
@@ -150,6 +191,16 @@ h1, h2, h3 {
 
     #barra-pesquisa {
         height: 80px;
+    }
+
+    #botao-fechar {
+        top: 3vh;
+        right: 5vw;
+        z-index: 1002;
+    }
+
+    .container-imagem {
+        width: initial;
     }
 
 }
