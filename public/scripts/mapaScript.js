@@ -51,6 +51,20 @@ function tileMaptiler() {
 const tileMapa = tileMaptiler().addTo(mapa);
 
 
+//Criação dos marcadores no Leaflet
+const MarcadorPadrao = L.Icon.extend({
+    options: {
+        shadowUrl: '../images/marcador_sombra.png',
+        iconSize:     [37, 54],
+        shadowSize:   [46, 58],
+        iconAnchor:   [18, 55],
+        shadowAnchor: [5, 56],
+        popupAnchor:  [2, -60]
+    }
+});
+const marcadorAzul = new MarcadorPadrao({iconUrl: '../images/marcador_azul_37x54.png'});
+const marcadorVerde = new MarcadorPadrao({iconUrl: '../images/marcador_verde_37x54.png'});
+
 //Adiciona botões de zoom no canto direito inferior
 L.control.zoom({
     position:'bottomright'
@@ -162,7 +176,6 @@ function ajustaTamanhoPopup() {
          return tamanho = 400;
     }
 }
-                
 
 submitPesquisa.addEventListener("click", async function (event) {
     event.preventDefault();
@@ -255,8 +268,11 @@ submitPesquisa.addEventListener("click", async function (event) {
                 let larguraPopup = ajustaTamanhoPopup();
                 let popupNovo = L.popup({maxWidth: larguraPopup, minWidth: larguraPopup}).setContent(conteudoPopup);
 
+                //Se problema resolvido usa marcador verde
+                let marcadorIcon = (dadosBusca.buscaRua[i].resolvido != 1 ? marcadorAzul : marcadorVerde);
+
                 //Adiciona marcador no mapa
-                let marcador = L.marker([dadosBusca.buscaRua[i].endereco.geolocalizacao.coordinates[0], dadosBusca.buscaRua[i].endereco.geolocalizacao.coordinates[1]])
+                let marcador = L.marker([dadosBusca.buscaRua[i].endereco.geolocalizacao.coordinates[0], dadosBusca.buscaRua[i].endereco.geolocalizacao.coordinates[1]], {icon: marcadorIcon})
                 .bindPopup(popupNovo).addTo(mapa);
                 arrayMarcadores.push(marcador);
 
