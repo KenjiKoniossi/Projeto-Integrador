@@ -62,8 +62,8 @@ const MarcadorPadrao = L.Icon.extend({
         popupAnchor:  [2, -60]
     }
 });
-const marcadorAzul = new MarcadorPadrao({iconUrl: '../images/marcador_azul_37x54.png'});
-const marcadorVerde = new MarcadorPadrao({iconUrl: '../images/marcador_verde_37x54.png'});
+const marcadorAzul = new MarcadorPadrao({iconUrl: '../images/marcador_azul.png'});
+const marcadorVerde = new MarcadorPadrao({iconUrl: '../images/marcador_verde.png'});
 
 //Adiciona botões de zoom no canto direito inferior
 L.control.zoom({
