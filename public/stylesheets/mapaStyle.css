@@ -101,7 +101,7 @@ h1, h2, h3 {
 }
 
 .cor-cinza {
-    background-color: #F8F8F8;
+    background-color: #eeeeee;
 }
 
 .imagem-problema {
@@ -147,8 +147,14 @@ h1, h2, h3 {
     display: inline;
 }
 
-.descricao-problema {
-    display: inline;
+.container-popup {
+    color: #224455;
+    font-size: 0.9rem;   
+}
+
+.container-popup h6 {
+    font-size: 1.1rem; 
+    font-weight: bold;  
 }
 
 @keyframes zoom {
