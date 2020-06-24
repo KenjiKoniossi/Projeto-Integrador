@@ -6,6 +6,7 @@ const zoomImagem = document.getElementById('zoom-imagem-fundo');
 const containerMapa = document.getElementById('container-mapa');
 const imagemZoom = document.querySelector('#zoom-imagem-fundo img');
 
+//Zera no topo da página o scroll
 window.scrollTo({ top: 0, behavior: 'smooth' });
 
 //Array de marcadores
@@ -50,6 +51,18 @@ function tileMaptiler() {
 //Escolha do estilo do mapa, inserir a função para um dos estilos acima
 const tileMapa = tileMaptiler().addTo(mapa);
 
+//Autocomplete de endereço do Maptiler
+var geocoder = new maptiler.Geocoder({
+    input: inputPesquisa,
+    key: 'rOWMCvQS4fuQOnVJzQEQ',
+    language: ['br']
+});
+  
+geocoder.on('select', function(item) {
+    inputPesquisa.value = item.place_name_br
+    console.log('Selected', item);
+});
+
 
 //Criação dos marcadores no Leaflet
 const MarcadorPadrao = L.Icon.extend({
@@ -66,9 +79,7 @@ const marcadorAzul = new MarcadorPadrao({iconUrl: '../images/marcador_azul.png'}
 const marcadorVerde = new MarcadorPadrao({iconUrl: '../images/marcador_verde.png'});
 
 //Adiciona botões de zoom no canto direito inferior
-L.control.zoom({
-    position:'bottomright'
-}).addTo(mapa);
+L.control.zoom({position: 'bottomright'}).addTo(mapa);
 
 //Pegar a Geolocalização do usuário
 function pegarGeolocation(){
@@ -118,7 +129,7 @@ inputPesquisa.addEventListener('keydown', async function (e) {
     inputPesquisa.style.borderColor = '';
 })
 
-function retornaErro(mensagemErro) {
+function retornaErro(mensagemErro, resultadoPesquisa, mapa) {
     //Limpa os resultados
     resultadoPesquisa.innerHTML = '';
 
@@ -166,7 +177,7 @@ function lerMais(i) {
     }
 }
 
-function ajustaTamanhoPopup() {
+function ajustaTamanhoPopup(mapa) {
     //Ajusta tamanho do popup
     let tamanho = 300;
     const tamanhoMapa = mapa.getSize();
@@ -206,7 +217,7 @@ submitPesquisa.addEventListener("click", async function (event) {
 
     if (resposta.status !== 200) {
 
-        retornaErro('Algo deu errado, recarregue a página e tente novamente.')
+        retornaErro('Algo deu errado, recarregue a página e tente novamente.', resultadoPesquisa, mapa)
 
     } else {
 
@@ -260,12 +271,12 @@ submitPesquisa.addEventListener("click", async function (event) {
                                             </div>
                                             <p class="col-6 m-0 mb-1 p-pequena"><strong>ID: </strong>${dadosBusca.buscaRua[i].id}</p>
                                             <p class="col-6 m-0 mb-1 p-pequena"><strong>Data: </strong>${dataCriacao.getDate()}/${dataCriacao.getMonth()}/${dataCriacao.getFullYear()}</p>
-                                            <p class="col-12 m-0 mb-1 p-pequena"><strong>Status: </strong>${(dadosBusca.buscaRua[i].resolvido != 1 ? 'Não Resolvido' : 'Resolvido')}</p>
+                                            <p class="col-12 m-0 mb-1 p-pequena"><strong>Status: </strong>${(dadosBusca.buscaRua[i].resolvido != 1 ? '<span class="problema-nao-resolvido">Não Resolvido</span>' : '<span class="problema-resolvido">Resolvido</span>')}</p>
                                             <p class="col-8 m-0 p-pequena"><strong>Problema:</strong></p>
                                             <h6 class="col-12 mb-2">${dadosBusca.buscaRua[i].tag.tag}</h6>
                                             <p class="col-12 m-0 mb-2" id="descricao-problema-${i}"><strong>Descrição: </strong>${retornaDescricao(dadosBusca.buscaRua[i].descricao)}</p>`;
                 
-                let larguraPopup = ajustaTamanhoPopup();
+                let larguraPopup = ajustaTamanhoPopup(mapa);
                 let popupNovo = L.popup({maxWidth: larguraPopup, minWidth: larguraPopup}).setContent(conteudoPopup);
 
                 //Se problema resolvido usa marcador verde
@@ -309,7 +320,7 @@ submitPesquisa.addEventListener("click", async function (event) {
             window.scrollTo({ top: tamanhoScroll, behavior: 'smooth' });
 
         } else {
-            retornaErro('Não foram encontrados resultados.')
+            retornaErro('Não foram encontrados resultados.', resultadoPesquisa, mapa)
         }
     }
 })

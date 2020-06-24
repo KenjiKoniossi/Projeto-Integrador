@@ -86,6 +86,11 @@ h1, h2, h3 {
     font-size: 35px;
 }
 
+#form-pesquisa button:hover {
+    color: #F79707;
+
+}
+
 .div-problemas {
     color: #224455;
     padding: 10px 15px;
@@ -94,6 +99,7 @@ h1, h2, h3 {
 .div-problemas:hover {
     color: #FFF;
     background-color: #F79707;
+    cursor: pointer;
 }
 
 .p-pequena {
@@ -184,6 +190,35 @@ h1, h2, h3 {
     z-index: 1002;
 }
 
+.problema-nao-resolvido {
+    color: red;
+    font-weight: bold;
+}
+
+.problema-resolvido {
+    color: green;
+    font-weight: bold;
+}
+
+.maptiler-geocoder-results div {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    color: #224455;
+}
+
+.maptiler-geocoder-results div:hover {
+    color: #FFF;
+    background-color: #F79707;
+}
+
+.maptiler-geocoder-results div:hover span {
+    color: #FFF;
+}
+
+.maptiler-geocoder-results .item-context,  .maptiler-geocoder-results .item-type {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #3a7795;
+}
 
 @media (min-width: 768px) {
     .main-mapa {
