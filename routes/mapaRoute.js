@@ -7,5 +7,9 @@ router.get('/', mapaController.viewForm);
 router.post('/pesquisa', [
     check('pesquisa').not().isEmpty()
 ], mapaController.pesquisaEndereco);
+router.post('/problemas', [
+    check('latitude').isNumeric(),
+    check('longitude').isNumeric()
+], mapaController.carregaProblemas);
 
 module.exports = router;

@@ -14,7 +14,7 @@ let arrayMarcadores = [];
 let arrayDivResultados = [];
 
 //Criando mapa com LeafletJS
-const mapa = L.map('div-mapa', {zoomControl: false}).setView([-23.5506507, -46.6333824], 17);
+const mapa = L.map('div-mapa', {zoomControl: false}).setView([-23.562034742565295, -46.65653516995086], 17);
 
 //Usando Tiles do OpenStreetMap
 function tileOpenStreetMap() {
@@ -60,7 +60,6 @@ var geocoder = new maptiler.Geocoder({
   
 geocoder.on('select', function(item) {
     inputPesquisa.value = item.place_name_br
-    console.log('Selected', item);
 });
 
 
@@ -87,10 +86,66 @@ function pegarGeolocation(){
         navigator.geolocation.getCurrentPosition(function(posicao){
             mapa.setView([posicao.coords.latitude, posicao.coords.longitude], 17);
         })
+        return mapa.getCenter();
+    }
+
+}
+
+const latlngUsuario = pegarGeolocation();
+
+//Carrega os problemas nas coordenadas do centro do mapa
+async function carregaProblemas(latlng){
+    
+    limpaMarcadores(mapa, arrayMarcadores, arrayDivResultados, resultadoPesquisa);
+
+    //Solicita o request de envio dos dados
+    const resposta = await fetch('/mapa/problemas', {
+        headers: {
+            "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify({latitude: latlng.lat, longitude: latlng.lng})
+    })
+
+    const dadosBusca = await resposta.json();
+
+    if (resposta.status !== 200) {
+
+        retornaErro('Algo deu errado, recarregue a página e tente novamente.', resultadoPesquisa, mapa);
+
+    } else {
+
+        if (dadosBusca.listaDeProblemas.length !== 0) {
+
+            for (let i = 0; i < dadosBusca.listaDeProblemas.length; i++) {
+
+                criaDivProblema(i, dadosBusca.listaDeProblemas[i].problema[0], resultadoPesquisa, arrayDivResultados);
+                
+                let popupNovo = criaPopup(i, dadosBusca.listaDeProblemas[i].problema[0], mapa);
+                
+                //Se problema resolvido usa marcador verde
+                let marcadorIcon = (dadosBusca.listaDeProblemas[i].problema[0].resolvido != 1 ? marcadorAzul : marcadorVerde);
+
+                //Adiciona marcador no mapa
+                let marcador = L.marker([dadosBusca.listaDeProblemas[i].geolocalizacao.coordinates[0], dadosBusca.listaDeProblemas[i].geolocalizacao.coordinates[1]], {icon: marcadorIcon})
+                .bindPopup(popupNovo).addTo(mapa);
+                arrayMarcadores.push(marcador);
+
+                cliqueMarcador(i, mapa, arrayMarcadores[i]);
+                
+                cliqueResultado(i, mapa, arrayMarcadores[i], arrayDivResultados[i]);
+             
+            }
+
+        } else {
+
+            retornaErro('Não foram encontrados resultados.', resultadoPesquisa, mapa);
+
+        }
     }
 }
 
-pegarGeolocation();
+carregaProblemas(latlngUsuario)
 
 //Fechar zoom da imagem
 botaoFechar.addEventListener('click', function (event) {
@@ -98,6 +153,13 @@ botaoFechar.addEventListener('click', function (event) {
 
     zoomImagem.style.display = 'none';
 })
+
+//Ou clicar fora da imagem
+// window.addEventListener('click', function (event) {
+//     if (!document.querySelector('.container-imagem').contains(event.target)) {
+//         zoomImagem.style.display = 'none';
+//     }
+// });
 
 function abreZoom(event, imagem) {
     event.preventDefault;
@@ -188,14 +250,11 @@ function ajustaTamanhoPopup(mapa) {
     }
 }
 
-submitPesquisa.addEventListener("click", async function (event) {
-    event.preventDefault();
+//Limpa o conteúdo dos resultadores e marcadores
+function limpaMarcadores(mapa, arrayMarcadores, arrayDivResultados, resultadoPesquisa) {
 
-    //Valida se o campo foi preenchido, retorna erro caso contrário
-    if (inputPesquisa.value === '') {
-        inputPesquisa.style.borderColor = 'red';
-        return;
-    }
+    //Limpa os resultados
+    resultadoPesquisa.innerHTML = '';
 
     //Limpa marcadores da tela
     for (let i = 0; i < arrayMarcadores.length; i++) {
@@ -203,6 +262,125 @@ submitPesquisa.addEventListener("click", async function (event) {
     }
     arrayMarcadores = [];
     arrayDivResultados = [];
+}
+
+//Se a descrição for longa, encurta
+function descricaoCurta(descricao) {
+    if (descricao.length > 0) {
+        if (descricao.length > 30) {
+            return descricao.slice(0, 35) + '...';
+        } else {
+            return descricao;
+        }
+    } else {
+        return 'Problema sem descrição.';
+    }
+}
+
+//Valida se o campo foi preenchido, retorna erro caso contrário
+function validaCampoPreenchido(campo) {
+    if (campo.value === '') {
+        campo.style.borderColor = 'red';
+        return;
+    }
+}
+
+//Cria o elemento div do problema e seu conteúdo
+function criaDivProblema(i, problema, resultadoPesquisa, arrayDivResultados) {
+    
+    //Converte a data
+    let dataCriacao = new Date(problema.data_criacao);
+
+    let divConteudo = document.createElement('div');
+    divConteudo.classList.add('col-12', 'd-flex', 'flex-wrap', 'div-problemas');
+
+    if (i % 2 !== 0) {
+        divConteudo.classList.add('cor-cinza');
+    }
+
+    divConteudo.innerHTML = `<p class="col-4 mb-1 p-pequena"><strong>ID: </strong>${problema.id}</p>
+                            <p class="col-8 mb-1 p-pequena"><strong>Data: </strong>${dataCriacao.getDate()}/${dataCriacao.getMonth()}/${dataCriacao.getFullYear()}</p>
+                            <h6 class="col-12 mb-1">${problema.tag.tag}</h6>
+                            <p class="col-12 mb-0">${descricaoCurta(problema.descricao)}</p>`;
+
+    resultadoPesquisa.appendChild(divConteudo);
+    arrayDivResultados.push(divConteudo);
+}
+
+//Cria popup
+function criaPopup(i, problema, mapa) {
+
+    //Converte a data
+    let dataCriacao = new Date(problema.data_criacao);
+
+    let conteudoPopup = document.createElement('div');
+    conteudoPopup.classList.add('col-12', 'd-flex', 'flex-wrap', 'p-0', 'container-popup');
+    conteudoPopup.innerHTML = `<div class="col-12 p-0 container-image">
+                                    <a href="#" onclick="abreZoom(event, '${problema.imagem}')">
+                                    <img src="../images_problemas/${problema.imagem}" class="col-12 p-0 m-0 mb-2 imagem-problema">
+                                    <p class="m-0 baixo-centro p-pequena">Clique para aumentar</p>
+                                    </a>
+                                </div>
+                                <p class="col-6 m-0 mb-1 p-pequena"><strong>ID: </strong>${problema.id}</p>
+                                <p class="col-6 m-0 mb-1 p-pequena"><strong>Data: </strong>${dataCriacao.getDate()}/${dataCriacao.getMonth()}/${dataCriacao.getFullYear()}</p>
+                                <p class="col-12 m-0 mb-1 p-pequena"><strong>Status: </strong>${(problema.resolvido != 1 ? '<span class="problema-nao-resolvido">Não Resolvido</span>' : '<span class="problema-resolvido">Resolvido</span>')}</p>
+                                <p class="col-8 m-0 p-pequena"><strong>Problema:</strong></p>
+                                <h6 class="col-12 mb-2">${problema.tag.tag}</h6>
+                                <p class="col-12 m-0 mb-2" id="descricao-problema-${i}"><strong>Descrição: </strong>${retornaDescricao(problema.descricao)}</p>`;
+    
+    let larguraPopup = ajustaTamanhoPopup(mapa);
+    let popupNovo = L.popup({maxWidth: larguraPopup, minWidth: larguraPopup}).setContent(conteudoPopup);
+    return popupNovo;
+}
+
+//Cria marcador
+function criaMarcador(problema, popup, mapa, arrayMarcadores) {
+
+    //Se problema resolvido usa marcador verde
+    let marcadorIcon = (problema.resolvido != 1 ? marcadorAzul : marcadorVerde);
+
+    //Adiciona marcador no mapa
+    let marcador = L.marker([problema.endereco.geolocalizacao.coordinates[0], problema.endereco.geolocalizacao.coordinates[1]], {icon: marcadorIcon})
+    .bindPopup(popup).addTo(mapa);
+    arrayMarcadores.push(marcador);
+}
+
+//Centraliza o mapa no marcador ao clicar no marcador
+function cliqueMarcador(i, mapa, arrayMarcadores) {
+    arrayMarcadores.addEventListener("click", function (){
+        const valorDeslocamentoY = mapa.getSize().y*0.30;
+        let latlngOriginal = mapa.options.crs.latLngToPoint(this.getLatLng(), 17);
+        latlngOriginal.y -= valorDeslocamentoY;
+        const latlngNovo = mapa.options.crs.pointToLatLng(latlngOriginal, 17);
+        lerMais(i);
+
+        mapa.panTo(latlngNovo);
+    });
+}
+
+//Centraliza o mapa ao clicar em um dos resultados
+function cliqueResultado(i, mapa, arrayMarcadores, arrayDivResultados) {
+    arrayDivResultados.addEventListener("click", function (){
+        const valorDeslocamentoY = mapa.getSize().y*0.30;
+        let latlngOriginal = mapa.options.crs.latLngToPoint(arrayMarcadores.getLatLng(), 17);
+        latlngOriginal.y -= valorDeslocamentoY;
+        const latlngNovo = mapa.options.crs.pointToLatLng(latlngOriginal, 17);
+        
+        // mapa.closePopup();
+        arrayMarcadores.openPopup();
+        lerMais(i);
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        mapa.panTo(latlngNovo);
+    });
+}
+
+submitPesquisa.addEventListener("click", async function (event) {
+    event.preventDefault();
+
+    validaCampoPreenchido(inputPesquisa);
+
+    limpaMarcadores(mapa, arrayMarcadores, arrayDivResultados, resultadoPesquisa);
 
     //Solicita o request de envio dos dados
     const resposta = await fetch('/mapa/pesquisa', {
@@ -217,101 +395,24 @@ submitPesquisa.addEventListener("click", async function (event) {
 
     if (resposta.status !== 200) {
 
-        retornaErro('Algo deu errado, recarregue a página e tente novamente.', resultadoPesquisa, mapa)
+        retornaErro('Algo deu errado, recarregue a página e tente novamente.', resultadoPesquisa, mapa);
 
     } else {
-
-        //Limpa os resultados
-        resultadoPesquisa.innerHTML = '';
 
         //Adiciona as informações no DOM
         if (dadosBusca.buscaRua.length !== 0) {
 
             for (let i = 0; i < dadosBusca.buscaRua.length; i++) {
 
-                //Se a descrição for longa, encurta
-                let descricaoCurta = '';
-                if (dadosBusca.buscaRua[i].descricao.length > 0) {
-                    if (dadosBusca.buscaRua[i].descricao.length > 30) {
-                        descricaoCurta = dadosBusca.buscaRua[i].descricao.slice(0, 35) + '...';
-                    } else {
-                        descricaoCurta = dadosBusca.buscaRua[i].descricao;
-                    }
-                } else {
-                    descricaoCurta = 'Problema sem descrição.';
-                }
-
-                //Converte a data
-                let dataCriacao = new Date(dadosBusca.buscaRua[i].data_criacao);
-
-                //Cria o elemento div do problema e seu conteúdo
-                let divConteudo = document.createElement('div');
-                divConteudo.classList.add('col-12', 'd-flex', 'flex-wrap', 'div-problemas');
-
-                if (i % 2 !== 0) {
-                    divConteudo.classList.add('cor-cinza');
-                }
-
-                divConteudo.innerHTML = `<p class="col-4 mb-1 p-pequena"><strong>ID: </strong>${dadosBusca.buscaRua[i].id}</p>
-                                        <p class="col-8 mb-1 p-pequena"><strong>Data: </strong>${dataCriacao.getDate()}/${dataCriacao.getMonth()}/${dataCriacao.getFullYear()}</p>
-                                        <h6 class="col-12 mb-1">${dadosBusca.buscaRua[i].tag.tag}</h6>
-                                        <p class="col-12 mb-0">${descricaoCurta}</p>`;
-
-                resultadoPesquisa.appendChild(divConteudo);
-                arrayDivResultados.push(divConteudo);
-
-                //Popup
-                let conteudoPopup = document.createElement('div');
-                conteudoPopup.classList.add('col-12', 'd-flex', 'flex-wrap', 'p-0', 'container-popup');
-                conteudoPopup.innerHTML = `<div class="col-12 p-0 container-image">
-                                                <a href="#" onclick="abreZoom(event, '${dadosBusca.buscaRua[i].imagem}')">
-                                                <img src="../images_problemas/${dadosBusca.buscaRua[i].imagem}" class="col-12 p-0 m-0 mb-2 imagem-problema">
-                                                <p class="m-0 baixo-centro p-pequena">Clique para aumentar</p>
-                                                </a>
-                                            </div>
-                                            <p class="col-6 m-0 mb-1 p-pequena"><strong>ID: </strong>${dadosBusca.buscaRua[i].id}</p>
-                                            <p class="col-6 m-0 mb-1 p-pequena"><strong>Data: </strong>${dataCriacao.getDate()}/${dataCriacao.getMonth()}/${dataCriacao.getFullYear()}</p>
-                                            <p class="col-12 m-0 mb-1 p-pequena"><strong>Status: </strong>${(dadosBusca.buscaRua[i].resolvido != 1 ? '<span class="problema-nao-resolvido">Não Resolvido</span>' : '<span class="problema-resolvido">Resolvido</span>')}</p>
-                                            <p class="col-8 m-0 p-pequena"><strong>Problema:</strong></p>
-                                            <h6 class="col-12 mb-2">${dadosBusca.buscaRua[i].tag.tag}</h6>
-                                            <p class="col-12 m-0 mb-2" id="descricao-problema-${i}"><strong>Descrição: </strong>${retornaDescricao(dadosBusca.buscaRua[i].descricao)}</p>`;
+                criaDivProblema(i, dadosBusca.buscaRua[i], resultadoPesquisa, arrayDivResultados);
                 
-                let larguraPopup = ajustaTamanhoPopup(mapa);
-                let popupNovo = L.popup({maxWidth: larguraPopup, minWidth: larguraPopup}).setContent(conteudoPopup);
-
-                //Se problema resolvido usa marcador verde
-                let marcadorIcon = (dadosBusca.buscaRua[i].resolvido != 1 ? marcadorAzul : marcadorVerde);
-
-                //Adiciona marcador no mapa
-                let marcador = L.marker([dadosBusca.buscaRua[i].endereco.geolocalizacao.coordinates[0], dadosBusca.buscaRua[i].endereco.geolocalizacao.coordinates[1]], {icon: marcadorIcon})
-                .bindPopup(popupNovo).addTo(mapa);
-                arrayMarcadores.push(marcador);
-
-                //Centraliza o mapa no marcador ao clicar no marcador
-                arrayMarcadores[i].addEventListener("click", function (){
-                    const valorDeslocamentoY = mapa.getSize().y*0.30;
-                    let latlngOriginal = mapa.options.crs.latLngToPoint(this.getLatLng(), 17);
-                    latlngOriginal.y -= valorDeslocamentoY;
-                    const latlngNovo = mapa.options.crs.pointToLatLng(latlngOriginal, 17);
-                    lerMais(i);
-
-                    mapa.panTo(latlngNovo);
-                });
+                let popupNovo = criaPopup(i, dadosBusca.buscaRua[i], mapa);
                 
-                //Centraliza o mapa ao clicar em um dos resultados
-                arrayDivResultados[i].addEventListener("click", function (){
-                    const valorDeslocamentoY = mapa.getSize().y*0.30;
-                    let latlngOriginal = mapa.options.crs.latLngToPoint(arrayMarcadores[i].getLatLng(), 17);
-                    latlngOriginal.y -= valorDeslocamentoY;
-                    const latlngNovo = mapa.options.crs.pointToLatLng(latlngOriginal, 17);
-                    
-                    // mapa.closePopup();
-                    arrayMarcadores[i].openPopup();
-                    lerMais(i);
+                criaMarcador(dadosBusca.buscaRua[i], popupNovo, mapa, arrayMarcadores);
 
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    mapa.panTo(latlngNovo);
-                });
+                cliqueMarcador(i, mapa, arrayMarcadores[i]);
+                
+                cliqueResultado(i, mapa, arrayMarcadores[i], arrayDivResultados[i]);
              
             }
 
@@ -320,7 +421,9 @@ submitPesquisa.addEventListener("click", async function (event) {
             window.scrollTo({ top: tamanhoScroll, behavior: 'smooth' });
 
         } else {
-            retornaErro('Não foram encontrados resultados.', resultadoPesquisa, mapa)
+
+            retornaErro('Não foram encontrados resultados.', resultadoPesquisa, mapa);
+
         }
     }
 })
