@@ -142,6 +142,27 @@ form .form-control:focus {
     font-weight: 900;
 }
 
+.btn-resolvido {
+    border: 3px solid #28a745;
+}
+
+.btn-resolvido:hover {
+    background-color: #FFF;
+    color: #28a745;
+    border: 3px solid #28a745;
+}
+
+.btn-apagar {
+    border: 3px solid #dc3545;
+}
+
+.btn-apagar:hover {
+    background-color: #FFF;
+    color: #dc3545;
+    border: 3px solid #dc3545;
+}
+
+
 #avatar-usuario {
     width: 200px;
     height: 200px;

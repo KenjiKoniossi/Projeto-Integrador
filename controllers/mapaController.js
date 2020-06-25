@@ -57,22 +57,24 @@ const mapaController = {
         let listaErrosContato = validationResult(req).errors;
         if (listaErrosContato.length != 0) {
             return res.status(400).json({
-                mensagem: 'Algo deu errado1',
+                mensagem: 'Algo deu errado',
             });
         }
 
-        const {latitude, longitude} = req.body;
+        const {latitude, longitude, mapaBounds} = req.body;
 
         try {
 
             //Haversine formula
-            const distancia = Sequelize.literal("6371 * acos(cos(radians("+latitude+")) * cos(radians(ST_X(geolocalizacao))) * cos(radians("+longitude+") - radians(ST_Y(geolocalizacao))) + sin(radians("+latitude+")) * sin(radians(ST_X(geolocalizacao))))");
+            // const distancia = Sequelize.literal("6371 * acos(cos(radians("+latitude+")) * cos(radians(ST_X(geolocalizacao))) * cos(radians("+longitude+") - radians(ST_Y(geolocalizacao))) + sin(radians("+latitude+")) * sin(radians(ST_X(geolocalizacao))))");
+            
+            const resultado = Sequelize.literal("abs(abs(abs("+latitude+")-abs(ST_X(geolocalizacao)))+abs(abs("+longitude+")-abs(ST_Y(geolocalizacao))))");
 
             const listaDeProblemas = await Endereco.findAll({
                 attributes: [
                     'id',
                     'geolocalizacao',
-                    [distancia, 'distancia']
+                    [resultado, 'resultado']
                 ],
                 include: [{
                     model: Problema,
@@ -93,8 +95,13 @@ const mapaController = {
                     }]
             
                 }],
-                order: Sequelize.col('distancia'),
-                limit: 30,
+                where: {
+                    [Op.and]: [
+                        Sequelize.literal("ST_X(geolocalizacao) BETWEEN "+ mapaBounds._southWest.lat +" AND "+ mapaBounds._northEast.lat),
+                        Sequelize.literal("ST_Y(geolocalizacao) BETWEEN "+ mapaBounds._southWest.lng +" AND "+ mapaBounds._northEast.lng)
+                    ]
+                },
+                order: Sequelize.col('resultado')
             })
 
             return res.status(200).json({
@@ -103,7 +110,7 @@ const mapaController = {
 
         } catch {
             return res.status(400).json({
-                mensagem: 'Algo deu errado2',
+                mensagem: 'Algo deu errado',
             });
         }
     },

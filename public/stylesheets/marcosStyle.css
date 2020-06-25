@@ -148,7 +148,7 @@ header .modal {
 }
 
 header .logo * {
-    width: 40px;
+    width: 90px;
     margin: 1px;
 }
 
@@ -197,4 +197,28 @@ header .navbar-collapse * {
 
 header #question, header #hashtag, header #envelope {
     display: none;
+}
+
+#logIn, #perfilHeader {
+    background-color: #4488DD;
+    border: 3px solid #4488DD;
+    border-radius: 10px;
+}
+
+#logIn:hover, #perfilHeader:hover {
+    background-color: #f8f9fa !important;
+    color: #4488DD;
+    border: 3px solid #4488DD;
+}
+
+#logoutHeader {
+    background-color: #dc3545;
+    border: 3px solid #dc3545;
+    border-radius: 10px;
+}
+
+#logoutHeader:hover {
+    background-color: #f8f9fa;
+    color: #dc3545;
+    border: 3px solid #dc3545;
 }

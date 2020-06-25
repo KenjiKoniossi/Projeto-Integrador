@@ -12,10 +12,31 @@
 <script>
     function hideLogIn() {
         var x = document.getElementById("logIn");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
+        var perfilElemento = document.getElementById("perfilHeader");
+        var logoutElemento = document.getElementById("logoutHeader");
+
+        if (x !== null) {
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        if (perfilElemento !== null) {
+            if (perfilElemento.style.display === "none") {
+                perfilElemento.style.display = "block";
+            } else {
+                perfilElemento.style.display = "none";
+            }
+        }
+
+        if (logoutElemento !== null) {
+            if (logoutElemento.style.display === "none") {
+                logoutElemento.style.display = "block";
+            } else {
+                logoutElemento.style.display = "none";
+            }
         }
     }
 

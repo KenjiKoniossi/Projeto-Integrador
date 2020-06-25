@@ -116,7 +116,7 @@ body {
 
 /* CSS Página inicial - tela sobre nós */
 #home-sobre {
-    height: 125vh;
+    height: 100vh;
     min-height: 800px;
     margin: 0;
     background-color: #FFF;
@@ -260,7 +260,7 @@ body {
 
     /* CSS Página inicial - tela sobre nós */
     #home-sobre {
-        height: 115vh;
+        height: 100vh;
     }
 
     #home-sobre hr {

@@ -12,10 +12,12 @@ window.scrollTo({ top: 0, behavior: 'smooth' });
 //Array de marcadores
 let arrayMarcadores = [];
 let arrayDivResultados = [];
+let latlngBusca = {};
 
 //Criando mapa com LeafletJS
 const mapa = L.map('div-mapa', {zoomControl: false});
-mapa.setView([-23.562034742565295, -46.65653516995086], 17);
+const latlngInicio = {lat: -23.562034742565295, lng: -46.65653516995086};
+mapa.setView(latlngInicio, 17);
 
 //Usando Tiles do OpenStreetMap
 function tileOpenStreetMap() {
@@ -57,12 +59,16 @@ function pegarGeolocation(){
         navigator.geolocation.getCurrentPosition(function(posicao){
             mapa.setView([posicao.coords.latitude, posicao.coords.longitude], 17);
         })
-        return mapa.getCenter();
     }
-
 }
 
-const latlngUsuario = pegarGeolocation();
+pegarGeolocation();
+let latlngUsuario = mapa.getCenter();
+
+//Carrega problemas a partir da localização do usuário após o mapa carregar
+tileMapa.on('load', function (e) {
+    // carregaProblemas(latlngUsuario)
+});
 
 //Autocomplete de endereço do Maptiler
 var geocoder = new maptiler.Geocoder({
@@ -72,6 +78,10 @@ var geocoder = new maptiler.Geocoder({
 });
   
 geocoder.on('select', function(item) {
+    latlngBusca = {
+        lat: item.center[1],
+        lng: item.center[0]
+    }
     inputPesquisa.value = item.place_name_br
 });
 
@@ -93,19 +103,8 @@ const marcadorVerde = new MarcadorPadrao({iconUrl: '../images/marcador_verde.png
 //Adiciona botões de zoom no canto direito inferior
 L.control.zoom({position: 'bottomright'}).addTo(mapa);
 
-//Delimita a busca pelo tamanho do mapa gerado
-function raioBusca (mapa, latlng) {
-    //Pegar tamanho do mapa
-    let tamanho = mapa.getSize();
-
-    //Converter em pixel a latlng
-
-
-    //Somar metade do mapa com lat, obter latMax
-}
-
 //Carrega os problemas nas coordenadas do centro do mapa
-async function carregaProblemas(latlng){
+async function carregaProblemas(latlng, mapa){
     
     limpaMarcadores(mapa, arrayMarcadores, arrayDivResultados, resultadoPesquisa);
 
@@ -115,10 +114,11 @@ async function carregaProblemas(latlng){
             "Content-Type": "application/json"
         },
         method: "POST",
-        body: JSON.stringify({latitude: latlng.lat, longitude: latlng.lng})
+        body: JSON.stringify({latitude: latlng.lat, longitude: latlng.lng, mapaBounds: mapa.getBounds()})
     })
 
     const dadosBusca = await resposta.json();
+console.log(dadosBusca)
 
     if (resposta.status !== 200) {
 
@@ -156,7 +156,14 @@ async function carregaProblemas(latlng){
     }
 }
 
-// carregaProblemas(latlngUsuario)
+// carregaProblemas(mapa.getCenter(), mapa)
+
+//Scroll para resultados ao pesquisar
+inputPesquisa.addEventListener('click', function () {
+    //Scroll nos resultados da busca
+    const tamanhoScroll = (mapa.getSize().x < 768 ? mapa.getSize().y : 0);
+    window.scrollTo({ top: tamanhoScroll, behavior: 'smooth' });
+})
 
 //Fechar zoom da imagem
 botaoFechar.addEventListener('click', function (event) {
@@ -253,12 +260,11 @@ function lerMais(i) {
 
 function ajustaTamanhoPopup(mapa) {
     //Ajusta tamanho do popup
-    let tamanho = 300;
     const tamanhoMapa = mapa.getSize();
     if (tamanhoMapa.x < 768) {
-        return tamanho = tamanhoMapa.x * 0.80;
+        return tamanhoMapa.x * 0.80;
     } else {
-         return tamanho = 400;
+         return 400;
     }
 }
 
@@ -280,7 +286,7 @@ function limpaMarcadores(mapa, arrayMarcadores, arrayDivResultados, resultadoPes
 function descricaoCurta(descricao) {
     if (descricao.length > 0) {
         if (descricao.length > 30) {
-            return descricao.slice(0, 35) + '...';
+            return descricao.slice(0, 32) + '...';
         } else {
             return descricao;
         }
@@ -394,50 +400,10 @@ submitPesquisa.addEventListener("click", async function (event) {
 
     validaCampoPreenchido(inputPesquisa);
 
-    limpaMarcadores(mapa, arrayMarcadores, arrayDivResultados, resultadoPesquisa);
+    carregaProblemas(latlngBusca, mapa);
 
-    //Solicita o request de envio dos dados
-    const resposta = await fetch('/mapa/pesquisa', {
-        headers: {
-            "Content-Type": "application/json"
-        },
-        method: "POST",
-        body: JSON.stringify({pesquisa: inputPesquisa.value})
-    })
+    //Scroll nos resultados da busca
+    const tamanhoScroll = (mapa.getSize().x < 768 ? mapa.getSize().y : 0);
+    window.scrollTo({ top: tamanhoScroll, behavior: 'smooth' });
 
-    const dadosBusca = await resposta.json();
-
-    if (resposta.status !== 200) {
-
-        retornaErro('Algo deu errado, recarregue a página e tente novamente.', resultadoPesquisa, mapa);
-
-    } else {
-
-        //Adiciona as informações no DOM
-        if (dadosBusca.buscaRua.length !== 0) {
-
-            for (let i = 0; i < dadosBusca.buscaRua.length; i++) {
-
-                criaDivProblema(i, dadosBusca.buscaRua[i], resultadoPesquisa, arrayDivResultados);
-                
-                let popupNovo = criaPopup(i, dadosBusca.buscaRua[i], mapa);
-                
-                criaMarcador(dadosBusca.buscaRua[i], popupNovo, mapa, arrayMarcadores);
-
-                cliqueMarcador(i, mapa, arrayMarcadores[i]);
-                
-                cliqueResultado(i, mapa, arrayMarcadores[i], arrayDivResultados[i]);
-             
-            }
-
-            //Scroll nos resultados da busca
-            const tamanhoScroll = (mapa.getSize().x < 768 ? mapa.getSize().y : 0);
-            window.scrollTo({ top: tamanhoScroll, behavior: 'smooth' });
-
-        } else {
-
-            retornaErro('Não foram encontrados resultados.', resultadoPesquisa, mapa);
-
-        }
-    }
 })

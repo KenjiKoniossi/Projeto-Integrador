@@ -84,9 +84,9 @@
                         <% if (problema.resolvido === true) { %>
                           <p class="m-2 ml-3 mr-3"><strong>Resolvido</strong></p>
                         <% } else { %>
-                          <a class="btn btn-success m-1" href="/perfil/problema/<%= problema.id %>/resolvido">Resolvido</a>
+                          <a class="btn btn-success btn-resolvido m-1" href="/perfil/problema/<%= problema.id %>/resolvido">Resolvido</a>
                         <% } %>
-                        <a class="btn btn-danger m-1" href="/perfil/problema/<%= problema.id %>/apagar">Apagar</a>
+                        <a class="btn btn-danger btn-apagar m-1" href="/perfil/problema/<%= problema.id %>/apagar">Apagar</a>
                       </div>
                       <div class="col-2 d-flex flex-wrap justify-content-center align-items-center">
                         <p class="m-0"><%= problema.id %></p>

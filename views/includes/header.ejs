@@ -7,8 +7,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="logo">
-            <a class="navbar-brand active" href="/"><img src="/public/images/logo.png" alt=""></a>
-            <a class="navbar-brand active" href="/"><img src="/public/images/mobmap.png" alt=""></a>
+            <a class="navbar-brand active" href="/"><img src="../../images/wesley_logo_novo_azul.png" alt=""></a>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav" style="margin: 0px, 150px, 0, 25px;">
@@ -39,10 +38,10 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#entradaModal" id="logIn"
                 style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</button>
         <% } else { %>
-            <div id="botao-login">
-                <a href="/perfil"><button type="button" class="btn btn-primary" id="perfil"
+            <div class="d-flex flex-column flex-md-row justify-content-center align-items-center" id="botao-login">
+                <a href="/perfil"><button type="button" class="btn btn-primary m-1" id="perfilHeader"
                         style="background-color: #4488DD;"><i class="fa fa-sign-in" aria-hidden="true"></i> Perfil</button></a>
-                <a href="/login/logout"><button type="button" class="btn btn-danger ml-2" id="logout"><i class="fa fa-sign-out"
+                <a href="/login/logout"><button type="button" class="btn btn-danger m-1" id="logoutHeader"><i class="fa fa-sign-out"
                             aria-hidden="true"></i> Sair</button></a>
             </div>
         <% } %>
@@ -60,8 +59,7 @@
                     <span class="closeModal" data-dismiss="modal"> x </span>
 
                     <form action="post">
-                        <img src="/public/images/logoWhite.png" alt="">
-                        <img src="/public/images/mob_mapWhite.png" alt="">
+                        <img src="../images/wesley_logo_novo_branco.png" style="width: 120px; margin-bottom: 5px;" alt="">
                         <div class="user">
                             <button type="button" data-toggle="modal" data-target="#registerModal" data-dismiss="modal"
                                 style="background-color: white; color: rgb(68, 137, 221); margin-top: 20px;">Criar
@@ -82,7 +80,7 @@
 
                     <span class="closeModal closeBlue" data-dismiss="modal"> x </span>
 
-                    <img src="/public/images/logo.png" alt="logo mobmap">
+                    <img src="../images/wesley_logo_novo_azul.png" style="width: 120px; margin-bottom: 5px;" alt="">
                     <h4>Faça login</h4>
 
                     <form method="POST" action="/login" id="login">
@@ -115,7 +113,7 @@
                 <div class="modal-body">
 
                     <span class="closeModal closeBlue" data-dismiss="modal"> x </span>
-                    <img src="/public/images/logo.png" alt="logo mobmap">
+                    <img src="../images/wesley_logo_novo_azul.png" style="width: 120px; margin-bottom: 5px;" alt="">
                     <h4>Cadastrar</h4>
 
                     <form method="POST" action="/cadastro">
@@ -144,7 +142,7 @@
             <div class="modal-content">
                 <div class="modal-body">
 
-                    <img src="/public/images/logo.png" alt="logo mobmap">
+                    <img src="../images/wesley_logo_novo_azul.png" style="width: 120px; margin-bottom: 5px;" alt="">
                     <h4>Esqueci a senha</h4>
 
                     <form action="post">
