@@ -14,7 +14,8 @@ let arrayMarcadores = [];
 let arrayDivResultados = [];
 
 //Criando mapa com LeafletJS
-const mapa = L.map('div-mapa', {zoomControl: false}).setView([-23.562034742565295, -46.65653516995086], 17);
+const mapa = L.map('div-mapa', {zoomControl: false});
+mapa.setView([-23.562034742565295, -46.65653516995086], 17);
 
 //Usando Tiles do OpenStreetMap
 function tileOpenStreetMap() {
@@ -28,15 +29,14 @@ function tileOpenStreetMap() {
 function tileMapbox() {
     const tileUrl = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox/light-v10',
+        maxZoom: 20,
+        id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
         accessToken: 'pk.eyJ1Ijoid2VzbGV5YnMwMDEiLCJhIjoiY2tibmI4NmNnMXBjajJzazBvZXNoOTQ2MyJ9.bVWk-q7qy71I279L4BEv6Q'
     });
     return tileUrl;
 }
-
 
 //Usando Tiles do Maptiler
 function tileMaptiler() {
@@ -49,7 +49,20 @@ function tileMaptiler() {
 }
 
 //Escolha do estilo do mapa, inserir a função para um dos estilos acima
-const tileMapa = tileMaptiler().addTo(mapa);
+const tileMapa = tileMapbox().addTo(mapa);
+
+//Pegar a Geolocalização do usuário
+function pegarGeolocation(){
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(posicao){
+            mapa.setView([posicao.coords.latitude, posicao.coords.longitude], 17);
+        })
+        return mapa.getCenter();
+    }
+
+}
+
+const latlngUsuario = pegarGeolocation();
 
 //Autocomplete de endereço do Maptiler
 var geocoder = new maptiler.Geocoder({
@@ -80,18 +93,16 @@ const marcadorVerde = new MarcadorPadrao({iconUrl: '../images/marcador_verde.png
 //Adiciona botões de zoom no canto direito inferior
 L.control.zoom({position: 'bottomright'}).addTo(mapa);
 
-//Pegar a Geolocalização do usuário
-function pegarGeolocation(){
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(posicao){
-            mapa.setView([posicao.coords.latitude, posicao.coords.longitude], 17);
-        })
-        return mapa.getCenter();
-    }
+//Delimita a busca pelo tamanho do mapa gerado
+function raioBusca (mapa, latlng) {
+    //Pegar tamanho do mapa
+    let tamanho = mapa.getSize();
 
+    //Converter em pixel a latlng
+
+
+    //Somar metade do mapa com lat, obter latMax
 }
-
-const latlngUsuario = pegarGeolocation();
 
 //Carrega os problemas nas coordenadas do centro do mapa
 async function carregaProblemas(latlng){
@@ -145,7 +156,7 @@ async function carregaProblemas(latlng){
     }
 }
 
-carregaProblemas(latlngUsuario)
+// carregaProblemas(latlngUsuario)
 
 //Fechar zoom da imagem
 botaoFechar.addEventListener('click', function (event) {
@@ -154,7 +165,7 @@ botaoFechar.addEventListener('click', function (event) {
     zoomImagem.style.display = 'none';
 })
 
-//Ou clicar fora da imagem
+//Fecha zoom quando clicar fora da imagem
 // window.addEventListener('click', function (event) {
 //     if (!document.querySelector('.container-imagem').contains(event.target)) {
 //         zoomImagem.style.display = 'none';
@@ -167,6 +178,7 @@ function abreZoom(event, imagem) {
     zoomImagem.style.display = 'block';
 }
 
+//Implementação de autocomplete
 inputPesquisa.addEventListener('keydown', async function (e) {
 
     // const resposta = await fetch('https://nominatim.openstreetmap.org/search/' + inputPesquisa.value + '?format=json&limit=5');
@@ -349,9 +361,10 @@ function criaMarcador(problema, popup, mapa, arrayMarcadores) {
 function cliqueMarcador(i, mapa, arrayMarcadores) {
     arrayMarcadores.addEventListener("click", function (){
         const valorDeslocamentoY = mapa.getSize().y*0.30;
-        let latlngOriginal = mapa.options.crs.latLngToPoint(this.getLatLng(), 17);
+        const zoomAtual = mapa.getZoom();
+        let latlngOriginal = mapa.options.crs.latLngToPoint(this.getLatLng(), zoomAtual);
         latlngOriginal.y -= valorDeslocamentoY;
-        const latlngNovo = mapa.options.crs.pointToLatLng(latlngOriginal, 17);
+        const latlngNovo = mapa.options.crs.pointToLatLng(latlngOriginal, zoomAtual);
         lerMais(i);
 
         mapa.panTo(latlngNovo);
@@ -362,9 +375,10 @@ function cliqueMarcador(i, mapa, arrayMarcadores) {
 function cliqueResultado(i, mapa, arrayMarcadores, arrayDivResultados) {
     arrayDivResultados.addEventListener("click", function (){
         const valorDeslocamentoY = mapa.getSize().y*0.30;
-        let latlngOriginal = mapa.options.crs.latLngToPoint(arrayMarcadores.getLatLng(), 17);
+        const zoomAtual = mapa.getZoom();
+        let latlngOriginal = mapa.options.crs.latLngToPoint(arrayMarcadores.getLatLng(), zoomAtual);
         latlngOriginal.y -= valorDeslocamentoY;
-        const latlngNovo = mapa.options.crs.pointToLatLng(latlngOriginal, 17);
+        const latlngNovo = mapa.options.crs.pointToLatLng(latlngOriginal, zoomAtual);
         
         // mapa.closePopup();
         arrayMarcadores.openPopup();
