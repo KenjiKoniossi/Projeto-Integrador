@@ -160,7 +160,7 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-.footer-modal{
+.modal-footer{
   align-items: center;
   justify-content: center;
 }
