@@ -159,3 +159,8 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.footer-modal{
+  align-items: center;
+  justify-content: center;
+}
