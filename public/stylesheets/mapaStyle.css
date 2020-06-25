@@ -56,11 +56,16 @@ h1, h2, h3 {
 }
 
 #barra-pesquisa {
-    height: 12vh;
+    height: 12%;
     min-height: 68px;
     margin: 0;
     padding: 10px;
     background-color: #4488DD;
+}
+
+#resultado-pesquisa {
+    height: 88%;
+    overflow: scroll;
 }
 
 #form-pesquisa {
@@ -232,6 +237,7 @@ h1, h2, h3 {
     #div-pesquisa {
         width: 350px;
         height: 75vh;
+        overflow: hidden;
         border: 2px solid #224455;
         position: absolute;
         z-index: 100;
@@ -240,7 +246,13 @@ h1, h2, h3 {
     }
 
     #barra-pesquisa {
-        height: 80px;
+        height: 10%;
+    }
+
+    #resultado-pesquisa {
+        height: 90%;
+        overflow: scroll;
+        overflow-x: hidden;
     }
 
     #botao-fechar {
