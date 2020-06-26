@@ -34,11 +34,11 @@ const enviarProblemaController = {
 
         const {problema, problema_outro, descricao, cep, rua, numero, bairro, cidade, estado, referencia, longitude, latitude} = req.body;
 
-        //Dados da latitude e longitude
-        const point = {
-            type: 'Point',
-            coordinates: [latitude,longitude]
-        };
+        //Dados da latitude e longitude (Para tipo de dado Point)
+        // const point = {
+        //     type: 'Point',
+        //     coordinates: [latitude,longitude]
+        // };
 
         //Seleção do ID da tag ou criação da tag
         let tagId = null;
@@ -77,7 +77,8 @@ const enviarProblemaController = {
 
         //Criação do endereço relacionado ao problema
         const enderecoCreate = await Endereco.create({
-            geolocalizacao: point,
+            latitude,
+            longitude,
             cep,
             bairro,
             rua,

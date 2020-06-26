@@ -68,12 +68,15 @@ const mapaController = {
             //Haversine formula
             // const distancia = Sequelize.literal("6371 * acos(cos(radians("+latitude+")) * cos(radians(ST_X(geolocalizacao))) * cos(radians("+longitude+") - radians(ST_Y(geolocalizacao))) + sin(radians("+latitude+")) * sin(radians(ST_X(geolocalizacao))))");
             
-            const resultado = Sequelize.literal("abs(abs(abs("+latitude+")-abs(ST_X(geolocalizacao)))+abs(abs("+longitude+")-abs(ST_Y(geolocalizacao))))");
+            // const resultado = Sequelize.literal("abs(abs(abs("+latitude+")-abs(ST_X(geolocalizacao)))+abs(abs("+longitude+")-abs(ST_Y(geolocalizacao))))");
+
+            const resultado = Sequelize.literal("abs(abs(abs("+latitude+")-abs(latitude))+abs(abs("+longitude+")-abs(longitude)))");
 
             const listaDeProblemas = await Endereco.findAll({
                 attributes: [
                     'id',
-                    'geolocalizacao',
+                    'latitude',
+                    'longitude',
                     [resultado, 'resultado']
                 ],
                 include: [{
@@ -97,8 +100,8 @@ const mapaController = {
                 }],
                 where: {
                     [Op.and]: [
-                        Sequelize.literal("ST_X(geolocalizacao) BETWEEN "+ mapaBounds._southWest.lat +" AND "+ mapaBounds._northEast.lat),
-                        Sequelize.literal("ST_Y(geolocalizacao) BETWEEN "+ mapaBounds._southWest.lng +" AND "+ mapaBounds._northEast.lng)
+                        Sequelize.literal("latitude BETWEEN "+ mapaBounds._southWest.lat +" AND "+ mapaBounds._northEast.lat),
+                        Sequelize.literal("longitude BETWEEN "+ mapaBounds._southWest.lng +" AND "+ mapaBounds._northEast.lng)
                     ]
                 },
                 order: Sequelize.col('resultado')
