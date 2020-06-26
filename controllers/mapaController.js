@@ -106,12 +106,14 @@ const mapaController = {
                 },
                 order: Sequelize.col('resultado')
             })
+console.log(listaDeProblemas)
 
             return res.status(200).json({
                 listaDeProblemas
             });
 
-        } catch {
+        } catch (err) {
+            console.log(err);
             return res.status(400).json({
                 mensagem: 'Algo deu errado',
             });

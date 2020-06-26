@@ -58,6 +58,8 @@ function pegarGeolocation(){
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(posicao){
             mapa.setView([posicao.coords.latitude, posicao.coords.longitude], 17);
+            let latlng = {lat: posicao.coords.latitude, lng: posicao.coords.longitude};
+            carregaProblemas(latlng, mapa);
         })
     }
 }
@@ -65,10 +67,14 @@ function pegarGeolocation(){
 pegarGeolocation();
 let latlngUsuario = mapa.getCenter();
 
-//Carrega problemas a partir da localização do usuário após o mapa carregar
-tileMapa.on('load', function (e) {
-    // carregaProblemas(latlngUsuario)
-});
+//Atualiza problemas ao mover o mapa
+let moveuInicial = false;
+mapa.on('moveend', function (event) {
+    if (moveuInicial === false) {
+        return moveuInicial = true;
+    }
+    carregaProblemas(latlngUsuario, mapa);
+})
 
 //Autocomplete de endereço do Maptiler
 var geocoder = new maptiler.Geocoder({
@@ -83,6 +89,7 @@ geocoder.on('select', function(item) {
         lng: item.center[0]
     }
     inputPesquisa.value = item.place_name_br
+    carregaProblemas(latlngBusca, mapa);
 });
 
 
@@ -118,7 +125,7 @@ async function carregaProblemas(latlng, mapa){
     })
 
     const dadosBusca = await resposta.json();
-console.log(dadosBusca)
+console.log(dadosBusca);
 
     if (resposta.status !== 200) {
 
@@ -138,7 +145,7 @@ console.log(dadosBusca)
                 let marcadorIcon = (dadosBusca.listaDeProblemas[i].problema[0].resolvido != 1 ? marcadorAzul : marcadorVerde);
 
                 //Adiciona marcador no mapa
-                let marcador = L.marker([dadosBusca.listaDeProblemas[i].geolocalizacao.coordinates[0], dadosBusca.listaDeProblemas[i].geolocalizacao.coordinates[1]], {icon: marcadorIcon})
+                let marcador = L.marker([dadosBusca.listaDeProblemas[i].latitude, dadosBusca.listaDeProblemas[i].longitude], {icon: marcadorIcon})
                 .bindPopup(popupNovo).addTo(mapa);
                 arrayMarcadores.push(marcador);
 
@@ -155,8 +162,6 @@ console.log(dadosBusca)
         }
     }
 }
-
-// carregaProblemas(mapa.getCenter(), mapa)
 
 //Scroll para resultados ao pesquisar
 inputPesquisa.addEventListener('click', function () {
@@ -205,7 +210,6 @@ inputPesquisa.addEventListener('keydown', async function (e) {
     //Faz a busca no banco de dados pelo raio da lat e lng
 
     //Lista o resultado dos problemas dentro do raio
-
 
     inputPesquisa.style.borderColor = '';
 })
@@ -358,7 +362,7 @@ function criaMarcador(problema, popup, mapa, arrayMarcadores) {
     let marcadorIcon = (problema.resolvido != 1 ? marcadorAzul : marcadorVerde);
 
     //Adiciona marcador no mapa
-    let marcador = L.marker([problema.endereco.geolocalizacao.coordinates[0], problema.endereco.geolocalizacao.coordinates[1]], {icon: marcadorIcon})
+    let marcador = L.marker([problema.endereco.latitude, problema.endereco.longitude], {icon: marcadorIcon})
     .bindPopup(popup).addTo(mapa);
     arrayMarcadores.push(marcador);
 }

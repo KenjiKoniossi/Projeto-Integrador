@@ -6,7 +6,7 @@ const {check, validationResult, body} = require('express-validator');
 const enviarProblemaController = {
     viewForm: (req, res) => {
         const apiKey = process.env.API_KEY;
-        res.render('enviarProblema')
+        res.render('enviarProblema', {apiKey});
     },
 
     //Envio do problema salvando em JSON, desatualizado

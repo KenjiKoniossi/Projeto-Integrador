@@ -234,6 +234,7 @@ enviarBotao.addEventListener("click", function () {
 
         //Removido data-target="#exampleModal" do botão de enviar
         window.$("#exampleModal").modal('show');
+
     } else {
         alertaBaixo.innerHTML = '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Campo <strong>' + textoErro + '</strong> não preenchido ou selecionado.';
         alertaBaixo.classList.remove('d-none');
