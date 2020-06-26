@@ -125,7 +125,6 @@ async function carregaProblemas(latlng, mapa){
     })
 
     const dadosBusca = await resposta.json();
-console.log(dadosBusca);
 
     if (resposta.status !== 200) {
 
@@ -376,8 +375,9 @@ function cliqueMarcador(i, mapa, arrayMarcadores) {
         latlngOriginal.y -= valorDeslocamentoY;
         const latlngNovo = mapa.options.crs.pointToLatLng(latlngOriginal, zoomAtual);
         lerMais(i);
-
+        
         mapa.panTo(latlngNovo);
+        moveuInicial = false;
     });
 }
 
@@ -393,9 +393,10 @@ function cliqueResultado(i, mapa, arrayMarcadores, arrayDivResultados) {
         // mapa.closePopup();
         arrayMarcadores.openPopup();
         lerMais(i);
-
+        
         window.scrollTo({ top: 0, behavior: 'smooth' });
         mapa.panTo(latlngNovo);
+        moveuInicial = false;
     });
 }
 
