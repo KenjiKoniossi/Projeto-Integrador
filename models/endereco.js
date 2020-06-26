@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    geolocalizacao: DataTypes.GEOMETRY('POINT'),
+    latitude: DataTypes.DOUBLE,
+    longitude: DataTypes.DOUBLE,
     cep: {
       allowNull: false,
       type: DataTypes.STRING
