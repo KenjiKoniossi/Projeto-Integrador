@@ -128,6 +128,10 @@ p{
   width: 200px;
 }
 
+#apiKey {
+  display: none;
+}
+
 /* .alert-danger {
   position: fixed;
   top: 0;

@@ -29,9 +29,9 @@ Após clonar o repositório, instalar as dependências:
 npm install
 ```
 
-Criar arquivo .env e para colocar a senha do banco de dados (substituir "SENHA" pela senha do banco de dados MySQL):
+Renomear o arquivo .env.example para .env e inserir a senha do banco de dados (substituir "SENHA" pela senha do banco de dados MySQL) e adicionar a chave do Google Geocoding API no lugar de "CHAVE" ou crie o arquivo com o comando, substituindo os valores indicados:
 ```
-echo DB_PASS=SENHA > .env
+echo -e "DB_PASS=SENHA\nAPI_KEY=CHAVE" > .env
 ```
 
 Criar o banco de dados com o Sequelize:

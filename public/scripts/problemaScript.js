@@ -8,6 +8,7 @@ let alertTopo = document.querySelector('.alert');
 let alertaBaixo = document.getElementById('alertaBaixo');
 let inputLongitude = document.getElementById('inputLongitude');
 let inputLatitude = document.getElementById('inputLatitude');
+let apiKey = document.getElementById('apiKey');
 
 let camposObrigatorios = [
     document.querySelectorAll('input[type=radio]'),
@@ -184,7 +185,10 @@ async function converteParaGeo(endereco, lat, lng) {
     //Endereço completo: NUMERO + RUA + BAIRRO + CIDADE
     const enderecoCompleto = endereco[4].value + '+' + endereco[2].value + '+' + endereco[3].value + '+' + endereco[5].value;
 
-    const API_KEY = '';
+    if(apiKey === null) {
+        return console.log('Erro, API Key inválida.');
+    }
+    const API_KEY = apiKey.innerText;
     const resposta = await fetch('https://maps.googleapis.com/maps/api/geocode/json?key=' + API_KEY + '&address=' + enderecoCompleto);
     const dados = await resposta.json();
 

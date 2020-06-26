@@ -1,9 +1,11 @@
+require('dotenv/config');
 const problema_old = require('../model_problema_old');
 const {Problema, Endereco, Tag_problema} = require('../models');
 const {check, validationResult, body} = require('express-validator');
 
 const enviarProblemaController = {
     viewForm: (req, res) => {
+        const apiKey = process.env.API_KEY;
         res.render('enviarProblema')
     },
 
