@@ -73,7 +73,7 @@ mapa.on('moveend', function (event) {
     if (moveuInicial === false) {
         return moveuInicial = true;
     }
-    carregaProblemas(latlngUsuario, mapa);
+    carregaProblemas(mapa.getCenter(), mapa);
 })
 
 //Autocomplete de endereço do Maptiler
@@ -114,6 +114,9 @@ L.control.zoom({position: 'bottomright'}).addTo(mapa);
 async function carregaProblemas(latlng, mapa){
     
     limpaMarcadores(mapa, arrayMarcadores, arrayDivResultados, resultadoPesquisa);
+
+    moveuInicial = false;
+    mapa.panTo([latlng.lat, latlng.lng]);
 
     //Solicita o request de envio dos dados
     const resposta = await fetch('/mapa/problemas', {
