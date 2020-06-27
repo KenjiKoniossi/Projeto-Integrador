@@ -129,18 +129,17 @@ botaoFechar.addEventListener('click', function (event) {
     zoomImagem.style.display = 'none';
 })
 
-//Fecha zoom quando clicar fora da imagem
-// window.addEventListener('click', function (event) {
-//     if (!document.querySelector('.container-imagem').contains(event.target)) {
-//         zoomImagem.style.display = 'none';
-//     }
-// });
+zoomImagem.addEventListener('click', function () {
+    zoomImagem.style.display = 'none';
+})
 
 function abreZoom(event, imagem) {
     event.preventDefault;
     imagemZoom.src = '../images_problemas/' + imagem;
     zoomImagem.style.display = 'block';
 }
+
+
 
 //Implementação de autocomplete
 inputPesquisa.addEventListener('keydown', async function (e) {
