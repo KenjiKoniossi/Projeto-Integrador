@@ -11,7 +11,6 @@ window.scrollTo({ top: 0, behavior: 'smooth' });
 
 //Array de marcadores
 let arrayMarcadores = [];
-let arrayDivResultados = [];
 let latlngBusca = {};
 
 //Criando mapa com LeafletJS
@@ -109,61 +108,6 @@ const marcadorVerde = new MarcadorPadrao({iconUrl: '../images/marcador_verde.png
 
 //Adiciona botões de zoom no canto direito inferior
 L.control.zoom({position: 'bottomright'}).addTo(mapa);
-
-//Carrega os problemas nas coordenadas do centro do mapa
-async function carregaProblemas(latlng, mapa){
-    
-    limpaMarcadores(mapa, arrayMarcadores, arrayDivResultados, resultadoPesquisa);
-
-    moveuInicial = false;
-    mapa.panTo([latlng.lat, latlng.lng]);
-
-    //Solicita o request de envio dos dados
-    const resposta = await fetch('/mapa/problemas', {
-        headers: {
-            "Content-Type": "application/json"
-        },
-        method: "POST",
-        body: JSON.stringify({latitude: latlng.lat, longitude: latlng.lng, mapaBounds: mapa.getBounds()})
-    })
-
-    const dadosBusca = await resposta.json();
-
-    if (resposta.status !== 200) {
-
-        retornaErro('Algo deu errado, recarregue a página e tente novamente.', resultadoPesquisa, mapa);
-
-    } else {
-
-        if (dadosBusca.listaDeProblemas.length !== 0) {
-
-            for (let i = 0; i < dadosBusca.listaDeProblemas.length; i++) {
-
-                criaDivProblema(i, dadosBusca.listaDeProblemas[i].problema[0], resultadoPesquisa, arrayDivResultados);
-                
-                let popupNovo = criaPopup(i, dadosBusca.listaDeProblemas[i].problema[0], mapa);
-                
-                //Se problema resolvido usa marcador verde
-                let marcadorIcon = (dadosBusca.listaDeProblemas[i].problema[0].resolvido != 1 ? marcadorAzul : marcadorVerde);
-
-                //Adiciona marcador no mapa
-                let marcador = L.marker([dadosBusca.listaDeProblemas[i].latitude, dadosBusca.listaDeProblemas[i].longitude], {icon: marcadorIcon})
-                .bindPopup(popupNovo).addTo(mapa);
-                arrayMarcadores.push(marcador);
-
-                cliqueMarcador(i, mapa, arrayMarcadores[i]);
-                
-                cliqueResultado(i, mapa, arrayMarcadores[i], arrayDivResultados[i]);
-             
-            }
-
-        } else {
-
-            retornaErro('Não foram encontrados resultados.', resultadoPesquisa, mapa);
-
-        }
-    }
-}
 
 //Scroll para resultados ao pesquisar
 inputPesquisa.addEventListener('click', function () {
@@ -275,17 +219,17 @@ function ajustaTamanhoPopup(mapa) {
 }
 
 //Limpa o conteúdo dos resultadores e marcadores
-function limpaMarcadores(mapa, arrayMarcadores, arrayDivResultados, resultadoPesquisa) {
+function limpaMarcadores(mapa, arrayMarcadores, resultadoPesquisa) {
 
-    //Limpa os resultados
+    // //Limpa os resultados
     resultadoPesquisa.innerHTML = '';
 
     //Limpa marcadores da tela
     for (let i = 0; i < arrayMarcadores.length; i++) {
         mapa.removeLayer(arrayMarcadores[i]);
     }
+
     arrayMarcadores = [];
-    arrayDivResultados = [];
 }
 
 //Se a descrição for longa, encurta
@@ -310,7 +254,7 @@ function validaCampoPreenchido(campo) {
 }
 
 //Cria o elemento div do problema e seu conteúdo
-function criaDivProblema(i, problema, resultadoPesquisa, arrayDivResultados) {
+function criaDivProblema(i, problema) {
     
     //Converte a data
     let dataCriacao = new Date(problema.data_criacao);
@@ -327,8 +271,7 @@ function criaDivProblema(i, problema, resultadoPesquisa, arrayDivResultados) {
                             <h6 class="col-12 mb-1">${problema.tag.tag}</h6>
                             <p class="col-12 mb-0">${descricaoCurta(problema.descricao)}</p>`;
 
-    resultadoPesquisa.appendChild(divConteudo);
-    arrayDivResultados.push(divConteudo);
+    return divConteudo;
 }
 
 //Cria popup
@@ -370,8 +313,8 @@ function criaMarcador(problema, popup, mapa, arrayMarcadores) {
 }
 
 //Centraliza o mapa no marcador ao clicar no marcador
-function cliqueMarcador(i, mapa, arrayMarcadores) {
-    arrayMarcadores.addEventListener("click", function (){
+function cliqueMarcador(i, mapa, marcador) {
+    marcador.addEventListener("click", function (){
         const valorDeslocamentoY = mapa.getSize().y*0.30;
         const zoomAtual = mapa.getZoom();
         let latlngOriginal = mapa.options.crs.latLngToPoint(this.getLatLng(), zoomAtual);
@@ -385,24 +328,24 @@ function cliqueMarcador(i, mapa, arrayMarcadores) {
 }
 
 //Centraliza o mapa ao clicar em um dos resultados
-function cliqueResultado(i, mapa, arrayMarcadores, arrayDivResultados) {
-    arrayDivResultados.addEventListener("click", function (){
+function cliqueResultado(i, mapa, marcador, divElem) {
+    divElem.addEventListener("click", function (){
         const valorDeslocamentoY = mapa.getSize().y*0.30;
         const zoomAtual = mapa.getZoom();
-        let latlngOriginal = mapa.options.crs.latLngToPoint(arrayMarcadores.getLatLng(), zoomAtual);
+        let latlngOriginal = mapa.options.crs.latLngToPoint(marcador.getLatLng(), zoomAtual);
         latlngOriginal.y -= valorDeslocamentoY;
         const latlngNovo = mapa.options.crs.pointToLatLng(latlngOriginal, zoomAtual);
         
-        // mapa.closePopup();
-        arrayMarcadores.openPopup();
+        marcador.openPopup();
         lerMais(i);
-        
+
         window.scrollTo({ top: 0, behavior: 'smooth' });
         mapa.panTo(latlngNovo);
         moveuInicial = false;
     });
 }
 
+//Carrega problemas ao buscar
 submitPesquisa.addEventListener("click", async function (event) {
     event.preventDefault();
 
@@ -415,3 +358,59 @@ submitPesquisa.addEventListener("click", async function (event) {
     window.scrollTo({ top: tamanhoScroll, behavior: 'smooth' });
 
 })
+
+//Carrega os problemas nas coordenadas do centro do mapa
+async function carregaProblemas(latlng, mapa){
+    
+    limpaMarcadores(mapa, arrayMarcadores, resultadoPesquisa);
+
+    moveuInicial = false;
+    mapa.panTo([latlng.lat, latlng.lng]);
+
+    //Solicita o request de envio dos dados
+    const resposta = await fetch('/mapa/problemas', {
+        headers: {
+            "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify({latitude: latlng.lat, longitude: latlng.lng, mapaBounds: mapa.getBounds()})
+    })
+
+    const dadosBusca = await resposta.json();
+
+    if (resposta.status !== 200) {
+
+        retornaErro('Algo deu errado, recarregue a página e tente novamente.', resultadoPesquisa, mapa);
+
+    } else {
+
+        if (dadosBusca.listaDeProblemas.length !== 0) {
+
+            for (let i = 0; i < dadosBusca.listaDeProblemas.length; i++) {
+
+                let divElem = criaDivProblema(i, dadosBusca.listaDeProblemas[i].problema[0]);
+                resultadoPesquisa.appendChild(divElem);
+
+                let popupNovo = criaPopup(i, dadosBusca.listaDeProblemas[i].problema[0], mapa);
+                
+                //Se problema resolvido usa marcador verde
+                let marcadorIcon = (dadosBusca.listaDeProblemas[i].problema[0].resolvido != 1 ? marcadorAzul : marcadorVerde);
+
+                //Adiciona marcador no mapa
+                let marcador = L.marker([dadosBusca.listaDeProblemas[i].latitude, dadosBusca.listaDeProblemas[i].longitude], {icon: marcadorIcon})
+                .bindPopup(popupNovo).addTo(mapa);
+                arrayMarcadores.push(marcador);
+
+                cliqueMarcador(i, mapa, marcador);
+                
+                cliqueResultado(i, mapa, marcador, divElem);
+             
+            }
+
+        } else {
+
+            retornaErro('Não foram encontrados resultados.', resultadoPesquisa, mapa);
+
+        }
+    }
+}

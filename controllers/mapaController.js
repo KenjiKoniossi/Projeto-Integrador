@@ -106,7 +106,6 @@ const mapaController = {
                 },
                 order: Sequelize.col('resultado')
             })
-console.log(listaDeProblemas)
 
             return res.status(200).json({
                 listaDeProblemas
