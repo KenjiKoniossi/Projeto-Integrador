@@ -2,6 +2,7 @@ const inputPesquisa = document.getElementById('input-pesquisa');
 const submitPesquisa = document.getElementById('submit-pesquisa');
 const resultadoPesquisa = document.getElementById('resultado-pesquisa');
 const botaoFechar = document.getElementById('botao-fechar');
+const botaoRecarregar = document.getElementById('botao-recarregar');
 const zoomImagem = document.getElementById('zoom-imagem-fundo');
 const containerMapa = document.getElementById('container-mapa');
 const imagemZoom = document.querySelector('#zoom-imagem-fundo img');
@@ -68,10 +69,15 @@ let latlngUsuario = mapa.getCenter();
 
 //Atualiza problemas ao mover o mapa
 let moveuInicial = false;
-mapa.on('moveend', function (event) {
-    if (moveuInicial === false) {
-        return moveuInicial = true;
-    }
+// mapa.on('moveend', function () {
+//     if (moveuInicial === false) {
+//         return moveuInicial = true;
+//     }
+//     carregaProblemas(mapa.getCenter(), mapa);
+// })
+
+botaoRecarregar.addEventListener('click', function (event) {
+    event.preventDefault;
     carregaProblemas(mapa.getCenter(), mapa);
 })
 

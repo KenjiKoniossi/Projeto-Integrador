@@ -49,6 +49,33 @@ h1, h2, h3 {
     border: 3px solid #4488DD;
 }
 
+#botao-recarregar {
+    position: absolute;
+    z-index: 100;
+    bottom: 35px;
+    left: 20px;
+}
+
+#botao-recarregar .btn-default {
+    width: 60px;
+    height: 60px;
+    box-sizing: border-box;
+    background-color: #F79707;
+    font-family: "M PLUS Rounded 1c", Roboto;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #fff;
+    border-radius: 50%;
+    border: 3px solid #F79707;
+}
+
+#botao-recarregar .btn-default:hover {
+    box-sizing: border-box; 
+    color: #F79707;
+    background-color: #fff;
+    border: 3px solid #F79707;
+}
+
 #div-pesquisa {
     height: 100vh;
     padding: 0;
@@ -232,6 +259,14 @@ h1, h2, h3 {
 
     #div-mapa {
         height: 100vh;
+    }
+
+    #botao-recarregar {
+        position: absolute;
+        z-index: 100;
+        left: initial;
+        top: 20px;
+        right: 20px;
     }
 
     #div-pesquisa {
