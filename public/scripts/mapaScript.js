@@ -7,6 +7,14 @@ const zoomImagem = document.getElementById('zoom-imagem-fundo');
 const containerMapa = document.getElementById('container-mapa');
 const imagemZoom = document.querySelector('#zoom-imagem-fundo img');
 
+//Configura a altura e largura da viewport
+document.addEventListener('DOMContentLoaded', function () {
+    let viewHeight = window.innerHeight;
+    let viewWidth = window.innerWidth;
+    let viewPort = document.querySelector('meta[name=viewport]');
+    viewPort.setAttribute('content', 'width=' + viewWidth + 'px, height=' + viewHeight + 'px, initial-scale=1.0')
+});
+
 //Zera no topo da página o scroll
 window.scrollTo({ top: 0, behavior: 'smooth' });
 
